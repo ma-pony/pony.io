@@ -1,0 +1,34 @@
+---
+title: 一些Linux常见的命令
+date: '2021-05-02'
+tags: ['linux', ]
+draft: false
+summary: 一些Linux常见的命令（查看进程、打印等）
+---
+
+
+## 查看进程
+```shell
+ps -ef | grep 8080
+
+lsof -i:8080
+
+ps aux | grep rabbitmq
+
+top 
+# 查看所有进程
+
+pstree -aup 
+# 以树状图的方式展现进程之间的派生关系
+```
+
+## 查找git地址
+```shell
+grep -r 'url.*'  .git/config | sed -r "s/url = (.*)\.git/\1/g"
+```
+
+## 打印
+-e 转义\n字符,真正换行
+```shell
+echo -e  'a\nb'
+```
