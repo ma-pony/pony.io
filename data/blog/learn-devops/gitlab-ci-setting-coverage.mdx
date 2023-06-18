@@ -1,0 +1,58 @@
+---
+title: gitlab ci 设置 coverage
+date: '2023-06-18'
+tags: ['python', 'gitlab', 'test']
+draft: false
+summary: gitlab ci 设置 coverage
+---
+
+
+## gitlab-ci.yaml中配置test步骤
+
+```jsx
+tests:
+  image: python:3.10
+  stage: build
+  script:
+    - pip install -r requirements-test.txt
+    - pytest -vv --cov-report term-missing --cov-report xml --cov=src --cov-fail-under=100 tests/
+
+  coverage: /(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/ # 正则表达式，匹配覆盖率
+  artifacts:
+    reports:
+      cobertura: coverage.xml
+```
+
+### 定义image
+
+制定好运行CI所需要的image，可以是官方镜像，也可以是你自己打包好的镜像，取决于自己的需求
+
+### 设置script
+
+设置好执行的script，首先安装好测试所有的安装包，如果运行一些集成测试可能还有需要MySQL、Redis等第三方组件，也需要安装好，当然也可以现在事先打包到镜像中
+
+运行测试的命令，此处使用的pytest+coverage
+
+### 配置coverage
+
+coverage和artifacts直接复制粘贴就行，这是官网制定的预估，会自动解析存储下coverage的具体数值
+
+## 配置coverage徽章
+
+在General Setting中找到Badges选项
+
+### 配置name
+
+直接设置为coverage即可
+
+### 配置link
+
+直接仿照example例子设置即可，%{project_path} 会被自动替换为真实的项目地址
+
+Example: https://example.gitlab.com/%{project_path}
+
+### 配置image url
+
+直接仿照example例子设置即可，变量会被自动提换，要注意job=后边填写的是你ci中配置的步骤名，我上述ci中配置的是tests，此处也应填写tests，否则会找不到
+
+Example: https://example.gitlab.com/%{project_path}/badges/%{default_branch}/coverage.svg?job=tests
