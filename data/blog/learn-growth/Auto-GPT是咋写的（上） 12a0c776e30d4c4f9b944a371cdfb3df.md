@@ -1,7 +1,7 @@
 ---
 title: Auto-GPT Code Explanation
 date: '2023-06-18'
-tags: ['python', ]
+tags: ['python', 'GPT']
 draft: false
 summary: Auto-GPT源码解析
 ---
