@@ -9,7 +9,7 @@ summary: gitlab ci 设置 coverage
 
 ## gitlab-ci.yaml中配置test步骤
 
-```jsx
+```
 tests:
   image: python:3.10
   stage: build
@@ -49,10 +49,10 @@ coverage和artifacts直接复制粘贴就行，这是官网制定的预估，会
 
 直接仿照example例子设置即可，%{project_path} 会被自动替换为真实的项目地址
 
-Example: https://example.gitlab.com/%{project_path}
+Example: ```https://example.gitlab.com/%{project_path}```
 
 ### 配置image url
 
 直接仿照example例子设置即可，变量会被自动提换，要注意job=后边填写的是你ci中配置的步骤名，我上述ci中配置的是tests，此处也应填写tests，否则会找不到
 
-Example: https://example.gitlab.com/%{project_path}/badges/%{default_branch}/coverage.svg?job=tests
+Example: ```https://example.gitlab.com/%{project_path}/badges/%{default_branch}/coverage.svg?job=tests```
