@@ -1,0 +1,50 @@
+
+---
+title: jinja2模板引擎笔记
+date: '2023-06-30'
+tags: ['python', 'jinja2']
+draft: false
+summary: jinja2模板引擎笔记
+---
+
+# jinja2模板引擎笔记
+
+## 自定义处理函数
+    
+```python
+def datetime_format(value, format="%H:%M %d-%m-%y"):
+    return value.strftime(format)
+
+environment.filters["datetime_format"] = datetime_format
+```
+现在它可以在模板中使用：
+```jinjia2
+{{ article.pub_date|datetimeformat }}
+{{ article.pub_date|datetimeformat("%B %Y") }}
+```
+## jinja2 获取循环的第几个元素
+```jinja2
+{% for item in items %}
+    {% if loop.index == 1 %}
+        <div class="first">
+    {% else %}
+        <div>
+    {% endif %}
+        {{ item }}
+    </div>
+{% endfor %}
+```
+
+## jinja2 if判断
+```jinja2
+{% if variable %}
+    ...
+{% endif %}
+```
+
+## jinja2 for循环
+```jinja2
+{% for item in items %}
+    ...
+{% endfor %}
+```
