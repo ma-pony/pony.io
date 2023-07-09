@@ -5,7 +5,7 @@ const siteMetadata = {
   title: "Pony's Blog",
   author: 'Pony Ma',
   headerTitle: "Pony's Blog",
-  description: '未完待续 ... ',
+  description: '在螺旋中上升',
   language: 'zh-cn',
   theme: 'system', // system, dark or light
   siteUrl: 'https://ponyma.io',
