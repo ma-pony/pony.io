@@ -1,0 +1,147 @@
+---
+title: 使用Cookiecutter创建项目模版
+date: '2023-08-20'
+tags: ['python',]
+draft: false
+summary: 如果你每次开始新的项目时，都会需要从头开始搭建项目结构，配置CI、Test、Coverage、项目规范等等，一遍遍重复相同的步骤，那你可以考虑下使用Cookiecutter创建一个项目模版。
+---
+
+
+# 使用Cookiecutter创建项目模版
+
+## 背景
+
+如果你每次开始新的项目时，都会需要从头开始搭建项目结构，配置CI、Test、Coverage、项目规范等等，一遍遍重复相同的步骤，那你可以考虑下使用Cookiecutter创建一个项目模版。
+
+## 介绍
+
+Cookiecutter就是一个用于创建项目模板的开源库，它可以根据预定义的模板生成新的项目结构和文件，帮助我们快速创建符合规范的项目结构，提高代码的可读性和可维护性。
+
+## 安装cookiecutter
+
+`cookiecutter` 是一个Python库，可以使用pip命令来安装它。
+
+```
+pip install cookiecutter
+```
+
+更多的安装信息和安装方式可以参考[官方文档](https://cookiecutter.readthedocs.io/en/latest/installation.html)
+
+## 创建项目模板
+
+Cookiecutter社区提供了很多模板，可以先看看有没有自己想要的模版
+
+https://github.com/topics/cookiecutter
+
+如果Cookiecutter社区提供的模板不能满足我们的需求，我们也可以自己创建一个项目模板。
+
+Cookiecutter底层使用的是jinja2模版渲染引擎，语法也是jinja2的语法
+
+代码目录参考
+
+```jsx
+.
+├── README.md
+├── cookiecutter.json
+├── hooks
+│   ├── __init__.py
+│   ├── pre_gen_project.py
+│   └── post_gen_project.py
+└── {{cookiecutter.project_name}}
+    ├── Dockerfile
+    ├── LICENSE
+    ├── Makefile
+    ├── README.md
+    ├── requirements.txt
+    ├── tests
+    │   ├── __init__.py
+    │   └── test_main.py
+    └── {{cookiecutter.project_name}}
+        ├── __init__.py
+        └── main.py
+
+```
+
+1. 首先需要定义一个模版变量文件，文件名固定为 `cookiecutter.json`
+
+
+    ```jsx
+    touch cookiecutter.json
+    ```
+
+    ```jsx
+    {
+        "project_name": "Python Simple Project",
+        "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '_')}}",
+        "project_description": "Python package description",
+        "version": "0.1.0"
+    }
+    ```
+
+    该json的key为变量名，值为变量的默认值
+
+    你可以在模版文件通过 `{{cookiecutter.project_name}}` 进行引用，模版生成时会自动替换
+
+
+1. 创建 `README.md` 文件
+模版的介绍文档，介绍下该模版
+
+    ```jsx
+    touch README.md
+    ```
+
+2. 创建 `{{cookiecutter.project_name}}`  目录
+
+
+    ```jsx
+    mkdir {{cookiecutter.project_name}}
+    ```
+
+    该目录就是模版项目目录，你可以在该目录下添加文件代码，搭建自己的项目结构
+
+3. 创建 `hooks`  目录
+
+您可以在项目生成之前或之后运行 python 或 Shell 脚本，文件名为固定的`post_gen_project.py`  `pre_gen_project.py` `post_gen_project.sh` `pre_gen_project.sh`
+
+    ```jsx
+    mkdir hooks
+    touch hooks/pre_gen_project.py
+    touch hooks/post_gen_project.py
+    ```
+
+    用来执行一些git、虚拟环境的初始化是个不错的选择
+
+
+### 项目模版应该包含哪些内容
+
+- 代码目录结构
+- 代码测试及覆盖率检查工具
+- 代码格式检查工具
+- 依赖管理工具
+- 项目文档
+- CI/CD
+
+我们可以根据自己的需求，创建一个项目模板，并将其上传到GitHub等代码托管平台上。然后，我们就可以像使用Cookiecutter社区提供的模板一样，使用自己的模板来创建项目了。
+
+## 使用项目模版
+
+使用本地创建的项目模版
+
+```jsx
+cookiecutter ./my-temp
+```
+
+使用远程的项目模版
+
+```jsx
+cookiecutter https://github.com/my/my-temp.git
+```
+
+## **总结**
+
+项目模版代码带来的不仅仅是减小重复的工作量，对公司整体的项目管理也有很大的好处。
+
+每个开发者的项目的架构方式和理解又会有所不同，尤其是像在使用一些灵活度比较高的语言和框架时，如果不加控制，项目结构和规范可能会百花齐放，不同开发者之间的协作也更加困难，从公司的角度讲，一个统一的项目结构和规范是很有必要的。
+
+- 项目规范化很有必要，统一的规范省心省力
+- 不要重复造轮子，尽量使用成熟方案
