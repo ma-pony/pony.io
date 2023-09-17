@@ -1,0 +1,185 @@
+---
+title: langchain入门教程 - Prompt Template
+date: '2023-09-17'
+tags: ['python', 'GPT']
+draft: false
+summary: langchain入门教程 第二篇 提示词模版
+---
+
+# Prompt templates
+
+提示词，用于引导模型的响应，帮助模型理解上下文并生成相关且连贯的基于语言的输出。
+
+提示词模版则用于更方便快捷的生成提示词
+
+## Prompt template
+
+在 `langchain` 中我们可以使用 `PromptTemplate` 来创建一个简单的提示词模版
+
+例如：
+
+```python
+from langchain import PromptTemplate
+
+prompt_template = PromptTemplate.from_template(
+    "Tell me a {adjective} joke about {content}."
+)
+prompt_template.format(adjective="funny", content="chickens")
+
+prompt_template = PromptTemplate.from_template(
+"Tell me a joke"
+)
+prompt_template.format()
+```
+
+提示词模版支持任意数量的变量，甚至说可以没有变量
+
+### Chat prompt template
+
+`Iangchain`给聊天的场景设置了单独的提示词模版 `ChatPromptTemplate` ，模版的结构相对不同，需要输入聊天消息，同时每条聊天消息都是角色类型(type)和内容(content)相关联的
+
+例如：
+
+```python
+from langchain.prompts import ChatPromptTemplate
+
+template = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful AI bot. Your name is {name}."),
+    ("human", "Hello, how are you doing?"),
+    ("ai", "I'm doing well, thanks!"),
+    ("human", "{user_input}"),
+])
+
+messages = template.format_messages(
+    name="Bob",
+    user_input="What is your name?"
+)
+```
+
+ `langchain` 定义了自己的角色名称 `system` 、 `human` 、 `ai`
+
+(可参考OpenAI [Chat Completions API](https://platform.openai.com/docs/guides/chat/introduction)中相关的说明，角色的概念都是一致的)
+
+除了上边的(`type`, `content`)二元组的表示之外， `langchain` 还对每一个 `type` 提供了相关的 `message`对象和 `message prompt template`
+
+```python
+from langchain.prompts.chat import (
+	SystemMessage,
+	SystemMessagePromptTemplate,
+	HumanMessage,
+	HumanMessagePromptTemplate,
+	AIMessage,
+	AIMessagePromptTemplate
+)
+```
+
+你可以根据消息的类型选择不同的提示词模版
+
+## 自定义提示词模版
+
+首先说明一下， `langchain`把 `prompt template` 分为两大类， `string prompt templates` 和  `chat prompt templates` ，即普通的提示词模版和面向聊天场景的提示词模版。
+
+除了这些 `langchain` 默认的 `prompt template` 外，你也可能想要针对特定的需求，生成一些特定的动态的提示词，这就需要自定义提示词模版功能了。
+
+通常我们自定义的 `string prompt template`  类都需要继承自 `StringPromptTemplate` ，同时要求：
+
+- 有一个 `input_variables` 属性，用于存储模版的输入变量
+- 有一个 `format` 方法，该方法接受与预期变量相对应的关键字参数，并返回格式化的提示词
+
+如果上述两个未自定义，则默认继承 `StringPromptTemplate` 的方法与属性
+
+例如：
+
+```python
+import inspect
+
+def get_source_code(function_name):
+    return inspect.getsource(function_name)
+
+from langchain.prompts import StringPromptTemplate
+from langchain.llms import OpenAI
+
+PROMPT = """
+给定一个函数名和函数源代码，生成函数注释，并填充到原函数中
+函数名: {function_name}
+函数源代码:
+{source_code}
+有函数注释的函数:
+"""
+
+class FunctionExplainerPromptTemplate(StringPromptTemplate):
+    """A custom prompt template that takes in the function name as input, and formats the prompt template to provide the source code of the function."""
+
+    def format(self, **kwargs) -> str:
+        # Get the source code of the function
+        source_code = get_source_code(kwargs["function_name"])
+
+        # Generate the prompt to be sent to the language model
+        prompt = PROMPT.format(
+            function_name=kwargs["function_name"].__name__, source_code=source_code
+        )
+        return prompt
+
+    def _prompt_type(self):
+        return "function-explainer"
+
+template = FunctionExplainerPromptTemplate(
+    input_variables=["function_name"],
+    output_variables=["function_explanation"],
+    prompt=PROMPT,
+)
+
+llm = OpenAI()
+llm(template.format(function_name=get_source_code))
+
+```
+
+至此我们已经了解到了提示词模版的基础使用，除了这些功能之外， `langchain` 还提供了很多强大的功能，下面是各个功能的一些简单介绍，想深入了解的同学可以去查看[官方文档](https://python.langchain.com/docs/modules/model_io/prompts/prompt_templates/connecting_to_a_feature_store) 。
+
+## 连接特征存储
+
+特征存储时传统机器学习的概念，langchain提供了一种将特征存储和LLM相结合的方法
+
+## 少量样本提示模版
+
+接受少量样本示例，同时生成提示词
+
+## 聊天提示模版的少量样本示例
+
+接受少量样本示例，同时生成聊天提示词
+
+## 设置模版输出格式
+
+格式化方法的输出可以是字符串、信息列表和 ChatPromptValue
+
+## 模版格式
+
+默认情况下Python f-string 作为其模板格式，也可以通过 `template_format` 参数指定其他模版格式
+
+## MessagePromptTemplate的类型
+
+LangChain提供不同类型的`MessagePromptTemplate`. 最常用的是`AIMessagePromptTemplate`、`SystemMessagePromptTemplate`和`HumanMessagePromptTemplate`，分别创建人工智能消息、系统消息和人工消息。
+
+## partial提示模版
+
+与 `偏函数`的概念相同，用于锁定部分变量
+
+## 提示组合
+
+如何将多个提示词组合在一起
+
+## 序列化
+
+将提示词序列化存储为文件
+
+## Prompt Pipelining
+
+连接各个模版
+
+## 验证模版
+
+通过 `validate_template` 和 `input_variables` 等参数来检查变量。
+
+## 选择器
+
+如果您有大量示例数据，为保证上下文的最大限制要求，可能需要选择将一部分示例包含在提示词中。 `选择器` 就是负责选择的类。
