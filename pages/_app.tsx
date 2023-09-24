@@ -9,7 +9,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import siteMetadata from '@/data/siteMetadata'
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react'
 import { SearchProvider } from 'pliny/search'
 import LayoutWrapper from '@/components/LayoutWrapper'
 
