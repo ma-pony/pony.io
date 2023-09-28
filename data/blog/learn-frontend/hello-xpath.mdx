@@ -3,7 +3,7 @@ title: xpath入门文档
 date: '2023-09-26'
 tags: ['chrome', 'xpath', 'spider']
 draft: false
-summary: xpath 是什么，xpath 基础使用，如何选择合适的 xpath，xpath 练手实践
+summary: xpath 是什么, xpath 基础使用, 如何选择合适的 xpath, xpath 练手实践
 ---
 
 # xpath入门文档
@@ -227,13 +227,13 @@ Tips: 我们通常说的 xpath 其实是 xpath 表达式
 
 刚刚我们提到了一个新的概念`方法` ，xpath 的方法有很多，这里列举了一些比较常用的
 
-| 方法名 | 描述 | 例子 |
-| --- | --- | --- |
-| contains | 包含 | //li[contains(@class, "li-first")] 获取li 节点的class 属性中包含li-first的节点 |
-| text | 获取文本 | //a/text() 获取a 节点中的文本 |
-| last | 获取最后一个节点的位置序号 | //li[last()] 获取最后一个li 节点 |
-| position | 获取当前节点的位置序号 | //li[position()<3] 获取位置序号小于 3 的节点 |
-| ..... |  |  |
+| 方法名      | 描述            | 例子                                                                |
+|----------|---------------|-------------------------------------------------------------------|
+| contains | 包含            | //li[contains(@class, "li-first")] 获取li 节点的class 属性中包含li-first的节点 |
+| text     | 获取文本          | //a/text() 获取a 节点中的文本                                             |
+| last     | 获取最后一个节点的位置序号 | //li[last()] 获取最后一个li 节点                                          |
+| position | 获取当前节点的位置序号   | //li[position()<3] 获取位置序号小于 3 的节点                                 |
+| .....    |               |                                                                   |
 
 ### 多属性匹配
 
@@ -264,14 +264,14 @@ Tips: 我们通常说的 xpath 其实是 xpath 表达式
 
 刚刚我们提到了一个新的概念`运算符` ，xpath 的运算符有很多，这里列举了一些比较常用的
 
-| 运算符 | 描述 | 例子 |
-| --- | --- | --- |
-| and | 并且、与 | //li[@class="li" and @name="item"]获取 class 为li 并且 name 为item 的li节点 |
-| or | 或者 | //li[@class="li" or @name="item"]获取 class 为li 或者 name 为item 的li节点 |
-| | | 计算两个节点的并集 | //li[@class="li"] | //div[@name="item"]获取 class 为li 的li 节点和 name 为item 的div节点 |
-| > | 大于 | //li[position()>3] 获取第三个li节点之后的所有li 节点 |
-| < | 小于 | //li[position()<3] 获取第三个li节点之前的所有li 节点 |
-| ...... |  |  |
+| 运算符    | 描述   | 例子                                                                 |
+|--------|------|--------------------------------------------------------------------|
+| and    | 并且、与 | //li[@class="li" and @name="item"]获取 class 为li 并且 name 为item 的li节点 |
+| or     | 或者   | //li[@class="li" or @name="item"]获取 class 为li 或者 name 为item 的li节点  |
+|        |      | 计算两个节点的并集                                                          | //li[@class="li"] | //div[@name="item"]获取 class 为li 的li 节点和 name 为item 的div节点 |
+| >      | 大于   | //li[position()>3] 获取第三个li节点之后的所有li 节点                             |
+| <      | 小于   | //li[position()<3] 获取第三个li节点之前的所有li 节点                             |
+| ...... |      |                                                                    |
 
 ### 按序选择
 
