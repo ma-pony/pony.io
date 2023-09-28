@@ -1,0 +1,37 @@
+---
+title: OpenAI chat role介绍
+date: '2023-09-20'
+tags: ['python', 'GPT'， 'OpenAI']
+draft: false
+summary: OpenAI chat role介绍，角色的作用是什么
+---
+
+
+# OpenAI chat role
+
+用OpenAI官方的例子来讲解一下角色的作用是什么，下面是一个OpenAI的官方示例
+
+```python
+import openai
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the world series in 2020?"},
+        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+        {"role": "user", "content": "Where was it played?"}
+    ]
+)
+```
+
+OpenAI 规定每一句对话都需要对应一个角色 `system` 、 `user` 、 `assistant`
+
+通常情况下，聊天记录是 `system` 消息在最前面，后边是 `user`  和 `assistant` 消息交替出现
+
+`system` 消息有助于设置GPT的行为，可以用来修改助手的个性，或对其在整个对话过程中的行为提供具体指导
+
+`system` 消息是可选的，如果没有写的话，GPT会自动帮你设置为 `你是一个乐于助人的助手` 之类的类似的通用信息
+
+`user` 消息提供请求内容， `assistant` 存储GPT的回复，当前也可以手动撰写，来满足特需的行为
+
+当用户指令引用之前的消息时，消息历史记录就变得非常重要，模型无法记忆过去的请求，所有的消息都必须在每次请求的 `messages` 列表中提供。
