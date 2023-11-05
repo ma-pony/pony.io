@@ -1,0 +1,93 @@
+---
+title: JS Hook
+date: '2023-11-05'
+tags: ['python', 'spdier']
+draft: false
+summary: 在web爬虫领域，`JS Hook`是一种常用的技术手段, ta允许开发者拦截或修改网页中JS代码的行为，以监控和改变JS函数的执行结果。
+---
+
+### JS Hook
+
+在web爬虫领域，`JS Hook`是一种常用的技术手段, ta允许开发者拦截或修改网页中JS代码的行为，以监控和改变JS函数的执行结果。
+TA常常被用来解决一些反爬虫的问题，比如`cookie`的获取，`debugger`的跳过等等。
+
+
+hook的概念有些类似于装饰器，只不过装饰器通常不改变原有的函数，而hook则是在原有的函数上进行修改，使其达到我们想要的效果。
+
+### 一、cookie的Hook
+
+通常在爬虫中，我们需要获取网页中的cookie，以便后续的请求，但是网页中的cookie通常是通过JS代码生成的，我们无法直接获取。
+这时候我们就需要hook掉JS代码，找到生成cookie的函数，然后在函数中获取cookie的值。
+
+```jsx
+Object.defineProperty(document, 'cookie', {
+        set:function(val){
+            debugger
+            return val
+        }
+    })
+```
+
+```jsx
+var cookie_cache = document.cookie;
+Object.defineProperty(document, 'cookie', {
+    get: function () {
+        return cookie_cache;
+    },
+    set: function (val) {
+        console.log('Setting cookie', val);
+        debugger;
+
+        if (val.indexOf('sign') != -1) {
+            debugger;
+        }
+        var cookie = val.split(";")[0];
+        var ncookie = cookie.split("=");
+        var flag = false;
+        var cache = cookie_cache.split("; ");
+        cache = cache.map(function (a) {
+            if (a.split("=")[0] === ncookie[0]) {
+                flag = true;
+                return cookie;
+            }
+            return a;
+        })
+        cookie_cache = cache.join("; ");
+        if (!flag) {
+            cookie_cache += cookie + "; ";
+        }
+        return cookie_cache;
+    }
+});
+```
+
+### 二、debugger的Hook
+在爬虫中，我们经常会遇到无限`debugger`的问题，这时候我们就可以hook掉JS代码，找到`debugger`的函数，然后在函数中跳过`debugger`。
+
+```jsx
+_appendChild = Node.prototype.appendChild
+Node.prototype.appendChild = function(){
+    if (arguments[0].innerHTML && arguments[0].innerHTML.indexOf('debugger') != -1){
+         arguments[0].innerHTML = ''
+    }
+    return _appendChild.apply(this, arguments)
+}
+```
+
+```jsx
+_Function = Function
+Function.prototype.constructor = function(){
+    if (arguments[0].indexOf('debugger') != -1){
+            return _Function('')
+        }
+    return _Function(arguments[0])
+}
+```
+
+```jsx
+_eval = eval;
+eval= function(){
+    if ([arguments[0]].indexOf('debugger'))
+    return eval(arguments[0])
+}
+```
