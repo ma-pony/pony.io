@@ -9,7 +9,7 @@ const projectsData = [
     title: 'Bidding Notice Parser',
     description: '根据招标公告链接提取出公告的关键信息，基于OpenAI+Langchain',
     imgSrc: '/static/images/bidding-notice-parser.png',
-    href: 'https://bidding-parser.ponyma.io',
+    href: 'https://github.com/ma-pony/bidding-notice-parser',
   },
 ]
 
