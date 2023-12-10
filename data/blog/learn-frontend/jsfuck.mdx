@@ -1,0 +1,160 @@
+---
+title: JSFuck - JS混淆入门
+date: '2023-12-10'
+tags: ['javascript', 'spider']
+draft: false
+summary: JSFuck以一种难以阅读和理解的方式来编写和运行JS代码，仅仅用\[ 、\]、(、)、!、+六个字符就实现了JS所有的功能
+---
+# JSFuck - JS混淆入门
+
+## JSFuck是什么
+
+JSFuck以一种难以阅读和理解的方式来编写和运行JS代码，仅仅用`[` 、`]`、`(`、`)`、`!`、`+`六个字符就实现了JS所有的功能，常常用于JS代码混淆。
+
+https://github.com/aemkei/jsfuck
+
+[JSFuck - Write any JavaScript with 6 Characters: []()!+](https://jsfuck.com/)
+
+## 如何实现的
+
+实际他是把正常的JS代码通过一个mapping转换成了特定的六个字符，更多细节可以参考官方github仓库https://github.com/aemkei/jsfuck/blob/main/jsfuck.js
+
+```jsx
+const SIMPLE = {
+    'false':      '![]',
+    'true':       '!![]',
+    'undefined':  '[][[]]',
+    'NaN':        '+[![]]',
+    'Infinity':   '+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]]+[+[]])' // +"1e1000"
+  };
+
+  const CONSTRUCTORS = {
+    'Array':    '[]',
+    'Number':   '(+[])',
+    'String':   '([]+[])',
+    'Boolean':  '(![])',
+    'Function': '[]["flat"]',
+    'RegExp':   'Function("return/"+false+"/")()',
+    'Object':	'[]["entries"]()'
+  };
+
+  const MAPPING = {
+    'a':   '(false+"")[1]',
+    'b':   '([]["entries"]()+"")[2]',
+    'c':   '([]["flat"]+"")[3]',
+    'd':   '(undefined+"")[2]',
+    'e':   '(true+"")[3]',
+    'f':   '(false+"")[0]',
+    'g':   '(false+[0]+String)[20]',
+    'h':   '(+(101))["to"+String["name"]](21)[1]',
+    'i':   '([false]+undefined)[10]',
+    'j':   '([]["entries"]()+"")[3]',
+    'k':   '(+(20))["to"+String["name"]](21)',
+    'l':   '(false+"")[2]',
+    'm':   '(Number+"")[11]',
+    'n':   '(undefined+"")[1]',
+    'o':   '(true+[]["flat"])[10]',
+    'p':   '(+(211))["to"+String["name"]](31)[1]',
+    'q':   '("")["fontcolor"]([0]+false+")[20]',
+    'r':   '(true+"")[1]',
+    's':   '(false+"")[3]',
+    't':   '(true+"")[0]',
+    'u':   '(undefined+"")[0]',
+    'v':   '(+(31))["to"+String["name"]](32)',
+    'w':   '(+(32))["to"+String["name"]](33)',
+    'x':   '(+(101))["to"+String["name"]](34)[1]',
+    'y':   '(NaN+[Infinity])[10]',
+    'z':   '(+(35))["to"+String["name"]](36)',
+
+    'A':   '(NaN+[]["entries"]())[11]',
+    'B':   '(+[]+Boolean)[10]',
+    'C':   'Function("return escape")()(("")["italics"]())[2]',
+    'D':   'Function("return escape")()([]["flat"])["slice"]("-1")',
+    'E':   '(RegExp+"")[12]',
+    'F':   '(+[]+Function)[10]',
+    'G':   '(false+Function("return Date")()())[30]',
+    'H':   null,
+    'I':   '(Infinity+"")[0]',
+    'J':   null,
+    'K':   null,
+    'L':   null,
+    'M':   '(true+Function("return Date")()())[30]',
+    'N':   '(NaN+"")[0]',
+    'O':   '(+[]+Object)[10]',
+    'P':   null,
+    'Q':   null,
+    'R':   '(+[]+RegExp)[10]',
+    'S':   '(+[]+String)[10]',
+    'T':   '(NaN+Function("return Date")()())[30]',
+    'U':   '(NaN+Object()["to"+String["name"]]["call"]())[11]',
+    'V':   null,
+    'W':   null,
+    'X':   null,
+    'Y':   null,
+    'Z':   null,
+
+    ' ':   '(NaN+[]["flat"])[11]',
+    '!':   null,
+    '"':   '("")["fontcolor"]()[12]',
+    '#':   null,
+    '$':   null,
+    '%':   'Function("return escape")()([]["flat"])[21]',
+    '&':   '("")["fontcolor"](")[13]',
+    '\'':  null,
+    '(':   '([]["flat"]+"")[13]',
+    ')':   '([0]+false+[]["flat"])[20]',
+    '*':   null,
+    '+':   '(+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]])+[])[2]',
+    ',':   '[[]]["concat"]([[]])+""',
+    '-':   '(+(.+[0000001])+"")[2]',
+    '.':   '(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]',
+    '/':   '(false+[0])["italics"]()[10]',
+    ':':   '(RegExp()+"")[3]',
+    ';':   '("")["fontcolor"](NaN+")[21]',
+    '<':   '("")["italics"]()[0]',
+    '=':   '("")["fontcolor"]()[11]',
+    '>':   '("")["italics"]()[2]',
+    '?':   '(RegExp()+"")[2]',
+    '@':   null,
+    '[':   '([]["entries"]()+"")[0]',
+    '\\':  '(RegExp("/")+"")[1]',
+    ']':   '([]["entries"]()+"")[22]',
+    '^':   null,
+    '_':   null,
+    '`':   null,
+    '{':   '(true+[]["flat"])[20]',
+    '|':   null,
+    '}':   '([]["flat"]+"")["slice"]("-1")',
+    '~':   null
+  };
+```
+
+下面是一个示例，`alert(1)` 8个字符经过JSFuck之后被转换成了2345个字符，代码量翻了N倍
+![](/static/images/jsfuck.jpg)
+
+
+## 使用方式
+
+你可以通过 `npm` 或者其他包管理工具进行安装
+
+```shell
+npm i jsfuck
+```
+
+### 在线工具
+
+官方同样提供了一个在线工具
+
+[JSFuck - Write any JavaScript with 6 Characters: []()!+](https://jsfuck.com/)
+
+## 注意事项
+
+JSFuck只能算个有趣的玩具，调试和维护困难、代码量大、安全级别低，还可能会与浏览器不兼容，一般不会用
+
+## 逆向
+
+网上有很多现成的解JSFuck工具
+
+https://enkhee-osiris.github.io/Decoder-JSFuck/
+
+通常来说jsfuck最后结尾的代码都是一个自调用函数，可以将最后一个括号及其里边的内容删掉，在浏览器console中执行试试，会有意想不到的收获。
