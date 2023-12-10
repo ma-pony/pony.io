@@ -39,13 +39,18 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="linkedin" href={linkedin} />
               <SocialIcon kind="twitter" href={twitter} />
             </div>
-            <div className="pt-6 flex items-center text-gray-500 dark:text-gray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+            <div className="flex items-center pt-6 text-gray-500 dark:text-gray-400">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="24"
+                height="24"
+              >
+                <path d="M12·2C8.13·2·5·5.13·5·9c0·5.25·7·13·7·13s7-7.75·7-13c0-3.87-3.13-7-7-7zm0·9.5c-1.38·0-2.5-1.12-2.5-2.5S10.62·6.5·12·6.5s2.5·1.12·2.5·2.5S13.38·11.5·12·11.5z" />
               </svg>
-                {location}
+              {location}
             </div>
-
           </div>
           <div className="prose max-w-none pt-8 pb-8 dark:prose-dark xl:col-span-2">{children}</div>
         </div>
