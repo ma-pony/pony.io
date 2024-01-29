@@ -1,0 +1,428 @@
+---
+title: 使用Albumentations进行图片数据增强
+date: '2024-01-29'
+tags: ['python',]
+draft: false
+summary: 当你需要对图片进行数据增强时，可以使用Albumentations库，它是一个快速且灵活的图像增强库，可以用于计算机视觉、医学影像、卫星图像和遥感图像等领域。
+---
+
+
+
+## 介绍
+
+
+### 什么是数据增强
+
+数据增强是指在训练模型时，对数据进行一些变换，从而扩充数据集的大小，增加模型的泛化能力，防止模型过拟合。
+图片数据增强就是从一个现有图像中创造新的训练样本的过程。为了创造新的训练样本，我们可以对现有图像进行一些变换，比如旋转、翻转、缩放、裁剪、平移、添加噪声等等。
+
+
+### Albumentations库
+当你需要对图片进行数据增强时，可以使用Albumentations库，它是一个快速且灵活的图像增强库，可以用于计算机视觉、医学影像、卫星图像和遥感图像等领域。
+
+Albumentations库支持多种数据增强方法，包括：
+
+- AdvancedBlur  高级模糊
+使用具有随机选择的参数的广义正态滤波器来模糊输入图像。 该变换还在卷积之前向生成的内核添加了乘性噪声。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/AdvancedBlur.jpeg)
+
+- Blur 模糊
+使用随机大小的内核模糊输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Blur.jpeg)
+
+- CLAHE 对比度受限的自适应直方图均衡化
+将对比度受限自适应直方图均衡应用于输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/CLAHE.jpeg)
+
+- CenterCrop 中心裁剪
+从输入图像的中心裁剪一块区域。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/CenterCrop.jpeg)
+
+- ChannelDropout 通道丢失
+随机丢弃输入图像的通道。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ChannelDropout.jpeg)
+
+- ChannelShuffle 通道随机重排
+随机重排输入图像的通道。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ChannelShuffle.jpeg)
+
+- CoarseDropout 粗糙丢失
+随机丢弃输入图像的正方形区域。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/CoarseDropout.jpeg)
+
+- ColorJitter 颜色抖动
+随机改变输入图像的亮度、对比度和饱和度。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ColorJitter.jpeg)
+
+- Crop 裁剪
+从输入图像的随机位置裁剪一块区域。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Crop.jpeg)
+
+- Defocus 散焦
+应用散焦变化，模拟焦距不正确的图像。https://arxiv.org/abs/1903.12261.
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Defocus.jpeg)
+
+- Downsacle 缩小减低图片质量
+通过缩小和放大来降低图像质量。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Downscale.jpeg)
+
+- ElasticTransform 弹性变形
+图像的弹性变形
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ElasticTransform.jpeg)
+
+- Equalize 浮雕
+对输入图像进行浮雕并将结果与原始图像叠加。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Equalize.jpeg)
+
+- FancyPCA FancyPCA
+对输入图像应用FancyPCA变换。from Krizhevsky's paper "ImageNet Classification with Deep Convolutional Neural Networks"
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/FancyPCA.jpeg)
+
+- Flip 翻转
+随机翻转输入图像的水平、垂直或两个方向。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Flip.jpeg)
+
+- GaussianBlur 高斯模糊
+使用具有随机内核大小的高斯滤波器模糊输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/GaussianBlur.jpeg)
+
+- GaussianNoise 高斯噪声
+向输入图像添加高斯噪声。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/GaussianNoise.jpeg)
+
+- GlassBlur 玻璃模糊
+模拟玻璃的模糊效果。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/GlassBlur.jpeg)
+
+- GridDistortion 网格扭曲
+对输入图像应用网格扭曲变换。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/GridDistortion.jpeg)
+
+- HorizontalFlip 水平翻转
+随机水平翻转输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/HorizontalFlip.jpeg)
+
+- HueSaturationValue 色调饱和度值
+随机改变输入图像的色调、饱和度和值。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/HueSaturationValue.jpeg)
+
+- ImageCompression 图像压缩
+随机压缩输入图像的质量。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ImageCompression.jpeg)
+
+- InvertImg 反转
+反转输入图像的通道。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/InvertImg.jpeg)
+
+- ISONoise ISO噪声
+向输入图像添加ISO噪声。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ISONoise.jpeg)
+
+- JpegCompression JPEG压缩
+随机压缩输入图像的质量。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/JpegCompression.jpeg)
+
+- LongestMaxSize 最长最大尺寸
+将输入图像的最长边调整为给定的值，保持纵横比。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/LongestMaxSize.jpeg)
+
+- MedianBlur 中值模糊
+使用具有随机内核大小的中值滤波器模糊输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/MedianBlur.jpeg)
+
+- MotionBlur 运动模糊
+使用具有随机内核大小和方向的运动模糊模糊输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/MotionBlur.jpeg)
+
+- MultiplicativeNoise 乘性噪声
+向输入图像添加乘性噪声。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/MultiplicativeNoise.jpeg)
+
+- OpticalDistortion 光学扭曲
+对输入图像应用光学扭曲变换。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/OpticalDistortion.jpeg)
+
+- PadIfNeeded 必要时填充
+如果图像的任何边小于给定的高度或宽度，则在图像的任何边缺少的长度上填充图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/PadIfNeeded.jpeg)
+
+- Perspective 透视
+对输入图像应用透视变换。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Perspective.jpeg)
+
+- PiecewiseAffine 分段仿射
+对输入图像应用分段仿射变换。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/PiecewiseAffine.jpeg)
+
+- PixelDropout 像素丢失
+随机丢弃输入图像的像素。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/PixelDropout.jpeg)
+
+- Posterize 色调分离
+将输入图像的色调分离为给定的位数。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Posterize.jpeg)
+
+- RandomBrightness 随机亮度
+随机改变输入图像的亮度。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomBrightness.jpeg)
+
+- RandomBrightnessContrast 随机亮度对比度
+随机改变输入图像的亮度和对比度。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomBrightnessContrast.jpeg)
+
+- RandomContrast 随机对比度
+随机改变输入图像的对比度。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomContrast.jpeg)
+
+- RandomCrop 随机裁剪
+从输入图像的随机位置裁剪一块区域。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomCrop.jpeg)
+
+- RandomCropFromBorders 从边界随机裁剪
+从输入图像的随机位置裁剪一块区域，但不会从图像的边界裁剪。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomCropFromBorders.jpeg)
+
+- RandomFog 随机雾
+随机向输入图像添加雾。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomFog.jpeg)
+
+- RandomGamma 随机伽马
+随机改变输入图像的伽马。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomGamma.jpeg)
+
+- RandomGridShuffle 随机网格洗牌
+随机将输入图像的像素重新排列为网格。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomGridShuffle.jpeg)
+
+- RandomRain 随机雨
+随机向输入图像添加雨。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomRain.jpeg)
+
+- RandomResizedCrop 随机调整大小裁剪
+随机裁剪输入图像的一部分，然后将其调整为给定的大小。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomResizedCrop.jpeg)
+
+- RandomRotate90 随机旋转90度
+随机旋转输入图像90度。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomRotate90.jpeg)
+
+- RandomScale 随机缩放
+随机缩放输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomScale.jpeg)
+
+- RandomSizeCrop 随机尺寸裁剪
+从输入图像的随机位置裁剪一块区域，然后将其调整为给定的大小。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomSizeCrop.jpeg)
+
+- RandomSnow 随机雪
+随机向输入图像添加雪。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomSnow.jpeg)
+
+- RandomToneCurve 随机色调曲线
+随机应用色调曲线变换。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RandomToneCurve.jpeg)
+
+- Resize 调整大小
+调整输入图像的大小。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Resize.jpeg)
+
+- RGBShift RGB偏移
+随机改变输入图像的R、G、B通道。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RGBShift.jpeg)
+
+- RingingOvershoot 振铃过冲
+通过将图像与 2D sinc 滤波器进行卷积来创建振铃或过冲伪影。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/RingingOvershoot.jpeg)
+
+- Rotate 旋转
+将输入旋转从均匀分布中随机选择的角度。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Rotate.jpeg)
+
+- SafeRotate 安全旋转
+从均匀分布中随机选择一个角度，将输入图像在输入框内旋转。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/SafeRotate.jpeg)
+
+- Sharpen 锐化
+锐化输入图像并将结果与原始图像叠加。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Sharpen.jpeg)
+
+- ShiftScaleRotate 平移缩放旋转
+随机平移、缩放和旋转输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ShiftScaleRotate.jpeg)
+
+- SmallestMaxSize 最小最大尺寸
+将输入图像的最小边调整为给定的值，保持纵横比。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/SmallestMaxSize.jpeg)
+
+- Solarize 曝光
+反转高于阈值的所有像素值。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Solarize.jpeg)
+
+- Spatter 溅射
+模拟溅射效果。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Spatter.jpeg)
+
+- Superpixels 超像素
+将图像部分/完全转换为其超像素表示。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Superpixels.jpeg)
+
+- ToGray 转灰度
+将输入图像转换为灰度。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ToGray.jpeg)
+
+- ToSepia 转棕褐色
+将输入图像转换为棕褐色。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ToSepia.jpeg)
+
+- Transpose 转置
+转置输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/Transpose.jpeg)
+
+- UnsharpMask 锐化蒙版
+使用USM锐化处理锐化输入图像，并将结果与原始图像叠加。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/UnsharpMask.jpeg)
+
+- VerticalFlip 垂直翻转
+随机垂直翻转输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/VerticalFlip.jpeg)
+
+- ZoomBlur 缩放模糊
+使用具有随机内核大小和中心的缩放模糊模糊输入图像。
+![原图](static/images/Albumentations/Original.jpeg)
+![增强后](static/images/Albumentations/ZoomBlur.jpeg)
+
+
+
+## 安装
+
+```bash
+pip install albumentations
+```
+
+## 使用
+
+### 基础用法
+```python
+import albumentations as A
+import cv2
+
+image = cv2.imread("image.jpg")
+transform = A.Compose([
+		A.RandomBrightnessContrast(p=0.2),
+])
+transformed = transform(image=image)
+transformed_image = transformed["image"]
+```
+
+### OneOf
+从一组增强方法中随机选择一个方法
+
+```python
+import albumentations as A
+import cv2
+
+image = cv2.imread("image.jpg")
+transform = A.Compose([
+		A.RandomBrightnessContrast(p=0.2),
+		A.OneOf([
+			A.Blur(blur_limit=3, p=0.5),
+			A.ColorJitter(p=0.5),
+		], p=1),
+])
+transformed = transform(image=image)
+transformed_image = transformed["image"]
+```
+
+### SomeOf
+从一组增强方法中随机选择n个方法
+
+```python
+import albumentations as A
+import cv2
+
+image = cv2.imread("image.jpg")
+transform = A.Compose([
+		A.RandomBrightnessContrast(p=0.2),
+		A.SomeOf([
+			A.Blur(blur_limit=3, p=0.5),
+			A.ColorJitter(p=0.5),
+			A.RandomContrast(p=0.5),
+			A.RandomGamma(p=0.5),
+		], n=2, p=1),
+])
+transformed = transform(image=image)
+transformed_image = transformed["image"]
+```
+
+## 参考
+
+- [Albumentations](https://albumentations.ai/)
+- [Albumentations Github](https://github.com/albumentations-team/albumentations)
+- [Albumentations Documentation](https://albumentations.ai/docs/)
+- [Albumentations Demo](https://demo.albumentations.ai/)
