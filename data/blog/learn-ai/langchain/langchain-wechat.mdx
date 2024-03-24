@@ -1,0 +1,144 @@
+---
+title: langchain搭建微信机器人
+date: '2024-03-20'
+tags: ['python', 'GPT', 'langchain']
+draft: false
+summary: langchain入门教程 第三篇 聊天机器人
+---
+### 环境准备
+
+1. **准备OpenAI账号**
+
+项目默认使用OpenAI接口，需前往[OpenAI注册页面](https://beta.openai.com/signup)创建账号，创建完账号则前往[API管理页面](https://beta.openai.com/account/api-keys)创建一个 API Key 并保存下来，接口**需要海外网络访问**及绑定信用卡支付。
+
+2. **将API Key添加到环境变量中**
+
+ ```shell
+ export OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxx"
+```
+
+3. **安装Python**
+代码通过Python3.10进行开发测试，需要安装[python 3.10](https://www.python.org/ftp/python/3.10.10/python-3.10.10-macos11.pkg)，下载后点击安装傻瓜式下一步。
+
+### 项目搭建
+
+1. 创建项目`demo-bot`
+
+```shell
+mkdir demo-bot
+cd demo-bot
+```
+
+1. 安装依赖包
+
+```shell
+pip install langchain langchain_openai loguru qrcode
+
+```
+
+[itchat.zip](https://prod-files-secure.s3.us-west-2.amazonaws.com/912cef93-e34e-4dc6-aac6-a75a9af4c21d/777c8898-f073-4f4f-8fab-2e300af6b6ad/itchat.zip)
+
+下载解压到当前目录
+
+该文件是基于[ItChat]https://github.com/littlecodersh/ItChat项目二次封装的微信机器人框架
+
+1. 创建main文件，开始写代码
+
+此时的目录结构应类似于
+
+```jsx
+.
+├── itchat
+├── itchat.zip
+└── main.py
+```
+
+## 写代码
+
+将下列代码复制到`main.py`文件中即可
+
+```python
+import itchat
+
+from itchat.content import INCOME_MSG
+
+from loguru import logger
+from qrcode.main import QRCode
+
+from langchain_openai import ChatOpenAI
+
+from langchain_core.messages import HumanMessage
+
+chat = ChatOpenAI(model="gpt-3.5-turbo-1106", temperature=0.2)
+
+
+@itchat.msg_register(INCOME_MSG)
+def handle_single(msg):
+    """
+    监听私聊消息
+    :param msg:
+    :return:
+    """
+    logger.info(f"Human Message:{msg.Type} {msg.content}")
+    if msg.Type == "Text":
+        res = chat.invoke([HumanMessage(content=msg.content)])
+        logger.info(f"AI message: {msg.content}")
+        itchat.send(res.content, toUserName=msg["FromUserName"])
+
+
+def qrcode_callback(uuid, status, qr_code):
+    """
+    二维码回调
+    :param uuid:
+    :param status:
+    :param qr_code:
+    :return:
+    """
+    url = f"https://login.weixin.qq.com/l/{uuid}"
+
+    if status == "0":
+        logger.info("QR code scanned")
+        qr = QRCode(border=1)
+        qr.add_data(url)
+        qr.make(fit=True)
+        qr.print_ascii(invert=True)
+    elif status == "200":
+        logger.info("QR code confirmed")
+    elif status == "201":
+        logger.info("QR code scanned, waiting for confirmation")
+    else:
+        logger.info(f"QR code status: {status}")
+
+
+def hello_bot():
+    """
+    机器人启动
+    :return:
+    """
+    itchat.auto_login(
+        enableCmdQR=2,
+        qrCallback=qrcode_callback,
+    )
+    itchat.run()
+
+
+if __name__ == '__main__':
+    hello_bot()
+
+```
+
+## 运行代码
+
+```jsx
+python main.py
+```
+
+代码运行成功之后会在日志中打印一个登录二维码，扫描登录，然后就可以跟他愉快的聊天啦！
+
+一个最简单的微信AI机器人到此就搭建结束啦！
+
+## 写在最后
+
+想尝试和了解更多功能？！
+
+欢迎围观我的个人项目 [`https://github.com/ma-pony/langchain-wechat`](https://github.com/ma-pony/langchain-wechat)
