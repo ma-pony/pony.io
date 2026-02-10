@@ -3,7 +3,7 @@ import { FeishuAdapter } from './adapters/feishu'
 import { TwitterAdapter } from './adapters/twitter'
 import { WechatAdapter } from './adapters/wechat'
 import { convertRadarReport } from './converter'
-import type { PlatformAdapter, PublishConfig, PublishResult } from './types'
+import type { PlatformAdapter, PublishResult } from './types'
 
 // 平台适配器注册表
 const adapterRegistry: Record<string, () => PlatformAdapter> = {
@@ -33,7 +33,9 @@ function parseArgs(args: string[]): { source: string; platforms: string[]; dryRu
   }
 
   if (!source) {
-    console.error('Usage: npx tsx scripts/publish/publish.ts --source <path> [--platforms blog,feishu] [--dry-run]')
+    console.error(
+      'Usage: npx tsx scripts/publish/publish.ts --source <path> [--platforms blog,feishu] [--dry-run]'
+    )
     process.exit(1)
   }
 

@@ -64,7 +64,6 @@ function escapeMdxContent(content: string): string {
  * 转义一行中的花括号，跳过行内代码
  */
 function escapeLinebraces(line: string): string {
-  const segments: string[] = []
   let inInlineCode = false
   let current = ''
 

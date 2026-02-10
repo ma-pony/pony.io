@@ -9,7 +9,7 @@ export interface Article {
   authors?: string[]
   images?: string[]
   canonicalUrl?: string
-  metadata?: Record<string, any> // 扩展字段
+  metadata?: Record<string, unknown> // 扩展字段
 }
 
 // 平台适配器接口
@@ -24,7 +24,7 @@ export interface PublishResult {
   success: boolean
   url?: string
   error?: string
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 }
 
 // 发布配置

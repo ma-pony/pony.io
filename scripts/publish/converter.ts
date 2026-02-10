@@ -116,7 +116,7 @@ function trimFooter(content: string): string {
   // 从末尾往前找，去掉空行和 *...* 格式的元信息
   for (let i = lines.length - 1; i >= 0; i--) {
     const trimmed = lines[i].trim()
-    if (trimmed === '' || trimmed.startsWith('*') && trimmed.endsWith('*')) {
+    if (trimmed === '' || (trimmed.startsWith('*') && trimmed.endsWith('*'))) {
       endIndex = i
     } else {
       break
@@ -140,7 +140,9 @@ export function convertRadarReport(markdownPath: string): Article {
 
   // 提取日期
   const date =
-    extractDateFromFilename(resolvedPath) || extractDateFromContent(rawContent) || new Date().toISOString().slice(0, 10)
+    extractDateFromFilename(resolvedPath) ||
+    extractDateFromContent(rawContent) ||
+    new Date().toISOString().slice(0, 10)
 
   // 提取标题
   const rawTitle = extractTitle(rawContent)

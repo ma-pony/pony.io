@@ -7,7 +7,8 @@ export class TwitterAdapter implements PlatformAdapter {
    * 提取摘要，限制 280 字符，加链接
    */
   formatContent(article: Article): string {
-    const blogUrl = article.canonicalUrl || `https://pony.io/blog/${article.category}/${article.date}`
+    const blogUrl =
+      article.canonicalUrl || `https://pony.io/blog/${article.category}/${article.date}`
     const maxLen = 280 - blogUrl.length - 2 // 留出链接和换行的空间
 
     let text = article.summary
