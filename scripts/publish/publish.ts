@@ -1,3 +1,5 @@
+import { execSync } from 'child_process'
+import * as path from 'path'
 import { BlogAdapter } from './adapters/blog'
 import { FeishuAdapter } from './adapters/feishu'
 import { TwitterAdapter } from './adapters/twitter'
@@ -108,6 +110,32 @@ async function main() {
   }
 
   const allSuccess = results.every((r) => r.success)
+
+  // 4. 自动 git commit + push（仅在非 dry-run 且有成功发布时）
+  if (!dryRun && results.some((r) => r.success)) {
+    console.log('')
+    console.log('🚀 Auto git commit & push...')
+    try {
+      const projectRoot = path.resolve(__dirname, '..', '..')
+      const dateStr = new Date().toISOString().slice(0, 10)
+      execSync('git add -A', { cwd: projectRoot, stdio: 'pipe' })
+      // 检查是否有变更需要提交
+      try {
+        execSync('git diff --cached --quiet', { cwd: projectRoot, stdio: 'pipe' })
+        console.log('   ℹ️  No changes to commit')
+      } catch {
+        // diff --cached --quiet 返回非零 = 有变更
+        execSync(`git commit -m "publish: ${dateStr} ${platforms.join(', ')}"`, { cwd: projectRoot, stdio: 'pipe' })
+        execSync('git push', { cwd: projectRoot, stdio: 'pipe' })
+        console.log('   ✅ Git push complete — Vercel deployment triggered')
+      }
+    } catch (err) {
+      const message = err instanceof Error ? (err as any).stderr?.toString() || err.message : String(err)
+      console.error(`   ⚠️  Git push failed: ${message}`)
+      console.error('   Please manually run: git add -A && git commit && git push')
+    }
+  }
+
   process.exit(allSuccess ? 0 : 1)
 }
 
