@@ -125,12 +125,21 @@ async function main() {
         console.log('   ℹ️  No changes to commit')
       } catch {
         // diff --cached --quiet 返回非零 = 有变更
-        execSync(`git commit -m "publish: ${dateStr} ${platforms.join(', ')}"`, { cwd: projectRoot, stdio: 'pipe' })
-        execSync('git push', { cwd: projectRoot, stdio: 'pipe' })
+        execSync(`git commit -m "publish: ${dateStr} ${platforms.join(', ')}"`, {
+          cwd: projectRoot,
+          stdio: 'pipe',
+        })
+        execSync('git push', {
+          cwd: projectRoot,
+          stdio: 'pipe',
+        })
         console.log('   ✅ Git push complete — Vercel deployment triggered')
       }
     } catch (err) {
-      const message = err instanceof Error ? (err as any).stderr?.toString() || err.message : String(err)
+      const message =
+        err instanceof Error
+          ? (err as unknown as { stderr?: Buffer }).stderr?.toString() || err.message
+          : String(err)
       console.error(`   ⚠️  Git push failed: ${message}`)
       console.error('   Please manually run: git add -A && git commit && git push')
     }
