@@ -1,4 +1,10 @@
-
+---
+title: 'MySQL Binlog 基础'
+date: '2023-04-29'
+tags: ['mysql']
+draft: false
+summary: '简要说明 MySQL Binlog 在主从同步中的作用和三种日志格式。'
+---
 主从同步也是依赖binlog文件进行同步的，
 主服务器把数据变更记录存在binlog文件中，再把binlog文件传送到从服务器，
 从服务器解析binlog文件，把变更的数据更新到数据库中。

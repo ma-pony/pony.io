@@ -1,3 +1,10 @@
+---
+title: 'HTTP/2 基础'
+date: '2023-04-29'
+tags: ['network']
+draft: false
+summary: '概述 HTTP/2 相比 HTTP/1.1 的改进，以及它和 WebSocket 的区别。'
+---
 http2不能替代所有的HTTP，get post动词，状态码，header将于HTTP一致，HTTP2旨在提高在线传输数据的效率
 
 ## 与HTTP1相比，主要的区别和改进

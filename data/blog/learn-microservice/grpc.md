@@ -1,3 +1,10 @@
+---
+title: 'gRPC 基础介绍'
+date: '2023-04-29'
+tags: ['microservice']
+draft: false
+summary: '介绍 gRPC、protobuf，以及 Python 下的服务端与客户端示例。'
+---
 google开源的高性能的通用框架
 基于HTTP2.0，既对TCP连接进行了优化，又没有损失性能
 

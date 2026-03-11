@@ -1,19 +1,10 @@
 ---
-title: http3 & QUIC
-// title 必须是英文
-subtitle: http3和QUIC分别是什么
-slug: http3
-tags: http 
-
-/* You can find the list of tags here https://github.com/Hashnode/support/blob/main/misc/tags.json
-You need to upload your image to https://hashnode.com/uploader 
-and use the uploaded image URL as COVER_IMAGE_URL */ 
-
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1655798015872/68nn5BbTe.jpg?auto=compress
-domain: pony.hashnode.dev
+title: 'HTTP/3 与 QUIC'
+date: '2023-04-29'
+tags: ['network']
+draft: false
+summary: '介绍 HTTP/3 与 QUIC 的关系，以及它们如何缓解队头阻塞问题。'
 ---
-
-
 HTTP/3是第三个版本的HTTP协议，将弃用TPC协议，改用基于UDP协议的QUIC协议
 
 主要是为了解决HTTP/2存在的队头阻塞问题，由于HTTP/2在单个TCP连接上使用了多路复用，受到TCP拥塞控制的影响，

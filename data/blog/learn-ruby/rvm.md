@@ -1,4 +1,10 @@
-
+---
+title: 'rvm install 2.7.6 error'
+date: '2023-04-29'
+tags: ['ruby']
+draft: false
+summary: 'install 2.7.6 时报错'
+---
 #### rvm install 2.7.6 error
 install 2.7.6 时报错
 `

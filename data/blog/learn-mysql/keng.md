@@ -1,3 +1,10 @@
+---
+title: 'in 条件查询'
+date: '2023-04-29'
+tags: ['mysql']
+draft: false
+summary: 'SELECT * FROM users WHERE name NOT IN ("A", "B", "C")'
+---
 ## in 条件查询
 ```shell
 SELECT * FROM users WHERE name NOT IN ("A", "B", "C")

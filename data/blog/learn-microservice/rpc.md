@@ -1,3 +1,10 @@
+---
+title: 'rpc'
+date: '2023-04-29'
+tags: ['microservice']
+draft: false
+summary: '远程过程调用(remote procedure call)'
+---
 # rpc
 远程过程调用(remote procedure call)
 rpc强调的是和本地调用效果一致

@@ -1,5 +1,10 @@
-
-
+---
+title: 'TCP 基础'
+date: '2023-04-29'
+tags: ['network']
+draft: false
+summary: '记录七层协议、停等协议和 TCP 拥塞控制等基础知识。'
+---
 # 七层协议
 ![七层协议图](tcp-ip.jpeg)
 

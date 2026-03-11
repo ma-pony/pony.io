@@ -1,20 +1,10 @@
 ---
-title: # TODO
-// title 必须是英文
-subtitle: # TODO
-slug: sql
-tags: python3, python 
-
-/* You can find the list of tags here https://github.com/Hashnode/support/blob/main/misc/tags.json
-You need to upload your image to https://hashnode.com/uploader 
-and use the uploaded image URL as COVER_IMAGE_URL */ 
-
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1655797951107/2U0H0d7Bo.jpg?auto=compress
-domain: pony.hashnode.dev
-ignorePost: true
+title: '常见 SQL 语法'
+date: '2023-04-29'
+tags: ['mysql']
+draft: false
+summary: '记录常见 SQL 语法示例，包括 `ROW_NUMBER()` 等窗口函数。'
 ---
-
-
 # 常见的SQL
 
 ## ROW_NUMBER()

@@ -1,3 +1,10 @@
+---
+title: '事务隔离级别'
+date: '2023-04-29'
+tags: ['mysql']
+draft: false
+summary: '整理事务隔离级别、原子性以及 undo/redo 日志等基础概念。'
+---
  
 ## 事务隔离级别
 

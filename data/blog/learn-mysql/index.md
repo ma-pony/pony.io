@@ -1,19 +1,10 @@
 ---
-title: Mysql Index
-// title 必须是英文
-subtitle: mysql 索引
-slug: mysql-index
-tags: mysql
-
-/* You can find the list of tags here https://github.com/Hashnode/support/blob/main/misc/tags.json
-You need to upload your image to https://hashnode.com/uploader 
-and use the uploaded image URL as COVER_IMAGE_URL */ 
-
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1654873645238/7TFlE4Q8N.jpeg?auto=compress
-domain: pony.hashnode.dev
+title: 'MySQL 索引'
+date: '2023-04-29'
+tags: ['mysql']
+draft: false
+summary: '从术语、分类和 B+ 树等角度梳理 MySQL 索引基础。'
 ---
-
-
 # 索引
 索引是一种使用查找键，能够使用户高效查找数据对数据结构
 提升数据查询效率，减少数据扫描的量，随机IO转顺序IO

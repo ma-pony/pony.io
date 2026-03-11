@@ -1,19 +1,10 @@
 ---
-title: # TODO
-// title 必须是英文
-subtitle: # TODO
-slug: vim
-tags: python3, python 
-
-/* You can find the list of tags here https://github.com/Hashnode/support/blob/main/misc/tags.json
-You need to upload your image to https://hashnode.com/uploader 
-and use the uploaded image URL as COVER_IMAGE_URL */ 
-
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1654873600499/l9i6Uuso-.jpeg?auto=compress
-domain: pony.hashnode.dev
-ignorePost: true
+title: 'Vim 常用操作'
+date: '2023-04-29'
+tags: ['linux']
+draft: false
+summary: '整理 Vim 中的跳转与单词移动等常用操作。'
 ---
-
 ## 移到到某一行
 ```shell
 nG

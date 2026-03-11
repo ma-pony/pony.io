@@ -1,3 +1,10 @@
+---
+title: 'HTTP 1.1 连接复用'
+date: '2023-04-29'
+tags: ['network']
+draft: false
+summary: '总结 HTTP/1.1 在不同请求场景下的连接复用规则。'
+---
 # 1.1
 ## 是否可以重用TCP连接
 1. 请求不同域名，不重用
