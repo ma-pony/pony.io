@@ -89,7 +89,7 @@ export default makeSource({
       remarkExtractFrontmatter,
       remarkGfm,
       remarkCodeTitles,
-      remarkMath,
+      [remarkMath, { singleDollarTextMath: false }],
       remarkImgToJsx,
     ],
     rehypePlugins: [

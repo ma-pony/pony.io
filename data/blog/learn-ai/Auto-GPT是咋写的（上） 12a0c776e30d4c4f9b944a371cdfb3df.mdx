@@ -66,22 +66,7 @@ Commands:
 2. Browse Website: "browse_website", args: "url": "<url>", "question": "<what_you_want_to_find_on_website>"
 3. Start GPT Agent: "start_agent", args: "name": "<name>", "task": "<short_task_desc>", "prompt": "<prompt>"
 4. Message GPT Agent: "message_agent", args: "key": "<key>", "message": "<message>"
-5. List GPT Agents: "list_agents", args: 
-6. Delete GPT Agent: "delete_agent", args: "key": "<key>"
-7. Clone Repository: "clone_repository", args: "repository_url": "<url>", "clone_path": "<directory>"
-8. Write to file: "write_to_file", args: "file": "<file>", "text": "<text>"
-9. Read file: "read_file", args: "file": "<file>"
-10. Append to file: "append_to_file", args: "file": "<file>", "text": "<text>"
-11. Delete file: "delete_file", args: "file": "<file>"
-12. Search Files: "search_files", args: "directory": "<directory>"
-13. Evaluate Code: "evaluate_code", args: "code": "<full_code_string>"
-14. Get Improved Code: "improve_code", args: "suggestions": "<list_of_suggestions>", "code": "<full_code_string>"
-15. Write Tests: "write_tests", args: "code": "<full_code_string>", "focus": "<list_of_focus_areas>"
-16. Execute Python File: "execute_python_file", args: "file": "<file>"
-17. Generate Image: "generate_image", args: "prompt": "<prompt>"
-18. Send Tweet: "send_tweet", args: "text": "<text>"
-19. Convert Audio to text: "read_audio_from_file", args: "file": "<file>"
-20. Do Nothing: "do_nothing", args: 
+...（中间还包含文件读写、搜索、执行代码、生成图片等命令）
 21. Task Complete (Shutdown): "task_complete", args: "reason": "<reason>"
 
 Resources:
@@ -138,22 +123,7 @@ Ensure the response can be parsed by Python json.loads
 2. 浏览网站： "browse_website", args: "url"： "<url>", "问题"： "<what_you_want_to_find_on_website>"
 3. 启动GPT代理： "start_agent", args: "name"： "<名称>", "任务"： "<short_task_desc>", "提示"： "<prompt>"
 4. 消息GPT代理： "message_agent", args: "key"： "<key>", "message"： "<message>"
-5. 列出GPT代理： "list_agents", args： 
-6. 删除GPT代理： "delete_agent", args: "key"： "<key>"
-7. Clone Repository： "clone_repository", args: "repository_url"： "<url>", "clone_path"： "<directory>"
-8. 写入文件： "write_to_file", args: "file"： "<文件>", "文本"： "<文本>"
-9. 读取文件： "read_file", args: "file"： "<文件>"
-10. 追加到文件： "append_to_file", args: "file"： "<文件>", "文本"： "<文本>"
-11. 删除文件： "delete_file", args: "file"： "<文件>"
-12. 搜索文件： "search_files", args: "directory"： "<目录>"
-13. 评估代码： "evaluate_code", args: "code"： "<full_code_string>"
-14. 获得改进的代码： "improve_code", args: "建议"： "<list_of_suggestions>", "code"： "<full_code_string>"
-15. 写测试： "write_tests", args: "code"： "<full_code_string>", "focus"： "<list_of_focus_areas>"
-16. 执行Python文件："execute_python_file", args: "file"： "<文件>"
-17. 生成图像： "generate_image", args: "prompt"： "<prompt>"
-18. 发送Twitter： "send_tweet", args: "text"： "<文本>"
-19. 将音频转换为文本： "read_audio_from_file", args: "file"： "<文件>"
-20. 不做任何事情："do_nothing", args： 
+...（中间还包含文件读写、搜索、执行代码、生成图片等命令）
 21. 任务完成（关闭）： "task_complete", args: "reason"： "<reason>"
 
 资源：
@@ -270,7 +240,7 @@ Assistant Reply: {
         }
     }
 } 
-Result: Command google returned: b'[\n    {\n        "title": "Auto-GPT - The next evolution of data driven Chat AI",\n        "href": "https://auto-gpt.ai/",\n        "body": "Auto-GPT is a cutting-edge web service that combines the power of GPT4 with multiple data sources to provide unprecedented language generation capabilities. With Auto-GPT, you can effortlessly generate high-quality text that is both accurate and relevant to your needs."\n    },\n    {\n        "title": "Auto-GPT: An Autonomous GPT-4 Experiment - GitHub",\n        "href": "https://github.com/Significant-Gravitas/Auto-GPT",\n        "body": "Auto-GPT is an experimental open-source application showcasing the capabilities of the GPT-4 language model. This program, driven by GPT-4, chains together LLM \\"thoughts\\", to autonomously achieve whatever goal you set. As one of the first examples of GPT-4 running fully autonomously, Auto-GPT pushes the boundaries of what is possible with AI. ..."\n    },\n    {\n        "title": "Auto-GPT - Wikipedia",\n        "href": "https://en.wikipedia.org/wiki/Auto-GPT",\n        "body": "Auto-GPT is an \\"AI agent\\" that given a goal in natural language, will attempt to achieve it by breaking it into sub-tasks and using the internet and other tools in an automatic loop. It uses OpenAI \'s GPT-4 or GPT-3.5 APIs , [2] and is among the first examples of an application using GPT-4 to perform autonomous tasks."\n    },\n    {\n        "title": "Auto-GPT: An Autonomous GPT-4 Experiment - GitHub",\n        "href": "https://github.com/antony0596/Auto-GPT",\n        "body": "Auto-GPT is an experimental open-source application showcasing the capabilities of the GPT-4 language model. This program, driven by GPT-4, autonomously develops and manages businesses to increase net worth. As one of the first examples of GPT-4 running fully autonomously, Auto-GPT pushes the boundaries of what is possible with AI. ..."\n    },\n    {\n        "title": "How to Download and Install Auto-GPT Step-by-Step - MUO",\n        "href": "https://www.makeuseof.com/how-to-download-install-auto-gpt-step-by-step/",\n        "body": "The Future of Auto-GPT . There are two reasons why Auto-GPT isn\'t as powerful as it should be. The first is that it\'s still in development\xe2\x80\x94more features and tweaking must be added to make Auto-GPT function as intended. The second is that GPT-3.5 wasn\'t meant to power Auto-GPT."\n    },\n    {\n        "title": "How To Create Your Own Auto-GPT AI Agent | Tom\'s Hardware",\n        "href": "https://www.tomshardware.com/how-to/auto-gpt-ai-agent",\n        "body": "Creating an Auto-GPT AI Agent. 1. Download and install git. When prompted to select a text editor, select the most appropriate editor. I chose to use Notepad++. All other choices can be kept at ..."\n    },\n    {\n        "title": "Auto-GPT is a new AI that does the work for you - Tom\'s Guide",\n        "href": "https://www.tomsguide.com/news/auto-gpt",\n        "body": "Auto-GPT is a variant of ChatGPT developed by Significant Gravitas and it uses the ChatGPT API to work. Specifically, Auto-GPT utilizes the GPT-4 API, though it seems like it should work with the ..."\n    },\n    {\n        "title": "How to Install and Use Auto-GPT: An Autonomous AI Tool",\n        "href": "https://beebom.com/how-install-and-use-auto-gpt-ai-tool/",\n        "body": "Auto-GPT Alternative: Automate Tasks With AgentGPT (Easy Solution) If you don\'t want to set up Auto-GPT locally and want an easy-to-use solution to automate and deploy tasks, you can use AgentGPT. It\'s built on Auto-GPT, but you can access it directly in a browser. No need to fiddle with the Terminal and commands. Here is how it works. 1."\n    }\n]' 
+Result: Command google returned: b'[\n  {"title": "Auto-GPT - The next evolution of data driven Chat AI", "href": "https://auto-gpt.ai/"},\n  {"title": "Auto-GPT: An Autonomous GPT-4 Experiment - GitHub", "href": "https://github.com/Significant-Gravitas/Auto-GPT"},\n  {"title": "Auto-GPT - Wikipedia", "href": "https://en.wikipedia.org/wiki/Auto-GPT"}\n]' 
 Human Feedback: GENERATE NEXT COMMAND JSON
 ```
 
