@@ -1,0 +1,224 @@
+---
+title: '科技/AI 日报 — 2026-05-24'
+date: '2026-05-24'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的信号是 Agent 正在从聊天工具走向可调度、可治理、可计费的工作流入口，机会集中在 MCP 控制面、AI Coding 编排和垂直自动化。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-05-24
+
+## 1. 今日最值得关注
+
+### 1. Cursor Automations 把 Coding Agent 推向“企业定时任务 + 多仓库工作流”
+
+- 官方信号：[Cursor changelog: Improvements to Cursor Automations](https://cursor.com/changelog/05-20-26)
+- 社区信号：[HN: Superset — IDE for the agents era](https://news.ycombinator.com/item?id=48236770)
+- 项目参考：[`superset-sh/superset`](https://github.com/superset-sh/superset)
+
+Cursor 新增 Agents Window 里的 Automations、多仓库自动化、无仓库自动化，并给出 Slack digest、产品数据、FAQ、财务、客户健康监控等模板。这说明 AI Coding 正在从“人打开 IDE 让 Agent 写代码”扩展到“Agent 定时监控业务系统并产出动作”。
+
+为什么重要：
+
+- 多仓库自动化是企业真实场景：一个需求常跨前端、后端、数据、文档和运维仓库。
+- 无仓库自动化更像“白领工作流 Agent”，可以连接 Slack、Stripe、Databricks、CRM，而不只服务程序员。
+- 定时任务 + 模板市场会变成新的增长入口：谁掌握自动化模板，谁就掌握高频业务场景。
+
+老板可以怎么利用：
+
+- 做一批“可复制的 Agent Automations 模板”：日报、客户风险、竞品监控、GitHub issue 分诊、财务周报。
+- 如果做产品，不必先做完整 IDE；可以做跨 Cursor、Claude Code、Hermes 的 automation 配置层和运行审计层。
+
+---
+
+### 2. MCP 进入“控制面”阶段：本地网关、配置发现、权限管理会变成刚需
+
+- 项目：[`varandrew/moor`](https://github.com/varandrew/moor) — 本地 MCP gateway manager，约 205 stars，Apache-2.0
+- 项目：[`lirantal/ls-mcp`](https://github.com/lirantal/ls-mcp) — 检测本机 Cursor、Claude Desktop、VS Code 等 MCP 配置，约 83 stars，Apache-2.0
+- 产品信号：[Product Hunt: Vibedock](https://www.producthunt.com/products/vibedock) — 菜单栏切换 Claude Code MCP servers
+
+MCP 的问题正在从“有没有 server”变成“server 太多以后怎么管理”。开发者会同时在 Claude、Cursor、VS Code、Hermes、桌面应用里配置不同 MCP，风险包括权限混乱、配置漂移、工具暴露过多、难以审计。
+
+为什么重要：
+
+- MCP 是 Agent 的插件协议，但企业真正付费的是安全、可观察、可控。
+- 本地控制面天然适合做轻量产品：菜单栏、配置扫描、profile、白名单、日志、团队策略同步。
+- 这类工具比单个 MCP server 更靠近基础设施入口，生命周期更长。
+
+老板可以怎么利用：
+
+- 做一篇教程：“从 MCP server 到 MCP control plane，为什么下一个机会是管理层”。
+- 产品上可优先验证一个小功能：扫描本机 MCP 配置，标记高风险工具，生成可分享的 team profile。
+
+---
+
+### 3. Agent 沙箱正在从概念变成云厂商和大模型厂的联合基础设施
+
+- 官方信号：[Cloudflare: Claude Managed Agents integration with Cloudflare Sandboxes](https://blog.cloudflare.com/claude-managed-agents/)
+- 相关项目：[`conductor-oss/conductor`](https://github.com/conductor-oss/conductor) — durable agentic workflow engine，约 31.8k stars
+- 相关项目：[`tensorzero/tensorzero`](https://github.com/tensorzero/tensorzero) — LLM gateway、observability、evaluation、optimization 一体化，约 11.4k stars
+
+Cloudflare 与 Anthropic 的沙箱集成强调 stateful Linux microVM、私有服务连接、可观察浏览器、动态代码执行。Agent 一旦能长期运行、访问内网和执行代码，企业关心的就不是“回答是否聪明”，而是隔离、日志、成本、回滚和审批。
+
+为什么重要：
+
+- 企业 Agent 的购买决策会越来越像采购基础设施：安全边界、审计、SLA、成本控制。
+- “会写代码的 Agent”只是入口，真正可持续收费的是运行环境和治理面。
+- workflow engine、sandbox、observability、eval 会合并成一条 B2B infra 价值链。
+
+老板可以怎么利用：
+
+- 设计“企业 Agent 上线 checklist”：沙箱、权限、日志、私有网络、回滚、成本阈值、人工审批。
+- 内容选题可以打：“Agent 不是 SaaS 功能，而是一套新的云运行时”。
+
+---
+
+### 4. Product Hunt 今天的 AI 产品集中在“本地桌面 + AI 工作流小工具”
+
+- [Freu AI](https://www.producthunt.com/products/freu-cli)：用 AI 自动化 Mac app，强调零 recurring run cost
+- [ModelHub](https://www.producthunt.com/products/modelhub)：Mac 菜单栏本地 LLM 管理
+- [Edgee Fallback Models](https://www.producthunt.com/products/edgee)：让 Claude Code 不因模型不可用而中断
+- [Runway Agent](https://www.producthunt.com/products/runway-agent)：用聊天生成剪辑和音效设计视频
+
+这批产品说明一个现实趋势：用户不一定愿意买“又一个聊天机器人”，但愿意买一个能塞进现有桌面工作流的小工具，尤其是菜单栏、CLI、浏览器插件、自动化脚本这类低摩擦入口。
+
+为什么重要：
+
+- AI 产品分发不一定靠大平台，Mac 菜单栏、浏览器插件、CLI 仍然能做出高频入口。
+- “降低推理成本 / 本地运行 / 不间断 fallback”是用户愿意付费的明确痛点。
+- 产品包装要围绕具体结果，而不是泛泛说“AI assistant”。
+
+老板可以怎么利用：
+
+- 选一个高频私域场景做桌面小工具：本地模型切换、Agent 成本监控、MCP 开关、X 收藏知识库化。
+- 社媒传播可以围绕“把 AI 从网页聊天框塞回你的操作系统”。
+
+---
+
+## 2. GitHub / 开源项目雷达
+
+### 1. [`superset-sh/superset`](https://github.com/superset-sh/superset)
+
+AI Agents 时代的代码编辑器，定位是本机并行编排 Claude Code、Codex 等 CLI Agent。约 11.1k stars，TypeScript，最近活跃。
+
+可利用点：研究“多 Agent + 多 worktree + 本地编排”的产品形态。它验证了一个方向：开发者不是缺一个聊天框，而是缺一个能管理一队 Agent 的控制台。
+
+### 2. [`varandrew/moor`](https://github.com/varandrew/moor)
+
+本地 MCP gateway manager，聚合多个 MCP server 到单一 endpoint，并支持 profile 过滤工具。约 205 stars，TypeScript / Tauri，Apache-2.0。
+
+可利用点：MCP 管理层有早期产品机会，尤其适合做 Mac 原生小工具、团队配置同步、风险扫描和审计。
+
+### 3. [`lirantal/ls-mcp`](https://github.com/lirantal/ls-mcp)
+
+扫描本机 AI 应用中的 MCP server 配置，包括 Cursor、Claude Desktop、VS Code 等。约 83 stars，TypeScript，Apache-2.0。
+
+可利用点：这是 MCP 安全产品的最小入口。先“发现资产”，再做权限分级、风险提示、配置修复和团队基线。
+
+### 4. [`TIGER-AI-Lab/ClawBench`](https://github.com/TIGER-AI-Lab/ClawBench)
+
+浏览器 AI Agent benchmark，覆盖 144 个真实网站、153 个日常任务，README 标注当前 top score 33.3%。约 321 stars，Python，Apache-2.0。
+
+可利用点：浏览器 Agent 离稳定商用仍有距离，但 benchmark 会成为产品选型和模型评估的刚需。可以做“Agent 能不能真正操作网页”的测评内容。
+
+### 5. [`zavora-ai/adk-rust`](https://github.com/zavora-ai/adk-rust)
+
+Rust Agent Development Kit，支持模型、工具、记忆、实时语音等模块。约 347 stars，Rust，README 标注 Apache-2.0。
+
+可利用点：Rust 生态的 Agent 框架适合低延迟、嵌入式、边缘和企业后端场景。值得观察是否能吃到“生产级 Agent runtime”的定位。
+
+### 6. [`VOBC/oh-my-coder`](https://github.com/VOBC/oh-my-coder)
+
+国产模型取向的多 Agent AI Coding Assistant，支持 DeepSeek、GLM、MiMo 等 12+ 模型。约 108 stars，Python，MIT。
+
+可利用点：国内 AI Coding 工具会围绕国产模型、私有化部署、低成本推理形成独立需求。适合做企业内网 coding assistant 的参考。
+
+### 7. [`Xquik-dev/tweetclaw`](https://github.com/Xquik-dev/tweetclaw)
+
+OpenClaw 插件，支持搜索推文、发帖、导出粉丝、媒体管理、监控 X/Twitter 和抽奖。约 59 stars，TypeScript，MIT。
+
+可利用点：社媒自动化正在被包装成 Agent plugin。机会在“增长运营 Agent”：监控关键词、生成回复、整理线索、抽奖转化，但要注意平台规则和账号风控。
+
+### 8. [`proompteng/bilig`](https://github.com/proompteng/bilig)
+
+面向 Node.js 服务和 Agent 工具的 XLSX / 公式重算运行时，支持编辑单元格、recalc、verify readback、持久化 JSON。约 28 stars，TypeScript，MIT。
+
+可利用点：Agent 真正进入企业办公，需要可靠处理 Excel、财务模型和公式回算。这类“无聊但刚需”的工具比炫技 Agent 更容易卖给企业。
+
+## 3. 论文 / 技术趋势
+
+### 1. 自演化 Agent：从“更新提示词”走向“重写自身系统”
+
+- 论文：[`MOSS: Self-Evolution through Source-Level Rewriting in Autonomous Agent Systems`](https://arxiv.org/abs/2605.22794v1)
+
+MOSS 关注 autonomous agent 部署后无法从用户交互中持续改进的问题，方向是让 Agent 通过 source-level rewriting 自我演化。
+
+商业判断：这不是马上能安全上生产的能力，但它指出了下一代 Agent 平台的核心矛盾：如果 Agent 每天犯同样错误，用户不会长期付费；但如果允许 Agent 改自己，就必须配套沙箱、评测、回滚和审批。
+
+### 2. 测试时搜索需要“多样化训练”，不是只追单一路径最优
+
+- 论文：[`Vector Policy Optimization: Training for Diversity Improves Test-Time Search`](https://arxiv.org/abs/2605.22817v1)
+
+论文讨论语言模型在 AlphaEvolve 这类 inference-scaling 搜索流程中，如何通过训练多样性提升测试时搜索效果。
+
+商业判断：未来 Agent 做复杂任务，不会只跑一次答案，而是生成多条候选路径再评估选择。机会在 rollout 管理、成本控制、候选评分、失败样本回收。
+
+### 3. 多模态和机器人趋势：空间姿态、自我意识导航、视频动作理解仍是短板
+
+- 论文：[`AwareVLN: Reasoning with Self-awareness for Vision-Language Navigation`](https://arxiv.org/abs/2605.22816v1)
+- 论文：[`Which Way Did It Move? Diagnosing and Overcoming Directional Motion Blindness in Video-LLMs`](https://arxiv.org/abs/2605.22823v1)
+- 论文：[`Cambrian-P: Pose-Grounded Video Understanding`](https://arxiv.org/abs/2605.22819v1)
+
+这些论文共同说明：多模态模型会“看图说话”不等于能稳定理解运动、位姿和自我位置。
+
+商业判断：具身智能、视频剪辑、空间理解产品短期仍需要大量工程约束和评测。适合做垂直场景，不适合泛化宣传过度。
+
+### 4. 生成和推理成本优化仍是基础红利
+
+- Hugging Face 官方博客信号：[Towards Speed-of-Light Text Generation with Nemotron-Labs Diffusion Language Models](https://huggingface.co/blog/nvidia/nemotron-labs-diffusion)
+- 中文源信号：机器之心报道 FlashAR 称可用极少数据加速自回归图像模型；量子位关注“未来推理将吃掉 70% 算力”。
+
+商业判断：训练不是唯一成本中心，推理会成为 AI 应用毛利率的关键。任何能减少 token、减少重试、提升本地运行效率、做模型 fallback 的工具，都有明确付费理由。
+
+## 4. 产品 / 创业机会
+
+### 1. MCP Control Plane for Teams
+
+把 `moor`、`ls-mcp`、Vibedock 的方向合并：扫描团队成员本机 MCP 配置，提供 profile、白名单、风险等级、日志和一键同步。
+
+变现方式：个人版免费，团队版按 seat 收费；企业版增加审计、策略、SSO、合规导出。
+
+### 2. Agent Automations 模板市场
+
+围绕 Cursor Automations 的模板方向，做跨工具的自动化模板库：Slack 摘要、客户健康、竞品监控、GitHub issue 分诊、财务周报、内容选题。
+
+变现方式：卖模板包、卖托管运行、卖定制集成。关键不是模型能力，而是对具体业务系统的连接和 SOP 设计。
+
+### 3. Agent 成本与 fallback 管理器
+
+Product Hunt 上 Edgee Fallback Models、ClaudeAI 社区关于高 token 消耗的讨论，都指向一个痛点：Agent 长任务很容易烧钱或因模型不可用中断。
+
+变现方式：按团队接入 Claude Code、Cursor、OpenAI API、Anthropic API，提供预算阈值、模型降级、任务暂停、日报账单。
+
+### 4. 垂直“办公文件 Agent 工具层”
+
+`bilig` 这类 Excel / 公式回算工具说明，企业 Agent 落地卡在文件格式和校验，而不是聊天体验。
+
+变现方式：先做一个窄场景，如财务模型校验、报价表生成、合同条款抽取、PPT 更新，再通过 API / MCP 供 Agent 调用。
+
+## 5. 可发 X/小红书/公众号的选题
+
+1. **“MCP 的下一波机会不是 server，而是 control plane”**：用 Moor、ls-mcp、Vibedock 举例，讲权限、配置、审计和团队同步。
+2. **“AI Coding 正在从 IDE 插件变成定时任务平台”**：拆 Cursor Automations 的多仓库和无仓库模板，解释为什么 Agent 会进入 Slack、财务、客户健康监控。
+3. **“为什么真正赚钱的 Agent 产品都很无聊？”**：Excel 重算、MCP 开关、成本监控、fallback、审计日志，比通用助手更接近付费。
+4. **“浏览器 Agent 还没到自动上班：ClawBench top score 33.3% 给创业者的提醒”**：既看到机会，也提醒不要过度承诺。
+5. **“把 AI 从网页聊天框塞回操作系统”**：围绕 Mac 菜单栏、本地 LLM、MCP 开关、桌面自动化小工具做产品观察。
+
+## 6. 行动建议
+
+1. **今天优先做一个 MCP 配置扫描小实验**：用 `ls-mcp` 扫描本机 Cursor / Claude / VS Code 配置，整理“风险清单 + 可视化截图”，这能快速变成内容和产品原型。
+2. **把日报 / 竞品监控 / GitHub issue 分诊抽象成 Agent Automation 模板**：先做 3 个可复用模板，不急着做平台。
+3. **建立 Agent 成本仪表盘选题库**：记录一次 Claude Code / Cursor / Hermes 长任务的 token、时长、失败原因、fallback 策略，形成“省钱教程”。
+4. **观察 Superset 和 Cursor Automations 的分化**：前者偏本地多 Agent 编排，后者偏云端自动化和模板市场；两条线都值得跟踪。
+5. **短期不要追泛化浏览器 Agent 大而全产品**：先做垂直、可验证、可回滚的浏览器自动化场景，例如表单录入、价格监控、后台巡检。
