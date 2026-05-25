@@ -1,0 +1,211 @@
+---
+title: '科技/AI 日报 — 2026-05-25'
+date: '2026-05-25'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的信号是小模型 Coding Agent、跨工具记忆层和浏览器自动化正在同时产品化，AI Agent 的机会从模型能力转向可控执行、上下文资产和垂直工作流。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-05-25
+
+## 1. 今日最值得关注
+
+### 1. 小模型 Coding Agent 开始挑战“只靠大模型堆能力”的路线
+
+- 项目：[`Doorman11991/smallcode`](https://github.com/Doorman11991/smallcode) — GitHub API 显示约 1.4k stars，MIT，描述为“AI coding agent optimized for small LLMs”，宣称 4B-active model 可达 87% benchmark。
+- 官方信号：[OpenAI News](https://openai.com/news/) 近期把 Codex 和 enterprise coding agents 放在很显眼的位置，企业 coding agent 正在变成主战场。
+
+Smallcode 的价值不在于它已经能取代 Claude Code 或 Codex，而在于它把竞争问题从“谁有最强模型”切回“谁能把小模型、工具调用、任务拆解和工程约束组合得更便宜”。如果小模型 agent 在一部分代码任务上足够可用，AI coding 的成本结构会明显改变。
+
+为什么重要：
+
+- 低成本 agent 更适合高频后台任务：批量修 lint、写测试、扫 issue、改文档、做 repo 巡检。
+- 对中小团队来说，可私有化、可本地运行、低推理成本，比最高上限更有购买意义。
+- 这会催生一批“廉价 agent 工厂”：不是卖模型，而是卖任务模板、评测集、运行队列和失败恢复。
+
+老板可以怎么利用：
+
+- 做内容选题：“小模型 Coding Agent 会不会吃掉一部分 Claude Code 任务？”
+- 产品上可以验证一个低成本自动化包：每天扫描博客/工具仓库的 broken links、依赖升级、README 更新，用小模型跑，不追求一次性全自动合并。
+
+---
+
+### 2. “记忆层”正在成为 Agent 工具链的新入口
+
+- 项目：[`Patdolitse/piia-engram`](https://github.com/Patdolitse/piia-engram) — 约 97 stars，Apache-2.0，local-first、MCP-compatible。
+- 项目：[`JSingletonAI/dejavu`](https://github.com/JSingletonAI/dejavu) — 约 79 stars，Apache-2.0，强调 no cloud storage、跨 AI 工具共享记忆。
+- 相关大项目：[`Tencent/TencentDB-Agent-Memory`](https://github.com/Tencent/TencentDB-Agent-Memory) — 约 4.1k stars，强调本地长期记忆和多层管线。
+
+今天 GitHub 新项目里，“One memory. Every AI tool.” 这类定位反复出现。它说明 MCP 之后的下一层争夺不是单个工具，而是用户和团队的上下文资产：历史偏好、项目知识、工作习惯、代码约定、常用流程。
+
+为什么重要：
+
+- Agent 的效果越来越依赖长期上下文，记忆层会成为跨 Claude、Cursor、Codex、Hermes、OpenCode 的粘性入口。
+- 本地优先、可携带、可审计，是个人和小团队愿意尝试的卖点。
+- 真正能赚钱的不是“存聊天记录”，而是把记忆转成可复用规则、技能、模板和自动化触发器。
+
+老板可以怎么利用：
+
+- 继续把自己的 Hermes 体系当成真实案例：展示“记忆 + 技能 + cron + 博客发布”的完整闭环。
+- 如果做产品原型，优先做“AI 工具记忆体检”：扫描本地 agent 配置、记忆、技能，给出重复、冲突、过期和风险提示。
+
+---
+
+### 3. 浏览器自动化进入“Agent 专用运行时”阶段
+
+- 项目：[`browser-act/skills`](https://github.com/browser-act/skills) — 约 1.4k stars，MIT，面向 AI 的浏览、抓取和结构化抽取技能。
+- 项目：[`justrach/kuri`](https://github.com/justrach/kuri) — 约 320 stars，Zig，面向 Agent 的浏览器自动化、爬虫、移动设备控制和 token-efficient CDP snapshots。
+- 基础设施项目：[`lightpanda-io/browser`](https://github.com/lightpanda-io/browser) — 约 30.5k stars，AGPL-3.0，headless browser designed for AI and automation。
+
+浏览器不是简单的“自动点击网页”。Agent 时代需要的是可压缩 DOM、低 token snapshot、可回放 HAR、抗复杂网页、能跑移动端动作的执行层。谁能让 Agent 稳定操作真实网页，谁就能把大量没有 API 的工作流变成自动化机会。
+
+为什么重要：
+
+- 很多赚钱场景没有 API：后台运营、竞品监控、表单提交、线索录入、社媒巡检、价格监控。
+- 浏览器执行层一旦可靠，就能包装成垂直服务，而不是只卖技术库。
+- 反爬和账号风控会越来越强，合规、低频、可审计的浏览器自动化比粗暴脚本更有长期价值。
+
+老板可以怎么利用：
+
+- 把“浏览器自动化 + 内容/社媒运营”作为内部效率杠杆：先做只读监控和草稿生成，再谨慎进入半自动执行。
+- 内容选题可以写：“AI Agent 真正难的不是会说话，是会稳定使用网页。”
+
+---
+
+### 4. Agent 沙箱和 Secretless Infra 开始从企业云下沉到开源项目
+
+- HN 信号：[Show HN: Cordium — FOSS sandbox platform with secretless infrastructure access](https://github.com/octelium/cordium)
+- 项目：[`octelium/cordium`](https://github.com/octelium/cordium) — Apache-2.0，面向 Kubernetes 上开发者和 AI agent 的 sandbox + identity-based secretless access。
+- 相关官方方向：[Vercel Blog](https://vercel.com/blog) 也把 AI Gateway、Sandbox、Vercel Agent 放在产品入口里。
+
+Agent 能执行代码、访问云资源、操作内部系统之后，最大风险不是“不够聪明”，而是权限、密钥、隔离和审计。Cordium 这类项目把 secretless infrastructure access 和 sandbox 结合，说明开源世界也在追企业级 Agent 安全底座。
+
+为什么重要：
+
+- 企业不会允许 agent 拿着明文密钥到处跑，身份代理、短期凭证、审计日志会变成标配。
+- 沙箱不是单点功能，而是 coding agent、数据 agent、浏览器 agent、运维 agent 的共同运行底座。
+- 这类 infra 适合 B2B：客单价高、痛点明确、销售话术清晰。
+
+老板可以怎么利用：
+
+- 做“Agent 安全清单”内容资产：密钥、沙箱、权限、日志、人工审批、成本阈值。
+- 如果未来做企业自动化服务，把 secretless/sandbox 作为可信卖点，而不是只展示 agent demo。
+
+---
+
+### 5. Product Hunt 今天的 AI 产品集中在“数据分析、工作流学习、MCP 上下文”
+
+- [Supaboard 3.0](https://www.producthunt.com/products/supaboard-ai)：AI data analysts that understand your business。
+- [Yansu](https://www.producthunt.com/products/yansu)：AI learns how you work and turns it into software。
+- [Unabyss](https://www.producthunt.com/products/unabyss)：MCP-native self-updating context layer for your AI。
+- [tldx](https://www.producthunt.com/products/tldx)：bulk-check domains via RDAP & MCP。
+
+这些产品的共同点是：不再把 AI 当聊天入口，而是贴到具体业务对象上，例如公司数据、个人工作流、上下文层、域名资产。Product Hunt 信号不等于事实排名，但能反映创业者正在把 AI 往“可卖的小工作流”里塞。
+
+老板可以怎么利用：
+
+- 找到一个高频资产对象做切入：域名、GitHub repo、社媒账号、博客内容、客户列表、投研 watchlist。
+- 用 MCP 或本地 agent 把“资产状态 + 下一步动作”做成每天可交付的报告，而不是泛泛聊天机器人。
+
+## 2. GitHub / 开源项目雷达
+
+### 1. [`Doorman11991/smallcode`](https://github.com/Doorman11991/smallcode)
+
+AI coding agent optimized for small LLMs，约 1.4k stars。值得关注的是“低成本可用 coding agent”这个方向，而不是单个 benchmark。可用于验证后台代码维护任务是否能从昂贵大模型迁移到便宜模型。
+
+### 2. [`Patdolitse/piia-engram`](https://github.com/Patdolitse/piia-engram)
+
+Local-first、MCP-compatible 的跨工具记忆层，Apache-2.0。可以研究它如何定义本地记忆接口、MCP 暴露方式和用户控制权，适合作为“个人 AI memory OS”方向素材。
+
+### 3. [`JSingletonAI/dejavu`](https://github.com/JSingletonAI/dejavu)
+
+同样押注跨 AI 工具记忆，强调 no cloud storage、no account required。它和 piia-engram 同日出现热度，说明“记忆可携带”正在成为开发者共识。
+
+### 4. [`browser-act/skills`](https://github.com/browser-act/skills)
+
+给 AI 浏览、抓取复杂网站、结构化抽取的技能库，约 1.4k stars。可拆解其 skill 设计方式，看看哪些网页任务可以产品化成固定模板。
+
+### 5. [`justrach/kuri`](https://github.com/justrach/kuri)
+
+Zig-native 浏览器自动化、web crawling、移动设备控制，强调 token-efficient CDP snapshots 和 HAR recording。它的价值在于把“Agent 看网页”的成本和可靠性作为核心指标。
+
+### 6. [`octelium/cordium`](https://github.com/octelium/cordium)
+
+开源 sandbox + secretless infrastructure access。星数还很小，但方向重要：Agent 执行基础设施需要身份、隔离和审计，而不是把云密钥塞进脚本。
+
+### 7. [`LearningCircuit/local-deep-research`](https://github.com/LearningCircuit/local-deep-research)
+
+本地 deep research 项目，约 8k stars，支持本地和云模型、多个搜索源、私有文档。适合观察“Deep Research 私有化”是否会从工具变成企业知识入口。
+
+### 8. [`Tencent/TencentDB-Agent-Memory`](https://github.com/Tencent/TencentDB-Agent-Memory)
+
+腾讯系本地长期记忆方案，约 4.1k stars。和今天的新记忆项目形成呼应：大厂和独立开发者都在争夺 Agent memory 这层基础设施。
+
+## 3. 论文 / 技术趋势
+
+### 1. 论文源今天访问受限，工程侧信号更值得优先看
+
+今天 arXiv API 多次返回 429，未把无法核验的论文硬写进正文。这个失败本身也有提醒意义：日报自动化不能依赖单一学术源，需要缓存、镜像、Semantic Scholar 或 Papers with Code 作为备份。
+
+可利用点：给日报系统加一个“论文源降级策略”：arXiv 失败时改用 Semantic Scholar 搜索最近论文元数据，再回源核验 arXiv 页面。
+
+### 2. 技术趋势：小模型 + 工具编排会重新定义 AI coding 成本
+
+Smallcode 这类项目代表一种工程路线：模型不是唯一主角，任务拆解、工具上下文、失败恢复和评测闭环同样重要。对产品化更关键的是单位任务成本，而不是 demo 上限。
+
+可利用点：内部可以建立一个 coding-agent 任务基准，比较“大模型一次做完”和“小模型多轮工具化”的成本、成功率、可解释性。
+
+### 3. 技术趋势：Agent memory 从 RAG 组件升级为跨工具用户资产
+
+今天多个 GitHub 项目同时强调 local-first memory、MCP-compatible memory、no cloud storage。它和传统 RAG 的区别在于：RAG 是应用内部检索，Agent memory 是跨应用、跨工具、跨会话的用户资产。
+
+可利用点：围绕“记忆资产归谁所有”写内容，容易同时击中开发者、创业者和隐私关注者。
+
+### 4. 技术趋势：浏览器执行层正在成为 Agent 的真实世界接口
+
+浏览器自动化项目开始强调 CDP snapshot、移动设备控制、HAR、token-efficient representation。这说明 Agent 工程的瓶颈从“生成动作”转向“低成本感知和稳定执行”。
+
+可利用点：社媒上可以用一句话打穿：“未来很多 Agent 公司，本质是把没有 API 的网页工作流变成 API。”
+
+## 4. 产品 / 创业机会
+
+### 1. AI 工具记忆体检器
+
+目标用户是重度使用 Claude Code、Cursor、Codex、Hermes、OpenCode 的开发者。产品扫描本地配置、memory、rules、skills、MCP servers，输出冲突规则、过期记忆、敏感信息风险、可合并技能和推荐 profile。
+
+变现方式：免费扫描 + Pro 版自动清理/团队同步/审计报告。
+
+### 2. 小模型 Coding Agent 后台维护包
+
+不和 Claude Code 正面对抗，而是专做低风险、高频、可验证任务：依赖升级 PR、broken link、README 同步、测试补齐、issue 标签、changelog 草稿。
+
+变现方式：按 repo 数量或任务次数收费，核心卖点是低成本和可审计。
+
+### 3. 浏览器 Agent 垂直监控服务
+
+选择一个没有好 API 的场景，例如竞品价格、社媒 profile 变化、招聘页岗位变化、AI 工具目录上新、Product Hunt 日榜变化。用浏览器自动化做只读抓取和结构化变化报告。
+
+变现方式：面向运营/投研/增长团队卖订阅报告。
+
+### 4. Agent 安全上线 checklist + 审计模板
+
+企业想用 agent，但不知道权限、密钥、沙箱、日志、审批怎么落地。可以先做内容资产和咨询模板，再沉淀成轻量 SaaS 检查器。
+
+变现方式：咨询、模板包、审计工具、企业内训。
+
+## 5. 可发 X/小红书/公众号的选题
+
+1. “AI Coding 的下一轮竞争，可能不是谁模型最强，而是谁能把小模型用到足够便宜。”
+2. “MCP 之后最值钱的一层：不是工具，是跨 Claude/Cursor/Codex/Hermes 的用户记忆资产。”
+3. “很多 Agent 公司最后会变成浏览器自动化公司：把没有 API 的网页工作流封装成 API。”
+4. “企业 Agent 真正的门槛不是 demo，而是沙箱、密钥、权限、日志和人工审批。”
+5. “Product Hunt 今天的 AI 产品给了一个信号：创业者正在从聊天机器人转向业务资产工作流。”
+
+## 6. 行动建议
+
+1. 今天最值得跟的是“Agent memory layer”。建议拆 3 个项目：piia-engram、dejavu、TencentDB-Agent-Memory，写一篇“个人 AI 记忆层会不会成为下一个 MCP 控制面”。
+2. 对内部系统，优先补一个 arXiv/Semantic Scholar 降级策略，避免日报因为单源 429 缺论文区。
+3. 做一个小实验：选 3 个 repo，让小模型 coding agent 只做低风险维护任务，记录成本、成功率、人工修改量。
+4. 社媒今天可以发“Agent 不是聊天框，是可审计执行层”系列，分别讲记忆、浏览器、沙箱、小模型成本。
+5. 产品化方向继续聚焦赚钱价值：记忆体检、浏览器垂直监控、低成本代码维护，比泛 Agent 平台更容易拿到第一批用户。
