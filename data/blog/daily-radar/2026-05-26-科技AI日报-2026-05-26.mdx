@@ -1,0 +1,165 @@
+---
+title: '科技/AI 日报 — 2026-05-26'
+date: '2026-05-26'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的机会是 Agent 从“会写代码”进入“可交付软件、可读文档、可控权限、可持续运行”的工程化阶段。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-05-26
+
+## 1. 今日最值得关注
+
+### 1. Agent 正在从 Coding Assistant 变成“端到端交付系统”
+
+- 项目：[`InsForge/InsForge`](https://github.com/InsForge/InsForge) — 约 10.6k stars，Apache-2.0，5 月 21 日发布 v2.1.7，定位是给 coding agent 用的开源后端平台：database、auth、storage、compute、hosting、AI gateway 一起打包。
+- HN 信号：[Show HN: InsForge - Open-source Heroku for coding agents](https://github.com/InsForge/InsForge) 有 62 points / 7 comments。
+- 官方方向呼应：[Vercel Blog](https://vercel.com/blog) 把 AI Gateway、Sandbox、Vercel Agent 放在产品入口，说明平台型厂商也在把 agent 从 IDE 扩展到部署和运行环境。
+
+为什么重要：coding agent 的瓶颈不只是“能不能改代码”，而是能不能拿到一套稳定后端，把 demo 变成可运行、可调试、可部署的应用。谁控制 agent 的后端运行时，谁就控制从代码生成到上线的收费点。
+
+老板可以怎么利用：优先研究“Agent-native Heroku / Supabase”这个品类，不要只看 IDE。可以做一篇内容：为什么下一代 AI coding 平台卖的不是补全，而是数据库、鉴权、部署、日志和支付闭环。
+
+---
+
+### 2. “给 Agent 看的文档”开始成为新增长入口
+
+- 项目：[`mupt-ai/dari-docs`](https://github.com/mupt-ai/dari-docs) — 约 39 stars，Go，v0.1.6 于 5 月 22 日发布，README 定位是用多组 coding agents 测试文档是否足够清晰。
+- HN 信号：[Show HN: Dari-docs - Optimize your docs using parallel coding agents](https://github.com/mupt-ai/dari-docs) 有 23 points / 7 comments。
+- Hugging Face 官方博客：[Harness, Scaffold, and the AI Agent Terms Worth Getting Right](https://huggingface.co/blog/agent-glossary) 也在把 agent 工程词汇体系化。
+
+为什么重要：过去文档优化是 SEO 和开发者体验，现在新增了一个读者：会执行任务的 agent。API、SDK、MCP server、CLI 如果不能被 agent 正确使用，就会在未来的“AI 选型入口”里吃亏。
+
+老板可以怎么利用：把“Agent-readable docs”作为 B2B 服务切入口：帮助开源项目和 SaaS 公司把文档改造成 Claude Code / Codex / Cursor 能稳定完成任务的格式，并用 agent 跑集成测试给出报告。
+
+---
+
+### 3. Agent 运行时的四个基础件正在成型：浏览器、记忆、MCP、技能
+
+- 浏览器：[`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser) 约 34.3k stars，Rust，面向 AI agents 的浏览器自动化 CLI。
+- 记忆：[`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem) 约 78.1k stars，Apache-2.0，支持 Claude Code、Codex、Gemini、Hermes、OpenCode 等跨会话上下文。
+- MCP 数据库：[`googleapis/mcp-toolbox`](https://github.com/googleapis/mcp-toolbox) 约 15.3k stars，5 月 21 日发布 v1.3.0。
+- 技能：[`google-labs-code/stitch-skills`](https://github.com/google-labs-code/stitch-skills) 约 5.7k stars，面向 Stitch MCP server 的 Agent Skills，并兼容 Codex、Gemini CLI、Claude Code、Cursor。
+
+为什么重要：Agent 的护城河不再只在模型，而在可复用运行时。浏览器解决真实网页，记忆解决连续上下文，MCP 解决工具接入，skills 解决可迁移能力包。这些组合起来，才是可收费的自动化系统。
+
+老板可以怎么利用：建立一个“Agent 基础件雷达”，每周跟踪浏览器、记忆、MCP、skills、sandbox、evals 六类项目。内容上可以从“模型新闻”切换到“Agent 工程栈地图”。
+
+---
+
+### 4. 本地 Agent 的机会从隐私扩展到“低成本长期值守”
+
+- 项目：[`browser-use/bux`](https://github.com/browser-use/bux) — 约 345 stars，MIT，README 定位是把 Browser Use Cloud、Telegram 和真实浏览器装到任意 VPS 上，让 Claude Code agent 24/7 值守。
+- 项目：[`tuchg/Lucarne`](https://github.com/tuchg/Lucarne) — 约 158 stars，Rust，通过 Telegram/WeChat 做本地 Codex、Pi、Claude Code session 的通知、批准和恢复。
+- Product Hunt 信号：[Pi Coding Agent](https://www.producthunt.com/products/pi-coding-agent-3) 和 [Yansu](https://www.producthunt.com/products/yansu) 都在强调把 agent 变成持续工作流，而不是一次性聊天。
+
+为什么重要：真正愿意付费的不是“再来一个聊天框”，而是无人值守、可远程批准、可恢复上下文的工作流。Telegram/WeChat 这类轻入口适合把 agent 从电脑前解放出来，变成后台运营员工。
+
+老板可以怎么利用：先做内部实验：让一个 agent 每天值守博客、GitHub、Product Hunt、HN，遇到可行动项只发审批消息，不自动执行高风险动作。跑通后可以包装成“创始人信息雷达值守员”。
+
+---
+
+### 5. 中文 AI 圈今天的高价值信号在机器人与具身智能
+
+- 量子位：[“VLA 和世界模型都不是终局，会有物理世界独有的模型”](https://www.qbitai.com/2026/05/424584.html)，来自蚂蚁灵波 AIGC2026 分享。
+- 量子位：[蚂蚁灵波 LingBot-VA 论文被 RSS 2026 接收](https://www.qbitai.com/2026/05/424581.html)，强调机器人边推演、边行动。
+- Meta AI 官方：[SAM 3.1](https://ai.meta.com/blog/segment-anything-model-3/) 继续推动实时视频检测和跟踪。
+
+为什么重要：AI 圈的增长叙事正在从纯软件 agent 扩展到“物理世界 agent”。VLA、世界模型、视频分割、机器人行动规划会成为下一波内容和投资观察热点，但需要警惕中文媒体二手转述，关键事实要回到论文和官方项目核验。
+
+老板可以怎么利用：社媒可以做“软件 Agent 到物理 Agent 的迁移图”：感知、记忆、规划、执行、反馈这五层在浏览器自动化和机器人里其实很相似。
+
+## 2. GitHub / 开源项目雷达
+
+### 1. [`InsForge/InsForge`](https://github.com/InsForge/InsForge)
+
+开源 agentic coding 后端平台，约 10.6k stars，Apache-2.0。它的价值是把 coding agent 的交付链条往后端、部署和运维延伸，适合观察“AI 生成应用”如何从 demo 走向生产。
+
+### 2. [`mupt-ai/dari-docs`](https://github.com/mupt-ai/dari-docs)
+
+用并行 coding agents 测试文档质量。星数小，但品类很新：文档不再只给人看，也要给 agent 执行。适合做服务化：Agent docs audit、MCP docs audit、SDK integration audit。
+
+### 3. [`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser)
+
+Rust 浏览器自动化 CLI，约 34.3k stars，Apache-2.0。继续验证“浏览器是 Agent 的真实世界接口”这条线。值得关注它如何把网页操作包装成 agent-friendly 的命令和观测。
+
+### 4. [`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem)
+
+跨 Claude Code、Codex、Gemini、Hermes、OpenCode 的长期记忆层，约 78.1k stars。重点不只是记忆，而是“上下文资产的所有权”：谁掌握用户长期上下文，谁就有跨工具入口。
+
+### 5. [`googleapis/mcp-toolbox`](https://github.com/googleapis/mcp-toolbox)
+
+Google 的数据库 MCP server，约 15.3k stars，5 月 21 日发布 v1.3.0。数据库是企业 agent 最核心的工具入口之一，后续看点是权限、审计、schema 压缩和安全查询。
+
+### 6. [`google-labs-code/stitch-skills`](https://github.com/google-labs-code/stitch-skills)
+
+Agent Skills 库，约 5.7k stars，兼容多个 coding agents。它说明“技能包”正在变成跨 agent 迁移能力的标准化形态，值得拆解其目录结构、插件安装和 marketplace 设计。
+
+### 7. [`opensquilla/opensquilla`](https://github.com/opensquilla/opensquilla)
+
+5 月新项目，约 1.8k stars，定位 token-efficient AI agent。核心卖点是“同样预算，更高智能密度”，和小模型、低成本 agent 方向一致。需要继续核验真实 benchmark 和用户案例。
+
+### 8. [`usewhale/DeepSeek-Code-Whale`](https://github.com/usewhale/DeepSeek-Code-Whale)
+
+DeepSeek-native terminal coding agent，约 208 stars，Go，强调 MCP、Skills、prefix-cache 优化和 1M context。价值在于中文/DeepSeek 生态可能形成自己的低成本 coding agent 工具链。
+
+## 3. 论文 / 技术趋势
+
+### 1. arXiv 与 Semantic Scholar 今天均触发 429，论文区不硬凑
+
+今天 arXiv API 多轮请求返回 429；随后尝试 Semantic Scholar 作为降级源，也返回 429。按照事实准确性要求，今天不把无法回源核验的新论文写成“今日论文”。这说明日报系统需要论文元数据缓存、错峰抓取和备用源，否则每天早高峰容易被限流。
+
+可利用点：给日报自动化补一个“论文源冷启动缓存”：前一天晚间预拉 arXiv cs.AI/cs.CL/cs.LG/cs.CV/cs.RO 元数据，早上只做筛选和核验。
+
+### 2. 技术趋势：Agent-readable docs 会成为 API 分发的新 SEO
+
+Dari-docs 和 Hugging Face agent glossary 的共同信号是：Agent 工程正在标准化词汇、脚手架、文档和测试。未来开发者工具的文档如果不能被 agent 稳定使用，实际转化率会下降。
+
+可利用点：把“文档是否能被 Claude Code 完成集成”变成一个可量化指标，例如任务成功率、失败步骤、需要人工补充的上下文、token 浪费。
+
+### 3. 技术趋势：MCP 正从“工具连接协议”变成“应用分发层”
+
+mcp-use、googleapis/mcp-toolbox、stitch-skills、XcodeBuildMCP 这类项目说明，MCP 不再只是让 Claude 调工具，而是在承载数据库、移动开发、设计工具、技能市场和应用插件。
+
+可利用点：如果做产品，不要只做一个 MCP server；要考虑文档、权限、schema 压缩、安装入口、示例任务和 agent eval，这些才是 MCP 的分发转化链条。
+
+### 4. 技术趋势：Agent 长期运行需要“人类审批层”
+
+bux、Lucarne 这类项目都把重点放到通知、批准、恢复和远程控制。Agent 越能执行，越需要人类在关键节点介入，而不是完全自动化。
+
+可利用点：企业和个人付费点可能在“审批和审计”，不是“全自动”。做服务时应强调 human-in-the-loop、低风险默认、可回放日志。
+
+## 4. 产品 / 创业机会
+
+### 1. Agent 文档体检 SaaS
+
+面向 API、SDK、MCP server、CLI、开源项目。用户提供文档和任务，系统让多个 coding agents 实际尝试集成，输出失败原因、缺失上下文、建议 PR。变现方式：按项目/月收费，或给开源工具做增长审计。
+
+### 2. Agent-native 后端模板市场
+
+基于 InsForge / Supabase / Vercel 这类后端平台，做“agent 可直接调用”的行业模板：登录、付费、文件上传、邮件、任务队列、管理后台。卖点是让 coding agent 不从零搭后端。
+
+### 3. 创始人信息雷达值守员
+
+用浏览器 + RSS + GitHub + HN + Product Hunt + 微信/Telegram 审批，替老板持续盯项目、竞品、热点和社媒选题。先做人机协作报告，后续加半自动发布和 CRM 线索。
+
+### 4. MCP 安全与权限审计工具
+
+团队接入越来越多 MCP server 后，需要知道：哪些工具能读文件、能访问数据库、能外发数据、有没有日志、有没有最小权限。可以先做本地扫描器，再做团队版 dashboard。
+
+## 5. 可发 X/小红书/公众号的选题
+
+1. “AI Coding 的下一站不是更会补全，而是拥有自己的后端、数据库、鉴权、部署和日志。”
+2. “未来 API 文档要同时服务两类读者：人类开发者，以及会真的执行集成任务的 Agent。”
+3. “MCP 不是终点。真正值钱的是 MCP + 权限 + 文档 + eval + 技能市场这一整条分发链。”
+4. “Agent 越能干，越需要审批层。全自动不是卖点，可控、可回放、可恢复才是卖点。”
+5. “软件 Agent 和机器人 Agent 的工程栈正在合流：感知、记忆、规划、执行、反馈。”
+
+## 6. 行动建议
+
+1. 今天优先拆解 InsForge：看它如何把 database、auth、storage、compute、hosting、AI gateway 包装给 coding agent，用它写一篇“Agent-native Heroku”分析。
+2. 做一个小实验：选自己的一个开源项目或博客工具链，用 dari-docs 思路让 Claude/Codex 按文档完成任务，记录卡点并改文档。
+3. 建立“Agent 基础件雷达”固定栏目，跟踪浏览器、记忆、MCP、skills、sandbox、evals 六类项目，而不是只追模型发布。
+4. 产品原型优先做“创始人信息雷达值守员”：只读扫描 + Telegram/微信审批 + 每日行动建议，避免一开始做高风险全自动执行。
+5. 给日报系统补论文源缓存和限流降级：arXiv 429 时不硬写论文，改为使用前置缓存和稍后重试，保证事实质量。
