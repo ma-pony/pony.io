@@ -1,0 +1,84 @@
+---
+title: '科技/AI 日报 — 2026-05-29'
+date: '2026-05-29'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的机会是 Agent 从“能调用工具”进入“可治理、可评测、可本地化部署”的生产级基础设施阶段。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-05-29
+
+## 1. 今日最值得关注（3-5 条）
+
+1. **Agent 正在从“功能 demo”进入“治理内核 + 安全网关 + 审计链”阶段。** GitHub 今日多条高活跃项目都指向同一个问题：`archestra-ai/archestra` 做企业 MCP 注册表、网关、编排和 guardrails；`Justin0504/Aegis` 做工具调用拦截、分类、审批、kill switch 与加密审计；`DecapodLabs/decapod` 做本地优先的 coding agent governance kernel。**为什么重要：** 企业不是不想用 Agent，而是不敢让 Agent 随便执行命令、访问工具、改代码和碰数据。**可利用：** 未来卖给企业的 Agent 产品必须自带权限、审计、回放、批准流和事故止损，而不是只卖“更聪明”。
+
+2. **OpenAI / Cloudflare / Vercel 的一手信号都在强化“生产级 Agent 平台化”。** OpenAI 发布 Endava 如何用 Codex 构建 agentic organization；Cloudflare 写了在统一数据平台上构建 AI agent 的工程实践；Vercel AI Gateway 新增 Opus 4.8 和团队级 provider allowlist。**为什么重要：** Agent 落地的核心能力正在变成组织级接入、模型路由、供应商治理和数据平台集成。**可利用：** 如果做 Agent SaaS，优先补“企业管理面”：provider allowlist、成本报表、数据权限、审计日志、SLA，而不是再堆聊天 UI。
+
+3. **浏览器与工作区基础设施继续成为 Agent 入口。** `kernel/kernel-images` 提供 sandboxed Chrome browsers-as-a-service，`shaun0927/openchrome` 用 MCP 控制真实 Chrome，`CoWork-OS/CoWork-OS` 把代码、邮件、研究、文档、表格、deck 和 agent 管理放进本地优先 GUI。**为什么重要：** Web、桌面、文档和 SaaS 后台仍是企业操作主战场；谁能稳定、安全地让 Agent 使用这些界面，谁就接近真实工作流。**可利用：** 面向垂直行业做“浏览器 Agent + 业务 SOP + 人审”的轻量外包替代，比通用 Agent 更容易收费。
+
+4. **本地/私有推理基础设施开始围绕成本、数据主权和工具调用打包。** `raullenchai/Rapid-MLX` 主打 Apple Silicon 本地 OpenAI-compatible 引擎、prompt cache、tool calling；`defilantech/LLMKube` 做 Kubernetes operator，覆盖 llama.cpp、vLLM、TGI、mlx-server、多 GPU 与 air-gapped 部署。**为什么重要：** Agent 商业化会被 token 成本、延迟、隐私和供应商锁定限制。**可利用：** 对高频内部流程，先设计云端强模型 + 本地小模型/私有推理的混合架构，把毛利和合规写进方案。
+
+5. **Voice Agent 和移动/机器人 Agent 的评测开始补课。** ServiceNow 的 `eva` 明确提出端到端评测 voice agent，不只看“做了什么”，也看“听起来如何”；`Purewhiter/mobilegym`、`ros-claw/rosclaw` 则指向移动 GUI 和具身智能的可验证环境。**为什么重要：** 语音、手机、机器人 Agent 要进生产，必须能测成功率、体验、延迟、失败恢复和安全边界。**可利用：** 可以围绕客服、电话销售、移动 App 自动化、机器人数据闭环做“评测 + 质检 + 回放”工具。
+
+## 2. GitHub / 开源项目雷达（5-8 个）
+
+1. [`archestra-ai/archestra`](https://github.com/archestra-ai/archestra) — 约 3.8k stars，AGPL-3.0，TypeScript。企业 AI 平台，主打 MCP registry、gateway、orchestrator、guardrails、observability。**价值：** 适合研究企业 MCP 管理面怎么做；但 AGPL 对商业集成有约束，借鉴产品形态比直接嵌入更安全。
+
+2. [`Justin0504/Aegis`](https://github.com/Justin0504/Aegis) — 约 360 stars，MIT，TypeScript。定位为 Agent firewall，拦截每个 tool call，提供策略分类、人审、kill switch、审计。**价值：** Agent 安全会从“提示词规范”变成 runtime enforcement，适合做企业内控、合规和安全卖点。
+
+3. [`DecapodLabs/decapod`](https://github.com/DecapodLabs/decapod) — 约 213 stars，MIT，Rust。面向 AI coding agents 的 local-first governance kernel，把意图转成上下文和规格，强调边界和 proof-backed completion。**价值：** coding agent 的生产化不只是代码生成，而是“规格、上下文、验收、证据”的闭环。
+
+4. [`enmanuelmag/agent-harness-kit`](https://github.com/enmanuelmag/agent-harness-kit) — 约 166 stars，TypeScript。Provider-agnostic 多 Agent workflow 脚手架，提供 backlog、workflow、持久日志和 health gate。**价值：** 小团队落地多 Agent 时最缺的是流程骨架和可追踪状态，可作为内部自动化脚手架参考。
+
+5. [`daniel3303/Equibles`](https://github.com/daniel3303/Equibles) — 约 127 stars，AGPL-3.0，C#。自托管 mini Bloomberg Terminal for AI agents，聚合 SEC filings、机构持仓、内幕交易、国会议员交易、short data。**价值：** “垂直数据终端 + Agent 接口”是金融/投研方向的清晰产品形态；AGPL 商用需谨慎。
+
+6. [`kernel/kernel-images`](https://github.com/kernel/kernel-images) — 约 883 stars，Apache-2.0，Go。为自动化和 web agents 提供 sandboxed Chrome browser 服务。**价值：** 浏览器即基础设施，适合研究隔离、会话、并发、回放和代理网络等 Agent 浏览器底座。
+
+7. [`shaun0927/openchrome`](https://github.com/shaun0927/openchrome) — 约 212 stars，MIT，TypeScript。开源浏览器自动化 MCP server，让 Agent 控制真实 Chrome。**价值：** 适合快速验证“让 Claude/Codex 操作现有网页后台”的场景，但生产化需要额外补权限、隔离和审计。
+
+8. [`raullenchai/Rapid-MLX`](https://github.com/raullenchai/Rapid-MLX) / [`defilantech/LLMKube`](https://github.com/defilantech/LLMKube) — Rapid-MLX 约 2.6k stars，Apache-2.0；LLMKube 约 113 stars，Apache-2.0。前者聚焦 Apple Silicon 本地 OpenAI-compatible 推理和 tool calling，后者聚焦 Kubernetes 化私有推理。**价值：** 代表“个人/团队本地推理”和“企业私有推理”两条成本优化路线。
+
+## 3. 论文 / 技术趋势（2-4 条）
+
+1. **Voice Agent 评测正在从单点 ASR/TTS 指标走向端到端体验。** `ServiceNow/eva` 对应论文/项目《A New End-to-end Framework for Evaluating Voice Agents》（arXiv:2605.13841），强调同时评估任务表现和语音体验。**判断：** 电话客服、销售、陪练、语音助理的商业化会越来越依赖可量化质检；“录音回放 + 自动评分 + 人审抽检”值得产品化。
+
+2. **RAG 正在从单次检索走向多 Agent / 多轮推理的服务优化。** Semantic Scholar 可访问结果显示，2026 年有 SPD-RAG、RoutIR、SPARC-RAG 等方向，分别关注 sub-agent per document、快速服务 retrieval pipelines、顺序-并行自适应扩展与上下文管理。**判断：** RAG 机会不在“又一个知识库聊天”，而在复杂问题的证据覆盖、检索路由、延迟成本和可解释答案链。
+
+3. **Agent benchmark 的热点从通用题库转向生产任务、终端任务和垂直场景。** Hacker News 今日仍在讨论 backend code generation 的 constraint decay、long-horizon coding agent benchmark，以及 AI agent permission fatigue。**判断：** 真实价值来自“失败模式库”：权限疲劳、约束衰减、长任务漂移、危险操作和验收困难，都是可做成评测/监控产品的痛点。
+
+4. **具身与移动 GUI Agent 需要可验证模拟环境。** `Purewhiter/mobilegym` 用浏览器托管 Android simulator，`ros-claw/rosclaw` 试图把 LLM 与 ROS/VLA 高频控制桥接。**判断：** 移动端和机器人 Agent 的短期机会不是直接替代人，而是数据采集、仿真、回放、SOP 训练和安全评测。
+
+## 4. 产品 / 创业机会（2-4 条）
+
+1. **Agent 安全网关 / 工具调用防火墙：** 面向已经在用 Claude Code、Codex、Cursor、MCP 的团队，提供 tool-call 拦截、权限策略、人审、kill switch、审计日志和成本统计。卖点是“让老板敢开放更多工具给 Agent”。
+
+2. **垂直数据终端 + Agent 接口：** 参考 `Equibles`，选择投研、跨境电商、招聘、法务、医疗质控等高价值数据域，做自托管数据汇聚、搜索、问答、报告生成和 API/MCP 接口。核心不是聊天，而是“可信数据资产 + 自动化动作”。
+
+3. **浏览器 Agent 外包替代套件：** 用 sandbox browser / Chrome MCP 做底座，围绕 SaaS 后台运营、CRM 更新、订单处理、线索清洗、报表下载等重复流程，提供 SOP、回放、人审和异常处理。适合从服务项目切入，再产品化。
+
+4. **本地/私有推理成本优化包：** 为企业内部 Agent 提供模型路由、prompt cache、本地小模型、私有 GPU/K8s 部署、成本面板和降级策略。目标客户是高频调用、数据敏感或 token 成本高的团队。
+
+## 5. 可发 X/小红书/公众号的选题（3-5 个）
+
+1. **《Agent 创业别再只卷模型：真正能卖给企业的是权限、审计、kill switch 和回放》** — 用 Archestra、Aegis、Decapod 做案例。
+
+2. **《为什么浏览器会成为 Agent 时代的新服务器：Chrome sandbox、MCP 控制和业务后台自动化》** — 用 Kernel、OpenChrome、CoWork OS 讲“真实工作流入口”。
+
+3. **《本地推理不是情怀，是 Agent 毛利模型：Apple Silicon、K8s 私有部署和 prompt cache 的商业价值》** — 解释 Rapid-MLX / LLMKube 背后的成本逻辑。
+
+4. **《Voice Agent 下一步不是更像真人，而是能被质检、回放、评分和持续改进》** — 用 ServiceNow EVA 切入客服/销售质检机会。
+
+5. **《垂直 Bloomberg for Agents：为什么每个高价值行业都会长出自己的 Agent 数据终端》** — 从 Equibles 延展到财税、法务、电商、招聘。
+
+## 6. 行动建议
+
+1. **把所有 Agent 产品原型补一张“治理能力清单”。** 至少包含：可用工具列表、权限分级、人审条件、日志/回放、kill switch、成本统计、失败恢复；没有这些就先别谈企业级。
+
+2. **本周选一个“浏览器后台重复操作”做可收费 demo。** 例如 CRM 线索更新、竞品价格巡检、订单异常处理、报表下载汇总；目标是做出 SOP、自动执行、截图回放、人审确认四件套。
+
+3. **建立本地/私有推理成本实验。** 用一个高频内部任务对比云端强模型、本地小模型、混合路由三种方案，记录成功率、延迟、token/算力成本和人工兜底比例。
+
+4. **优先研究 Agent 安全网关而非新 Agent 框架。** 新框架供给过剩，企业真正愿意付费的是“现有 Claude/Codex/Cursor/MCP 怎么安全接入公司数据和工具”。
+
+5. **围绕 voice agent 做质检产品选题验证。** 找 20 条客服/销售录音，设计自动评分维度：任务完成、话术合规、情绪、延迟、打断处理、升级人工；这比直接做一个完整语音机器人更容易落地。
