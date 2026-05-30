@@ -1,0 +1,84 @@
+---
+title: '科技/AI 日报 — 2026-05-30'
+date: '2026-05-30'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最值得关注的是 Agent 基建从单点工具调用转向可长期运行的工作区、浏览器、记忆、评测和治理层。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-05-30
+
+## 1. 今日最值得关注（3-5 条）
+
+1. **Agent 入口正在从聊天框转向“工作区 + 插件 + 浏览器”。** GitHub Trending 里 `EveryInc/compound-engineering-plugin`、`anthropics/claude-code`、`cursor/plugins`、`iOfficeAI/AionUi` 同时活跃，说明用户不是缺一个新聊天机器人，而是想把 Claude Code、Codex、Cursor、OpenCode、Hermes 等 agent 放进同一个工程工作流。**为什么重要：** 工作区会吃掉单点 agent 工具的分发入口。**可利用：** 做产品时优先卡住“项目上下文、权限、工具注册、记忆、验收记录”这些长期资产，而不是只做一次性 prompt 包装。
+
+2. **浏览器自动化继续变成 Agent 的生产底座。** `vercel-labs/agent-browser` 约 34.7k stars，`nottelabs/notte`、`browser-act/skills`、`kernel/kernel-images` 都在做 web agent / browser infra；Product Hunt 上 Integuru 也在卖“为任意平台生成可靠 API，避免浏览器脆弱自动化”。**为什么重要：** 企业后台、SaaS、CRM、广告平台、采购系统仍然大量没有好 API，浏览器和“反向生成 API”会成为 Agent 进入真实业务的桥。**可利用：** 可以从高频后台操作切入，先卖“自动执行 + 回放 + 人审”，再沉淀成垂直 API 或 MCP。
+
+3. **Agent 的“记忆/上下文层”正在产品化。** Product Hunt 的 GPS 宣称保存 repo rules 与 past lessons，`Kaelio/ktx-ai-data-agents-mcp-context-skills` 做数据 agent 的 executable context layer，`thedotmack/claude-mem` 则把多种 coding agent 的会话压缩成可复用记忆。**为什么重要：** Agent 最大浪费不是模型不聪明，而是每次从零理解项目、数据口径和组织习惯。**可利用：** 记忆层适合做团队级 SaaS：连接代码仓库、BI、文档、工单，把“过去做过什么、为什么这么做”变成可检索资产。
+
+4. **语音 Agent 进入“评测和质检”窗口期。** `ServiceNow/eva`、`EfficientAI-tech/efficientAI`、`voicetestdev/voicetest`、`Connexity-AI/connexity` 都在围绕 voice agent evaluation / observability 做工具；Product Hunt 上 Ava 2.0、Ava Studio、Clipline 也显示销售与内容生产正快速 agent 化。**为什么重要：** 语音销售、客服、回访、招聘筛选要规模化，最先付费的不是“更像真人”，而是合规、转化、延迟、情绪和失败恢复的可量化质检。**可利用：** 用 20-50 条真实通话样本就能做 MVP：自动转写、评分、回放、话术建议和人工抽检。
+
+5. **社区对 Agent 风险的讨论从抽象安全转向具体失败模式。** Hacker News 今日高热包括“AI agent permission fatigue”、CAPTCHA 仍能检测 AI agents、Robinhood 允许 AI agents 交易股票，以及“AI 是否造成前端失落十年”。**为什么重要：** 市场正在意识到 Agent 的问题不是“会不会动手”，而是“何时该停、谁批准、出了错怎么追责”。**可利用：** 权限疲劳、长任务漂移、约束衰减、代码质量劣化都可以转成评测、审计、保险和托管运营服务。
+
+## 2. GitHub / 开源项目雷达（5-8 个）
+
+1. [`EveryInc/compound-engineering-plugin`](https://github.com/EveryInc/compound-engineering-plugin) — 约 18.1k stars，MIT，TypeScript。官方 Compound Engineering plugin，面向 Claude Code、Codex、Cursor 等。**价值：** 代表“agent engineering 方法论”正在被插件化分发；适合研究如何把团队工程习惯包装成可安装能力。
+
+2. [`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser) — 约 34.7k stars，Apache-2.0，Rust。面向 AI agents 的浏览器自动化 CLI。**价值：** 浏览器 agent 的入口级项目，适合拆解 CLI、会话、动作接口和 sandbox 设计；open issues 较多，说明需求强但生产化仍复杂。
+
+3. [`Kaelio/ktx-ai-data-agents-mcp-context-skills`](https://github.com/Kaelio/ktx-ai-data-agents-mcp-context-skills) — 约 509 stars，Apache-2.0，TypeScript。数据与分析 agent 的 executable context layer，让 Claude Code、Codex 等通过 MCP、skills、memory 准确查询数据。**价值：** “数据 agent”最缺的是口径、上下文和执行约束，ktx 的方向值得用于 BI/投研/运营分析场景。
+
+4. [`run-llama/liteparse`](https://github.com/run-llama/liteparse) — 约 7.3k stars，Apache-2.0，Rust。LlamaIndex 生态的开源文档解析器。**价值：** RAG 竞争会回到数据摄取质量、速度和可控成本；文档解析是知识库/agent 工作流的刚需组件。
+
+5. [`jmaczan/tiny-vllm`](https://github.com/jmaczan/tiny-vllm) — 约 281 stars，Apache-2.0，C++。Show HN 项目，高性能 LLM inference engine 的小型 vLLM 实现。**价值：** 不一定直接商用，但适合学习 paged attention、KV cache、batching 等推理工程，帮助判断自建推理是否值得。
+
+6. [`ServiceNow/eva`](https://github.com/ServiceNow/eva) — 约 131 stars，MIT，Python。端到端 voice agent 评测框架。**价值：** 语音 agent 会需要像 web analytics 一样的评测与 observability，尤其适合客服、销售、培训和合规质检。
+
+7. [`scanaislop/aislop`](https://github.com/scanaislop/aislop) — 约 191 stars，MIT，TypeScript。用于捕捉 AI coding agents 留下的代码异味，40+ 规则、7 种语言、确定性扫描。**价值：** “AI 代码质量闸门”会成为 coding agent 普及后的刚需，可和 CI、review、企业规范结合。
+
+8. [`activepieces/activepieces`](https://github.com/activepieces/activepieces) / [`triggerdotdev/trigger.dev`](https://github.com/triggerdotdev/trigger.dev) — Activepieces 约 22.5k stars，Trigger.dev 约 15.2k stars。二者都在把 workflow automation 与 AI agents/MCP 结合。**价值：** Zapier/n8n 形态正在被 Agent 改造，创业机会在“确定性 workflow + Agent 处理不确定步骤”的混合编排。
+
+## 3. 论文 / 技术趋势（2-4 条）
+
+1. **企业级 Agent benchmark 开始聚焦真实 IT 任务。** Hugging Face 今日 feed 中 IBM / Artificial Analysis 的 ITBench-AA 指向“frontier models 在 agentic enterprise IT tasks 上仍低于 50%”的信号。**判断：** 企业 Agent 落地不是看通用榜单，而是看权限、工单、终端、云资源、回滚和验证链路；这给“垂直评测集 + 托管优化”留下空间。
+
+2. **推理成本仍是 Agent 商业化的硬约束。** Hacker News 今日讨论 Tiny-vLLM、KOG 的标准 GPU 3k tokens/s per request，Reddit LocalLLaMA 也在讨论 Qwen3.6 量化、GPU/带宽性价比和 llama.cpp 统一 binary。**判断：** 高频 Agent 产品如果只靠云端强模型，会被成本和延迟卡住；模型路由、量化、本地推理、cache 和批处理会直接决定毛利。
+
+3. **文档解析与数据上下文成为 RAG/Agent 的下一层竞争。** `run-llama/liteparse`、`Kaelio/ktx`、Product Hunt 的 GPS 和 Basedash Embedded Analytics 都说明同一件事：Agent 需要可信、结构化、可执行的上下文。**判断：** 单纯“上传文件问答”已经低价值，真正可收费的是能保持数据口径、权限、引用、指标定义和历史决策的系统。
+
+4. **具身与世界模型研究开始更重视可复现评测。** GitHub Trending 的 `galilai-group/stable-worldmodel` 定位为 reproducible world model research and evaluation，NVIDIA 官方博客也在强调 robotics 从 simulation 到 real world。**判断：** 机器人/世界模型短期商业化慢，但“仿真、数据采集、评测、回放、安全边界”会先变成基础设施机会。
+
+## 4. 产品 / 创业机会（2-4 条）
+
+1. **团队级 Agent 记忆层：** 连接 GitHub、Linear/Jira、Slack/飞书、Docs、BI，把 repo 规则、踩坑记录、决策原因、指标口径变成 Claude Code/Codex/Cursor 可调用上下文。收费点是减少重复解释、降低新成员和新 Agent 的上手成本。
+
+2. **浏览器后台自动化托管服务：** 选一个垂直场景，例如广告投放巡检、CRM 线索清洗、采购比价、订单异常处理。用浏览器 agent 完成操作，用截图/录像/日志做回放，用人审控制风险。先服务化赚钱，再把稳定流程抽成 API/MCP。
+
+3. **Voice Agent 质检平台：** 对接 Vapi、Retell、LiveKit、ElevenLabs 或企业电话系统，提供场景模拟、通话评分、延迟统计、话术合规、情绪和转人工建议。比直接卖完整语音机器人更容易进入客户预算。
+
+4. **AI 代码质量闸门：** 把 `aislop` 这类确定性规则与企业 lint、测试、代码审计结合，专门检查 agent 产出的常见问题：无用抽象、绕过错误、未验证边界、重复代码、假修复。可以作为 CI 插件、PR bot 或 coding agent 的 preflight。
+
+## 5. 可发 X/小红书/公众号的选题（3-5 个）
+
+1. **《Agent 创业的入口变了：不是聊天框，而是工作区、浏览器和团队记忆》** — 用 Compound Engineering plugin、AionUi、GPS、ktx 做案例。
+
+2. **《为什么浏览器自动化会成为 AI Agent 的脏活基础设施》** — 讲 agent-browser、Notte、browser-act、Integuru，以及“没有 API 的企业后台”这个真实市场。
+
+3. **《Voice Agent 下一波机会不是声音更像真人，而是质检、回放和合规评分》** — 用 EVA、EfficientAI、voicetest 和销售/客服场景切入。
+
+4. **《AI 写代码越多，代码质量闸门越值钱》** — 从 AISlop、Cloudflare AI code review、HN 对 coding agent 的争议讲“agent 输出要被治理”。
+
+5. **《RAG 别再只做知识库聊天：真正值钱的是可执行上下文层》** — 用 liteparse、ktx、GPS、Basedash 解释数据口径、权限和历史决策为什么是护城河。
+
+## 6. 行动建议
+
+1. **本周做一个“Agent 记忆层”小实验。** 选一个真实代码仓库，沉淀 20 条 repo rules、历史 bug、接口约定和发布流程，然后接入 Claude Code/Codex，比较有无记忆时的修复质量与耗时。
+
+2. **挑一个后台流程做浏览器 agent 可收费 demo。** 优先选每天重复、人工烦、但出错成本可控的流程；必须包含自动执行、失败截图、操作回放、人审确认和日志导出。
+
+3. **用真实通话样本验证 Voice Agent 质检需求。** 收集 20-50 条客服/销售录音，定义 8 个评分维度，先做人机混合评分报表，不急着做完整机器人。
+
+4. **给 coding agent 加一道确定性质量闸门。** 在现有 CI 里加入 AI 代码异味扫描清单，重点抓未测试、假修复、过度抽象、错误吞掉和敏感操作缺审计。
+
+5. **把 Agent 产品的成本模型写清楚。** 对每个高频流程记录 token、延迟、失败率、人工兜底比例，尽早设计本地小模型、cache、批处理或模型路由，避免增长后毛利被吃掉。
