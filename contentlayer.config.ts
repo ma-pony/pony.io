@@ -1,8 +1,4 @@
-import {
-  defineDocumentType,
-  ComputedFields,
-  makeSource,
-} from 'contentlayer/source-files'
+import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files'
 import readingTime from 'reading-time'
 import path from 'path'
 // Remark packages
@@ -41,6 +37,18 @@ const computedFields: ComputedFields = {
   toc: { type: 'string', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 }
 
+const workspaceComputedFields: ComputedFields = {
+  ...computedFields,
+  slug: {
+    type: 'string',
+    resolve: (doc) => doc._raw.flattenedPath.replace(/^workspace\/?/, ''),
+  },
+  path: {
+    type: 'string',
+    resolve: (doc) => doc._raw.flattenedPath,
+  },
+}
+
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
   filePathPattern: 'blog/**/*.{md,mdx}',
@@ -57,8 +65,27 @@ export const Blog = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    noindex: { type: 'boolean' },
   },
   computedFields,
+}))
+
+export const Workspace = defineDocumentType(() => ({
+  name: 'Workspace',
+  filePathPattern: 'workspace/**/*.{md,mdx}',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    tags: { type: 'list', of: { type: 'string' } },
+    lastmod: { type: 'date' },
+    draft: { type: 'boolean' },
+    summary: { type: 'string' },
+    authors: { type: 'list', of: { type: 'string' } },
+    layout: { type: 'string' },
+    noindex: { type: 'boolean' },
+  },
+  computedFields: workspaceComputedFields,
 }))
 
 export const Authors = defineDocumentType(() => ({
@@ -82,7 +109,7 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors],
+  documentTypes: [Blog, Workspace, Authors],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [

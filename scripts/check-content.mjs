@@ -39,6 +39,34 @@ function checkRiskyAngleBrackets(content) {
   return issues
 }
 
+function checkInlineStrongSpacing(content) {
+  const issues = []
+  const lines = content.split('\n')
+  let inFence = false
+
+  lines.forEach((line, index) => {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence
+      return
+    }
+
+    if (inFence) {
+      return
+    }
+
+    const normalized = stripInlineCode(line)
+    const match = normalized.match(/\*\*(为什么重要|可利用|价值|判断)：\*\*[^\s`，。；、）)】》]/)
+    if (match) {
+      issues.push({
+        line: index + 1,
+        message: '检测到加粗标签后正文紧贴，例如 `**为什么重要：**正文`；请改成 `**为什么重要：** 正文`，避免部分渲染/分发渠道误识别 Markdown。',
+      })
+    }
+  })
+
+  return issues
+}
+
 async function main() {
   const files = await globby(BLOG_FILES_GLOB)
   const issues = []
@@ -68,6 +96,14 @@ async function main() {
     }
 
     for (const issue of checkRiskyAngleBrackets(raw)) {
+      issues.push({
+        file,
+        line: issue.line,
+        message: issue.message,
+      })
+    }
+
+    for (const issue of checkInlineStrongSpacing(raw)) {
       issues.push({
         file,
         line: issue.line,

@@ -11,43 +11,43 @@ authors: ['default']
 
 ## 1. 今日最值得关注（3-5 条）
 
-1. **Codex 式“自改进业务 Agent”开始有可复制蓝图。** OpenAI 发布 Tax AI 案例：把会计师纠错沉淀成结构化 finding，再转成 eval target，最后交给 Codex 改抽取 schema、映射器、grader 或测试。**为什么重要：**这不是“让 AI 写代码”，而是把专家反馈、评测和工程修复串成闭环；财税、法务、保险、医疗文书等高毛利流程都可以照这个模式做。**可利用：**优先寻找“专家会反复纠错、错误可字段级计量、软件可持续修复”的行业。
+1. **Codex 式“自改进业务 Agent”开始有可复制蓝图。** OpenAI 发布 Tax AI 案例：把会计师纠错沉淀成结构化 finding，再转成 eval target，最后交给 Codex 改抽取 schema、映射器、grader 或测试。**为什么重要：** 这不是“让 AI 写代码”，而是把专家反馈、评测和工程修复串成闭环；财税、法务、保险、医疗文书等高毛利流程都可以照这个模式做。**可利用：** 优先寻找“专家会反复纠错、错误可字段级计量、软件可持续修复”的行业。
 
-2. **Agent Infra 新项目集中爆发：Agent 需要自己的文件系统、版本控制、通信层和专用语言。** GitHub 今日高热项目包括 `vercel-labs/zerolang`、`strukto-ai/mirage`、`Dicklesworthstone/mcp_agent_mail`、`opral/lix`。**为什么重要：**Agent 长任务的痛点正在从模型能力转到“上下文怎么存、多个 Agent 怎么协作、改动怎么回滚、任务怎么可审计”。**可利用：**不要只做应用壳，围绕“可控执行 + 状态管理 + 协作协议”做卖铲子组件。
+2. **Agent Infra 新项目集中爆发：Agent 需要自己的文件系统、版本控制、通信层和专用语言。** GitHub 今日高热项目包括 `vercel-labs/zerolang`、`strukto-ai/mirage`、`Dicklesworthstone/mcp_agent_mail`、`opral/lix`。**为什么重要：** Agent 长任务的痛点正在从模型能力转到“上下文怎么存、多个 Agent 怎么协作、改动怎么回滚、任务怎么可审计”。**可利用：** 不要只做应用壳，围绕“可控执行 + 状态管理 + 协作协议”做卖铲子组件。
 
-3. **AI 内容生产正在从 Prompt 模板走向“Agentic CMS / 发布工厂”。** `nexu-io/html-anything` 以 75 个技能、9 类内容表面、沙箱预览和一键发布切中“AI 帮我做成可发布资产”的需求；Replit 也在强调 Vibe coding 可产出 deck、dashboard、launch assets。**为什么重要：**老板真正买的是增长资产，不是聊天回复。**可利用：**把小红书、公众号、落地页、演示稿、数据报告做成“从 brief 到发布”的流水线，比卖提示词更容易收费。
+3. **AI 内容生产正在从 Prompt 模板走向“Agentic CMS / 发布工厂”。** `nexu-io/html-anything` 以 75 个技能、9 类内容表面、沙箱预览和一键发布切中“AI 帮我做成可发布资产”的需求；Replit 也在强调 Vibe coding 可产出 deck、dashboard、launch assets。**为什么重要：** 老板真正买的是增长资产，不是聊天回复。**可利用：** 把小红书、公众号、落地页、演示稿、数据报告做成“从 brief 到发布”的流水线，比卖提示词更容易收费。
 
-4. **成本/性能优化成为 Agent 商业化硬指标。** `opensquilla/opensquilla` 主打 token-efficient agent，`aattaran/deepclaude` 宣称用 Anthropic-compatible 后端复刻 Claude Code agent loop 并降低成本；Hugging Face 下载榜仍显示 Qwen 小模型和开源 GPT/LLama 体系有强需求。**为什么重要：**企业不会为炫技无限买单，稳定性、延迟和 token 成本会直接决定毛利。**可利用：**所有 Agent 方案都要附带模型路由、缓存、降级和成本报表。
+4. **成本/性能优化成为 Agent 商业化硬指标。** `opensquilla/opensquilla` 主打 token-efficient agent，`aattaran/deepclaude` 宣称用 Anthropic-compatible 后端复刻 Claude Code agent loop 并降低成本；Hugging Face 下载榜仍显示 Qwen 小模型和开源 GPT/LLama 体系有强需求。**为什么重要：** 企业不会为炫技无限买单，稳定性、延迟和 token 成本会直接决定毛利。**可利用：** 所有 Agent 方案都要附带模型路由、缓存、降级和成本报表。
 
-5. **AI 内容标注进入平台治理阶段，合成内容分发要提前合规。** YouTube 宣布把 AI 生成/重大修改内容标签放到更显眼位置，并会在检测到显著 photorealistic AI 使用时自动加标签。**为什么重要：**AI 营销素材仍有机会，但平台会越来越强调披露、检测和信任。**可利用：**做内容增长时要建立素材来源、生成记录、授权和标注策略，避免账号和品牌风险。
+5. **AI 内容标注进入平台治理阶段，合成内容分发要提前合规。** YouTube 宣布把 AI 生成/重大修改内容标签放到更显眼位置，并会在检测到显著 photorealistic AI 使用时自动加标签。**为什么重要：** AI 营销素材仍有机会，但平台会越来越强调披露、检测和信任。**可利用：** 做内容增长时要建立素材来源、生成记录、授权和标注策略，避免账号和品牌风险。
 
 ## 2. GitHub / 开源项目雷达（5-8 个）
 
-1. [`nexu-io/html-anything`](https://github.com/nexu-io/html-anything) — 约 5.2k stars，Apache-2.0。Agentic HTML editor，支持 magazine、deck、poster、小红书/推文、prototype、data report 等输出，带沙箱预览和发布入口。**价值：**可研究“AI 内容生产 + 多渠道发布”的产品包装，适合增长团队和自媒体工作流。
+1. [`nexu-io/html-anything`](https://github.com/nexu-io/html-anything) — 约 5.2k stars，Apache-2.0。Agentic HTML editor，支持 magazine、deck、poster、小红书/推文、prototype、data report 等输出，带沙箱预览和发布入口。**价值：** 可研究“AI 内容生产 + 多渠道发布”的产品包装，适合增长团队和自媒体工作流。
 
-2. [`vercel-labs/zerolang`](https://github.com/vercel-labs/zerolang) — 约 4.6k stars，Apache-2.0，C。定位为“programming language for agents”。**价值：**说明大厂开始探索 Agent 原生编程抽象；短期不一定直接采用，但值得观察其任务表达、权限边界和执行模型。
+2. [`vercel-labs/zerolang`](https://github.com/vercel-labs/zerolang) — 约 4.6k stars，Apache-2.0，C。定位为“programming language for agents”。**价值：** 说明大厂开始探索 Agent 原生编程抽象；短期不一定直接采用，但值得观察其任务表达、权限边界和执行模型。
 
-3. [`strukto-ai/mirage`](https://github.com/strukto-ai/mirage) — 约 2.7k stars，Apache-2.0，TypeScript。面向 AI Agent 的 unified virtual filesystem。**价值：**Agent 做长任务需要稳定的工作区、虚拟文件和状态隔离，这类 VFS 可能成为 Agent IDE / coding platform 基础件。
+3. [`strukto-ai/mirage`](https://github.com/strukto-ai/mirage) — 约 2.7k stars，Apache-2.0，TypeScript。面向 AI Agent 的 unified virtual filesystem。**价值：** Agent 做长任务需要稳定的工作区、虚拟文件和状态隔离，这类 VFS 可能成为 Agent IDE / coding platform 基础件。
 
-4. [`Dicklesworthstone/mcp_agent_mail`](https://github.com/Dicklesworthstone/mcp_agent_mail) — 约 2.0k stars，Python。基于 FastMCP + Git + SQLite 的异步 Agent 协调层，提供身份、收件箱、可搜索线程和 advisory file leases。**价值：**多 Agent 协作不是多开几个模型，而是需要通信、锁、上下文和审计；适合研究团队级 Agent 编排。
+4. [`Dicklesworthstone/mcp_agent_mail`](https://github.com/Dicklesworthstone/mcp_agent_mail) — 约 2.0k stars，Python。基于 FastMCP + Git + SQLite 的异步 Agent 协调层，提供身份、收件箱、可搜索线程和 advisory file leases。**价值：** 多 Agent 协作不是多开几个模型，而是需要通信、锁、上下文和审计；适合研究团队级 Agent 编排。
 
-5. [`opensquilla/opensquilla`](https://github.com/opensquilla/opensquilla) — 约 2.1k stars，Apache-2.0，Python。Token-efficient AI Agent，强调同样预算下更高 intelligence density。**价值：**成本优化会成为 Agent 产品的毛利护城河，适合拆解其上下文压缩、路由和执行策略。
+5. [`opensquilla/opensquilla`](https://github.com/opensquilla/opensquilla) — 约 2.1k stars，Apache-2.0，Python。Token-efficient AI Agent，强调同样预算下更高 intelligence density。**价值：** 成本优化会成为 Agent 产品的毛利护城河，适合拆解其上下文压缩、路由和执行策略。
 
-6. [`aattaran/deepclaude`](https://github.com/aattaran/deepclaude) — 约 2.0k stars，MIT，JavaScript。用 DeepSeek V4 Pro、OpenRouter 或 Anthropic-compatible 后端运行类似 Claude Code 的 autonomous agent loop。**价值：**“兼容 Claude Code UX + 降成本”是明确市场需求，但商用前要重点评估稳定性、模型兼容和安全边界。
+6. [`aattaran/deepclaude`](https://github.com/aattaran/deepclaude) — 约 2.0k stars，MIT，JavaScript。用 DeepSeek V4 Pro、OpenRouter 或 Anthropic-compatible 后端运行类似 Claude Code 的 autonomous agent loop。**价值：** “兼容 Claude Code UX + 降成本”是明确市场需求，但商用前要重点评估稳定性、模型兼容和安全边界。
 
-7. [`trymirai/uzu`](https://github.com/trymirai/uzu) — 约 1.6k stars，MIT，Rust。高性能 AI 模型推理引擎。**价值：**如果本地/边缘 Agent 要进入生产，推理引擎、量化和延迟优化会持续有需求。
+7. [`trymirai/uzu`](https://github.com/trymirai/uzu) — 约 1.6k stars，MIT，Rust。高性能 AI 模型推理引擎。**价值：** 如果本地/边缘 Agent 要进入生产，推理引擎、量化和延迟优化会持续有需求。
 
-8. [`simonlin1212/a-stock-data`](https://github.com/simonlin1212/a-stock-data) — 约 2.6k stars，Apache-2.0。A 股全栈数据工具包，标注 7 层架构、28 端点、13 数据源、零第三方依赖，并面向 AI coding assistants。**价值：**金融数据 + Agent 的中文垂直方向明确，可作为量化研究、投研助手、数据 API 产品的切入口。
+8. [`simonlin1212/a-stock-data`](https://github.com/simonlin1212/a-stock-data) — 约 2.6k stars，Apache-2.0。A 股全栈数据工具包，标注 7 层架构、28 端点、13 数据源、零第三方依赖，并面向 AI coding assistants。**价值：** 金融数据 + Agent 的中文垂直方向明确，可作为量化研究、投研助手、数据 API 产品的切入口。
 
 ## 3. 论文 / 技术趋势（2-4 条）
 
-1. **Agent 评测基础设施正在独立成赛道。** Semantic Scholar 检索到《Holistic Agent Leaderboard: The Missing Infrastructure for AI Agent Evaluation》（arXiv:2510.11977），指出 Agent 评测存在覆盖、可复现、真实任务代表性等问题。**判断：**企业采购 Agent 时会越来越要求“持续评测 + 回放 + 成本/成功率报表”，AgentOps 和 eval platform 有商业空间。
+1. **Agent 评测基础设施正在独立成赛道。** Semantic Scholar 检索到《Holistic Agent Leaderboard: The Missing Infrastructure for AI Agent Evaluation》（arXiv:2510.11977），指出 Agent 评测存在覆盖、可复现、真实任务代表性等问题。**判断：** 企业采购 Agent 时会越来越要求“持续评测 + 回放 + 成本/成功率报表”，AgentOps 和 eval platform 有商业空间。
 
-2. **垂直 Coding Agent benchmark 开始细分到行业任务。** 《SWE-Bench 5G: Benchmarking AI Coding Agents on Telecom Network Engineering Tasks》（arXiv:2604.26278）把代码 Agent 评测放到 5G 网络工程任务里。**判断：**通用 SWE-bench 高分不等于能服务行业客户；创业公司可以围绕金融、广告、电商、运维等垂直领域建立私有 benchmark，变成销售壁垒。
+2. **垂直 Coding Agent benchmark 开始细分到行业任务。** 《SWE-Bench 5G: Benchmarking AI Coding Agents on Telecom Network Engineering Tasks》（arXiv:2604.26278）把代码 Agent 评测放到 5G 网络工程任务里。**判断：** 通用 SWE-bench 高分不等于能服务行业客户；创业公司可以围绕金融、广告、电商、运维等垂直领域建立私有 benchmark，变成销售壁垒。
 
-3. **生产数据自动生成 benchmark 是 AI Coding 落地关键。** 《REAP: Automatic Curation of Coding Agent Benchmarks from Interactive Production Usage》（arXiv:2604.01527）关注从真实交互生产使用中自动整理 coding agent benchmark。**判断：**未来最有价值的数据不是公开题库，而是企业自己的失败案例、修复轨迹和验收标准；谁能安全沉淀这套数据，谁就能持续优化 Agent。
+3. **生产数据自动生成 benchmark 是 AI Coding 落地关键。** 《REAP: Automatic Curation of Coding Agent Benchmarks from Interactive Production Usage》（arXiv:2604.01527）关注从真实交互生产使用中自动整理 coding agent benchmark。**判断：** 未来最有价值的数据不是公开题库，而是企业自己的失败案例、修复轨迹和验收标准；谁能安全沉淀这套数据，谁就能持续优化 Agent。
 
-4. **终端 Agent benchmark 设计开始关注“对抗、困难、可读”。** 《What Makes a Good Terminal-Agent Benchmark Task》（arXiv:2604.28093）讨论如何设计更难且可解释的终端 Agent 任务。**判断：**Agent 进入运维/数据/开发工作流前，需要对“危险命令、环境差异、权限、失败恢复”有更严格评测。
+4. **终端 Agent benchmark 设计开始关注“对抗、困难、可读”。** 《What Makes a Good Terminal-Agent Benchmark Task》（arXiv:2604.28093）讨论如何设计更难且可解释的终端 Agent 任务。**判断：** Agent 进入运维/数据/开发工作流前，需要对“危险命令、环境差异、权限、失败恢复”有更严格评测。
 
 ## 4. 产品 / 创业机会（2-4 条）
 

@@ -11,43 +11,43 @@ authors: ['default']
 
 ## 1. 今日最值得关注（3-5 条）
 
-1. **Agent 基础设施开始像云服务一样分层：沙箱、浏览器、记忆、MCP 网关成为新卖铲子机会。** Vercel 的 Sandbox Persistence GA、Firecrawl 进入 Vercel Marketplace，Cloudflare 此前发布 Claude Managed Agents，叠加 GitHub 上 `metorial/metorial`、`vercel-labs/agent-browser`、`thedotmack/claude-mem` 的高活跃，说明 Agent 不再只是 Prompt/框架竞争，而是在抢“运行环境 + 工具接入 + 上下文持久化”的标准位置。**可利用：**优先做垂直场景的 Agent 运行层组件，而不是再做一个通用聊天壳。
+1. **Agent 基础设施开始像云服务一样分层：沙箱、浏览器、记忆、MCP 网关成为新卖铲子机会。** Vercel 的 Sandbox Persistence GA、Firecrawl 进入 Vercel Marketplace，Cloudflare 此前发布 Claude Managed Agents，叠加 GitHub 上 `metorial/metorial`、`vercel-labs/agent-browser`、`thedotmack/claude-mem` 的高活跃，说明 Agent 不再只是 Prompt/框架竞争，而是在抢“运行环境 + 工具接入 + 上下文持久化”的标准位置。**可利用：** 优先做垂直场景的 Agent 运行层组件，而不是再做一个通用聊天壳。
 
-2. **“浏览器 Agent”正在成为独立品类，反爬、元素理解、人工接管是商业化关键。** `vercel-labs/agent-browser` 约 34k stars，`jo-inc/camofox-browser` 主打 stealth browser，`browser-act/skills` 强调多账号、多会话、遇阻交给人，`tinyfish-io/agentql` 用查询语言把网页变成可操作接口。**为什么重要：**许多真实商业流程仍在网页后台里，谁能稳定穿过登录、风控、验证码、人审，谁就能卖高客单价自动化。
+2. **“浏览器 Agent”正在成为独立品类，反爬、元素理解、人工接管是商业化关键。** `vercel-labs/agent-browser` 约 34k stars，`jo-inc/camofox-browser` 主打 stealth browser，`browser-act/skills` 强调多账号、多会话、遇阻交给人，`tinyfish-io/agentql` 用查询语言把网页变成可操作接口。**为什么重要：** 许多真实商业流程仍在网页后台里，谁能稳定穿过登录、风控、验证码、人审，谁就能卖高客单价自动化。
 
-3. **企业 AI Coding 的 ROI 叙事从“写代码更快”转向“可审计交付”。** OpenAI 官方案例强调 Codex 在 Virgin Atlantic、Ramp 的代码评审/测试/交付效率；Cloudflare 分享 CI-native AI code review；GitHub 上 `bytedance/deer-flow`、`affaan-m/ECC`、`shanraisshan/claude-code-best-practice` 等继续高热。**可利用：**面向团队卖“交付质量、测试覆盖、代码审计、成本报表”，比卖“AI 写代码”更容易进企业预算。
+3. **企业 AI Coding 的 ROI 叙事从“写代码更快”转向“可审计交付”。** OpenAI 官方案例强调 Codex 在 Virgin Atlantic、Ramp 的代码评审/测试/交付效率；Cloudflare 分享 CI-native AI code review；GitHub 上 `bytedance/deer-flow`、`affaan-m/ECC`、`shanraisshan/claude-code-best-practice` 等继续高热。**可利用：** 面向团队卖“交付质量、测试覆盖、代码审计、成本报表”，比卖“AI 写代码”更容易进企业预算。
 
-4. **中文圈继续放大国产 Coding/Agent 模型与工程实践，值得把“模型榜单热度”转成开发者获客内容。** 量子位、InfoQ 中文都在跟进千问编程模型、Agent 模型、Snowflake/ AWS MCP、Cortex Code Agent SDK 等话题。中文源是二手信号，但说明国内开发者对“把模型接进工作流”的需求强。**可利用：**做中文教程、benchmark 复现、成本对比，会比单纯转发模型发布更容易涨粉和转化。
+4. **中文圈继续放大国产 Coding/Agent 模型与工程实践，值得把“模型榜单热度”转成开发者获客内容。** 量子位、InfoQ 中文都在跟进千问编程模型、Agent 模型、Snowflake/ AWS MCP、Cortex Code Agent SDK 等话题。中文源是二手信号，但说明国内开发者对“把模型接进工作流”的需求强。**可利用：** 做中文教程、benchmark 复现、成本对比，会比单纯转发模型发布更容易涨粉和转化。
 
-5. **本地/边缘 AI 的传播点变成“低成本可运行”：WebGPU、量化、路由小模型。** Reddit LocalLLaMA 热议 1-bit/ternary 图像模型可在浏览器 WebGPU 跑、低成本 Qwen 27B 硬件方案、Cactus Hybrid Router 用小模型决定何时调用云端模型。**可利用：**产品上不要只追最大模型；“本地优先 + 云端兜底 + 成本可解释”的混合架构更适合中小企业和个人工具。
+5. **本地/边缘 AI 的传播点变成“低成本可运行”：WebGPU、量化、路由小模型。** Reddit LocalLLaMA 热议 1-bit/ternary 图像模型可在浏览器 WebGPU 跑、低成本 Qwen 27B 硬件方案、Cactus Hybrid Router 用小模型决定何时调用云端模型。**可利用：** 产品上不要只追最大模型；“本地优先 + 云端兜底 + 成本可解释”的混合架构更适合中小企业和个人工具。
 
 ## 2. GitHub / 开源项目雷达（5-8 个）
 
-1. [`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem) — 约 78.7k stars，Apache-2.0。为 Claude Code、Codex、Gemini、Hermes、OpenCode 等 Agent 提供跨会话记忆压缩与注入。**价值：**“记忆层”会成为 Agent 工作台标配，可借鉴其事件捕获、压缩、检索注入设计。
+1. [`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem) — 约 78.7k stars，Apache-2.0。为 Claude Code、Codex、Gemini、Hermes、OpenCode 等 Agent 提供跨会话记忆压缩与注入。**价值：** “记忆层”会成为 Agent 工作台标配，可借鉴其事件捕获、压缩、检索注入设计。
 
-2. [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) — 约 69.7k stars，MIT。长程 SuperAgent harness，覆盖研究、编码、创作、沙箱、记忆、工具、subagents。**价值：**适合研究长任务编排与多 Agent 协作 UX，但 open issues 较多，商用复用要谨慎评估稳定性。
+2. [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) — 约 69.7k stars，MIT。长程 SuperAgent harness，覆盖研究、编码、创作、沙箱、记忆、工具、subagents。**价值：** 适合研究长任务编排与多 Agent 协作 UX，但 open issues 较多，商用复用要谨慎评估稳定性。
 
-3. [`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser) — 约 34.4k stars，Apache-2.0，Rust。面向 AI Agent 的浏览器自动化 CLI。**价值：**如果未来 Agent 需要“浏览器即执行环境”，Vercel 很可能把浏览器能力接进前端/部署生态。
+3. [`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser) — 约 34.4k stars，Apache-2.0，Rust。面向 AI Agent 的浏览器自动化 CLI。**价值：** 如果未来 Agent 需要“浏览器即执行环境”，Vercel 很可能把浏览器能力接进前端/部署生态。
 
-4. [`jo-inc/camofox-browser`](https://github.com/jo-inc/camofox-browser) — 约 5.8k stars，MIT。stealth headless browser，定位为 Puppeteer/Playwright 替代。**价值：**它瞄准的是真实网页自动化最痛的反机器人问题，可用于调研“合规风控 + 自动化成功率”产品边界。
+4. [`jo-inc/camofox-browser`](https://github.com/jo-inc/camofox-browser) — 约 5.8k stars，MIT。stealth headless browser，定位为 Puppeteer/Playwright 替代。**价值：** 它瞄准的是真实网页自动化最痛的反机器人问题，可用于调研“合规风控 + 自动化成功率”产品边界。
 
-5. [`browser-act/skills`](https://github.com/browser-act/skills) — 约 1.5k stars，MIT。强调突破反机器人、多任务、多账号、人工接管。**价值：**“Agent 卡住时交给人”是高价值流程自动化的必备机制，可参考其 human-in-the-loop 设计。
+5. [`browser-act/skills`](https://github.com/browser-act/skills) — 约 1.5k stars，MIT。强调突破反机器人、多任务、多账号、人工接管。**价值：** “Agent 卡住时交给人”是高价值流程自动化的必备机制，可参考其 human-in-the-loop 设计。
 
-6. [`tinyfish-io/agentql`](https://github.com/tinyfish-io/agentql) — 约 1.4k stars，MIT。用查询语言和 Playwright 集成让 AI 精准抽取/操作网页元素。**价值：**把不稳定 DOM 操作抽象成 Agent 可理解的接口，适合电商、CRM、数据采集等垂直场景。
+6. [`tinyfish-io/agentql`](https://github.com/tinyfish-io/agentql) — 约 1.4k stars，MIT。用查询语言和 Playwright 集成让 AI 精准抽取/操作网页元素。**价值：** 把不稳定 DOM 操作抽象成 Agent 可理解的接口，适合电商、CRM、数据采集等垂直场景。
 
-7. [`metorial/metorial`](https://github.com/metorial/metorial) — 约 3.3k stars，Apache-2.0。连接任意 AI 模型到 1200+ integrations，支持 MCP、CLI、API。**价值：**“Vercel for MCP”式定位清晰，值得研究其 integration marketplace 和开发者分发路径。
+7. [`metorial/metorial`](https://github.com/metorial/metorial) — 约 3.3k stars，Apache-2.0。连接任意 AI 模型到 1200+ integrations，支持 MCP、CLI、API。**价值：** “Vercel for MCP”式定位清晰，值得研究其 integration marketplace 和开发者分发路径。
 
-8. [`airweave-ai/airweave`](https://github.com/airweave-ai/airweave) — 约 6.4k stars，MIT。AI Agent 的开源 context retrieval layer。**价值：**Agent 要进入企业系统，检索层不只是 RAG，而是权限、同步、连接器、审计的组合。
+8. [`airweave-ai/airweave`](https://github.com/airweave-ai/airweave) — 约 6.4k stars，MIT。AI Agent 的开源 context retrieval layer。**价值：** Agent 要进入企业系统，检索层不只是 RAG，而是权限、同步、连接器、审计的组合。
 
 ## 3. 论文 / 技术趋势（2-4 条）
 
-1. **Computer-use Agent 从论文走向工程组件。** Crossref 检索到 2025 ACL 相关综述《OS Agents: A Survey on MLLM-based Agents for Computer, Phone and Browser Use》，GitHub 上 `xlang-ai/OpenCUA` 标注 NeurIPS 2025 Spotlight，并在 2026-05-25 仍有更新。**判断：**GUI/浏览器/手机操作 Agent 的核心瓶颈不只是模型能力，而是可重复评测、权限隔离、执行回放与失败恢复。
+1. **Computer-use Agent 从论文走向工程组件。** Crossref 检索到 2025 ACL 相关综述《OS Agents: A Survey on MLLM-based Agents for Computer, Phone and Browser Use》，GitHub 上 `xlang-ai/OpenCUA` 标注 NeurIPS 2025 Spotlight，并在 2026-05-25 仍有更新。**判断：** GUI/浏览器/手机操作 Agent 的核心瓶颈不只是模型能力，而是可重复评测、权限隔离、执行回放与失败恢复。
 
-2. **Document parsing benchmark 正在服务 Agent，而不只是 OCR。** LlamaIndex 发布 ParseBench，定位为“AI Agents 的文档解析 benchmark”；Crossref 也出现 DraftNEPABench 等面向编码/文档 Agent 的基准。**判断：**金融、法律、KYC、保险等场景的 Agent 商业化，关键输入往往是复杂 PDF/扫描件，文档解析评测会直接影响成交。
+2. **Document parsing benchmark 正在服务 Agent，而不只是 OCR。** LlamaIndex 发布 ParseBench，定位为“AI Agents 的文档解析 benchmark”；Crossref 也出现 DraftNEPABench 等面向编码/文档 Agent 的基准。**判断：** 金融、法律、KYC、保险等场景的 Agent 商业化，关键输入往往是复杂 PDF/扫描件，文档解析评测会直接影响成交。
 
-3. **推理提速方向继续从“更大模型”转向“预测更多 token / 更聪明路由”。** InfoQ 中文报道 Gemma 4 多词元预测最高约 3 倍生成速度；Reddit LocalLLaMA 热议小型 router 模型把部分任务留在本地、部分转云端。**判断：**对产品来说，成本/延迟优化会成为护城河；可以包装成“同等体验下 token 成本下降”的明确 ROI。
+3. **推理提速方向继续从“更大模型”转向“预测更多 token / 更聪明路由”。** InfoQ 中文报道 Gemma 4 多词元预测最高约 3 倍生成速度；Reddit LocalLLaMA 热议小型 router 模型把部分任务留在本地、部分转云端。**判断：** 对产品来说，成本/延迟优化会成为护城河；可以包装成“同等体验下 token 成本下降”的明确 ROI。
 
-4. **Agent 评测从单次任务成功率转向长期自我优化与真实工作流。** Hugging Face 近期有 Open Agent Leaderboard，社区讨论 self-optimizing agents 在 TerminalBench 子集上通过反思改写提升表现。**判断：**未来卖给企业的不是一次 demo，而是持续监控、回放、改进策略的 AgentOps。
+4. **Agent 评测从单次任务成功率转向长期自我优化与真实工作流。** Hugging Face 近期有 Open Agent Leaderboard，社区讨论 self-optimizing agents 在 TerminalBench 子集上通过反思改写提升表现。**判断：** 未来卖给企业的不是一次 demo，而是持续监控、回放、改进策略的 AgentOps。
 
 ## 4. 产品 / 创业机会（2-4 条）
 

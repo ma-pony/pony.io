@@ -7,7 +7,8 @@ import { InferGetStaticPropsType } from 'next'
 import { allBlogs } from 'contentlayer/generated'
 
 export async function getStaticPaths() {
-  const tags = await getAllTags(allBlogs)
+  const publicPosts = allBlogs.filter((post) => !post.draft && !post.noindex)
+  const tags = await getAllTags(publicPosts)
 
   return {
     paths: Object.keys(tags).map((tag) => ({
@@ -23,7 +24,8 @@ export const getStaticProps = async (context) => {
   const tag = context.params.tag as string
   const filteredPosts = allCoreContent(
     allBlogs.filter(
-      (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(tag)
+      (post) =>
+        post.draft !== true && !post.noindex && post.tags.map((t) => kebabCase(t)).includes(tag)
     )
   )
 

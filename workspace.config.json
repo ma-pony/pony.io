@@ -1,0 +1,64 @@
+{
+  "vaultPathEnv": "OBSIDIAN_VAULT_PATH",
+  "fallbackVaultPath": "~/Documents/Obsidian Vault",
+  "outputDir": "data/workspace",
+  "notes": [
+    {
+      "source": "Agent 工作方向总计划.md",
+      "slug": "agent-career-plan",
+      "title": "AI Agent 工作机会推进总计划",
+      "summary": "围绕 AI Agent 工作机会转化的北极星目标、岗位画像、能力证据和推进节奏。"
+    },
+    {
+      "source": "AI Agent 学习计划.md",
+      "slug": "agent-learning-plan",
+      "title": "AI Agent 学习计划",
+      "summary": "面向 AI Agent 应用工程、RAG 与大模型产品落地岗位的 30/60/90 天学习路线。"
+    },
+    {
+      "source": "AI Agent 专业理论学习计划.md",
+      "slug": "agent-theory-plan",
+      "title": "AI Agent 专业理论学习计划",
+      "summary": "补齐 LLM、RAG、Agent、tool use、memory、eval 等理论能力的学习地图。"
+    },
+    {
+      "source": "AI Agent 作品集.md",
+      "slug": "agent-portfolio",
+      "title": "AI Agent 作品集",
+      "summary": "把学习与真实自动化系统转化为可展示、可面试、可触达的作品集证据。"
+    },
+    {
+      "source": "AI Agent 面试题库.md",
+      "slug": "agent-interview-bank",
+      "title": "AI Agent 面试题库",
+      "summary": "AI Agent、RAG、tool calling、eval、memory/context 等方向的面试问题和回答要点。"
+    },
+    {
+      "source": "AI Agent 周复盘.md",
+      "slug": "agent-weekly-review",
+      "title": "AI Agent 周复盘",
+      "summary": "围绕学习、作品集、触达和机会反馈的周度复盘。"
+    }
+  ],
+  "excludedHeadings": [
+    "AI Agent 方向简历",
+    "简历转化",
+    "30 秒自我介绍",
+    "目标公司清单",
+    "30 天执行路线图",
+    "Obsidian 文件体系",
+    "主动触达计划",
+    "触达对象",
+    "每条机会记录字段",
+    "触达话术模板",
+    "今天立刻做的 5 件小事",
+    "下一步立即动作",
+    "下一步动作"
+  ],
+  "redactPatterns": [
+    "(?i)(api[_-]?key|token|secret|password|cookie|authorization)\\s*[:=]\\s*\\S+",
+    "(?i)(bearer)\\s+[A-Za-z0-9._~+/-]+=*",
+    "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
+    "(?<!\\d)(?:\\+?86[- ]?)?1[3-9]\\d{9}(?!\\d)"
+  ]
+}

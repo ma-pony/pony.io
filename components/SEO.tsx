@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import siteMetadata from '@/data/siteMetadata'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, Authors } from 'contentlayer/generated'
+import type { Blog, Authors, Workspace } from 'contentlayer/generated'
 interface CommonSEOProps {
   title: string
   description: string
@@ -15,6 +15,7 @@ interface CommonSEOProps {
       }[]
   twImage: string
   canonicalUrl?: string
+  noindex?: boolean
 }
 
 const CommonSEO = ({
@@ -24,12 +25,13 @@ const CommonSEO = ({
   ogImage,
   twImage,
   canonicalUrl,
+  noindex,
 }: CommonSEOProps) => {
   const router = useRouter()
   return (
     <Head>
       <title>{title}</title>
-      <meta name="robots" content="follow, index" />
+      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'follow, index'} />
       <meta name="description" content={description} />
       <meta property="og:url" content={`${siteMetadata.siteUrl}${router.asPath}`} />
       <meta property="og:type" content={ogType} />
@@ -97,9 +99,12 @@ export const TagSEO = ({ title, description }: PageSEOProps) => {
   )
 }
 
-interface BlogSeoProps extends CoreContent<Blog> {
+interface BlogSeoProps extends CoreContent<Blog | Workspace> {
   authorDetails?: CoreContent<Authors>[]
   url: string
+  images?: string[]
+  canonicalUrl?: string
+  noindex?: boolean
 }
 
 export const BlogSEO = ({
@@ -111,6 +116,7 @@ export const BlogSEO = ({
   url,
   images = [],
   canonicalUrl,
+  noindex,
 }: BlogSeoProps) => {
   const publishedAt = new Date(date).toISOString()
   const modifiedAt = new Date(lastmod || date).toISOString()
@@ -177,6 +183,7 @@ export const BlogSEO = ({
         ogImage={featuredImages}
         twImage={twImageUrl}
         canonicalUrl={canonicalUrl}
+        noindex={noindex}
       />
       <Head>
         {date && <meta property="article:published_time" content={publishedAt} />}
