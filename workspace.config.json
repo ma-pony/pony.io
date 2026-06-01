@@ -52,6 +52,12 @@
       "summary": "用于验证 Self-Improving Research Agent 策略更新质量的 golden set、评分维度和初始样本。"
     },
     {
+      "source": "两篇 AI Agent Survey 深度分析报告：持续学习与自动化科研.md",
+      "slug": "agent-survey-continual-learning-auto-research-analysis",
+      "title": "两篇 AI Agent Survey 深度分析报告：持续学习与自动化科研",
+      "summary": "把持续学习和自动化科研两篇 survey 合并成 Self-Improving Research Agent 的理论底座、工程框架和作品集行动方案。"
+    },
+    {
       "source": "AI Agent 面试题库.md",
       "slug": "agent-interview-bank",
       "title": "AI Agent 面试题库",
