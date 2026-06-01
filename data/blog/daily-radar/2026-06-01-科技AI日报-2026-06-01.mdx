@@ -1,0 +1,80 @@
+---
+title: '科技/AI 日报 — 2026-06-01'
+date: '2026-06-01'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最值得盯的是 Agent 基础设施继续从“模型能力”下沉到浏览器执行、工具治理、文档可用性和本地推理成本。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-06-01
+
+## 1. 今日最值得关注
+
+1. **浏览器正在变成 Agent 接入真实业务的默认执行层。** GitHub API 显示 `browser-use/browser-use` 已到约 96.4k stars，`ChromeDevTools/chrome-devtools-mcp` 约 42.4k stars，`vercel-labs/agent-browser` 约 34.9k stars，`browserbase/stagehand` 约 22.9k stars，且都在近期活跃更新。**为什么重要：** 大量有预算的流程没有好 API，只有网页后台、登录态、验证码、人审和异常状态。浏览器 Agent 的价值不是“帮人上网”，而是把这些脏流程变成可记录、可回放、可接管的业务执行单元。**老板可用动作：** 选一个自己熟悉的后台流程，先做“半自动执行 + 截图日志 + 人审确认”，别急着做全自动。
+
+2. **Agent 产品开始围绕“给 Agent 用的互联网”重写基础设施。** HN 上 `Agent.email` 的讨论热度明显高于普通小工具，它的核心不是邮箱，而是让 Agent 通过 curl/Markdown 完成注册、受限收件、向人类索取 OTP、再解除限制。**判断：** 未来很多 SaaS 会需要一套 agent-native onboarding：Markdown 文档、机器可读的权限、短 ID、受限凭证、人工认领、审计日志。**老板可用动作：** 以后做 Agent 工具时，先问一个问题：这个产品如果主要用户是 Agent，而不是人，登录、权限、文档、错误返回应该怎么改？
+
+3. **Coding Agent 的竞争正在从“会写代码”转向“团队工程习惯注入”。** HN 的 `phnx-labs/agents-cli` 主打把 Claude Code、Codex 等 CLI agent 统一到一个工具链里，提供项目级资源、skills、plugins、secrets、subagents、workflows、rules、permission groups、hooks；Microsoft 的 `AI-Engineering-Coach` 也把关键词放在 agentic engineering。**为什么重要：** 单个模型能力会被快速追平，但团队规范、项目记忆、权限策略、验收清单、CI 修复流程会沉淀成组织资产。**老板可用动作：** 把自己的 Hermes/Codex 工作流整理成一套可展示的“Agent Engineering Playbook”，这比单纯展示几个 demo 更适合求职和内容输出。
+
+4. **小模型 Agent 和本地推理重新抬头，核心变量是单位任务成本。** `Doorman11991/smallcode` README/API 描述显示它定位为“optimized for small LLMs”，`lightseekorg/tokenspeed` 定位为 LLM inference engine，LocalLLaMA 也在讨论本地 GPU、Parakeet GGUF、Minimax M3 等信号。**判断：** 真正跑高频 Agent 流程时，成本、延迟、可离线、隐私会逼产品做模型路由：小模型负责检索、分类、格式化、工具选择，大模型负责复杂推理和最终决策。**老板可用动作：** 给现有 Agent 任务补一张成本表：每次任务 token、TTFT、总延迟、失败率、人工接管次数和单次成本。
+
+5. **文档正在从“给人看”变成“给 Agent 验证”。** HN 的 `dari-docs` 和 GitHub 上 `mupt-ai/dari-docs` 方向很小，但信号很准：让多组 Agent 真实跑文档里的任务，找出文档让 Agent 卡住的地方。**为什么重要：** MCP server、SDK、CLI、API 产品的增长，会越来越依赖 Agent 能不能按文档成功集成。**老板可用动作：** 给自己的项目做一次“低智模型文档验收”：让一个便宜模型只看 README 完成安装、配置、跑测试，记录失败点。
+
+## 2. GitHub / 开源项目雷达
+
+1. [`browser-use/browser-use`](https://github.com/browser-use/browser-use) — 约 96.4k stars，Python，MIT，近期活跃。定位是让网站可被 AI agents 自动化。**价值：** 学它如何抽象浏览器动作、状态和工具调用；**风险：** 通用浏览器 Agent 容易在复杂登录态、反自动化、异常页面里失稳，商用要加人审和回放。
+
+2. [`ChromeDevTools/chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) — 约 42.4k stars，TypeScript，Apache-2.0。Chrome DevTools for coding agents。**价值：** 这是浏览器调试能力被 MCP 化的强信号；Web QA、性能诊断、DOM 检查、截图验证都能进入 coding agent 闭环。
+
+3. [`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser) — 约 34.9k stars，Rust，Apache-2.0。面向 AI agents 的浏览器自动化 CLI。**价值：** Vercel 把浏览器执行环境纳入 Agent 开发生态；值得看 CLI UX、sandbox、会话和权限设计。
+
+4. [`browserbase/stagehand`](https://github.com/browserbase/stagehand) — 约 22.9k stars，TypeScript，MIT。Browser Agents SDK。**价值：** 更偏工程集成，适合学习如何把自然语言动作、selector、fallback 和浏览器基础设施组合起来。
+
+5. [`nexu-io/html-anything`](https://github.com/nexu-io/html-anything) — 约 5.6k stars，HTML，Apache-2.0，2026-05 新项目。README/API 描述为 agentic HTML editor，覆盖 magazine、deck、poster、XHS/tweet、prototype、data report 等 9 类输出。**价值：** 它把“Agent 生成内容”包装成具体发布面，而不是泛泛的编辑器；适合拆它的模板、技能、导出和内容分发设计。
+
+6. [`microsoft/AI-Engineering-Coach`](https://github.com/microsoft/AI-Engineering-Coach) — 约 1.8k stars，TypeScript，MIT，描述为 better agentic engineering。**价值：** 大厂也在把 agentic engineering 当成可训练能力；适合反向整理一套求职叙事：如何用 Agent 提高工程质量，而不是只提高产出速度。
+
+7. [`Doorman11991/smallcode`](https://github.com/Doorman11991/smallcode) — 约 1.7k stars，JavaScript，MIT，描述为 optimized for small LLMs。**价值：** 证明“小模型 + 工具 + 检索 + 执行验证”仍有市场；**风险：** 项目声称的 benchmark 需要独立复现，不能直接当事实引用。
+
+8. [`mupt-ai/dari-docs`](https://github.com/mupt-ai/dari-docs) — 约 43 stars，Go，无明确许可证。定位是用多 Agent 优化文档。**价值：** stars 小但产品切点准：Agent 时代，文档质量可以被真实任务成功率评估。许可证不清，商用复用要谨慎。
+
+## 3. 技术趋势 / 论文 / 产品信号
+
+1. **GitHub 官方继续强化“协调式 Agent”叙事。** GitHub Blog 列出 “How Squad runs coordinated AI agents inside your repository”“GitHub Copilot coding agent 101”“Agentic AI, MCP, and spec-driven development”等内容。**判断：** 代码场景正在从单 Agent 补全进入多 Agent 分工、仓库内协作、spec-driven 的阶段；求职作品集要展示任务拆解、评审、验证和回滚，而不是只展示生成速度。
+
+2. **Product Hunt 的日信号偏“个人知识与 AI 剪藏”。** Feed 中出现 Web Clipper for NotebookLM、Second Brain for AI、Clipto 等。**判断：** 个人知识库市场还在围绕“收集更多”打转，但真正痛点是“收集后可被 Agent 调用并转成行动”。老板如果做内容/学习系统，要把重点放在提取、复用、验证和发布，而不是又造一个收藏夹。
+
+3. **HN 上的 `AG2B` 把 Agent loop 放进浏览器。** 它的说法是工具就是已有 client functions，server 只做薄代理和权限控制。**判断：** 这条路线适合 B2B 应用内助手：不必让 Agent 操作 DOM，也不必重建后端编排器，而是把现有前端动作暴露给 Agent。风险是权限边界和状态一致性要设计得非常清楚。
+
+4. **arXiv 与 Semantic Scholar 今日访问受限。** arXiv API 返回 429 或 SSL/timeout，Semantic Scholar 也返回 429。**处理：** 今天不硬塞论文条目；用 GitHub、官方博客、HN、Product Hunt、Reddit 信号支撑判断。论文雷达明天再补，不用编造。
+
+## 4. 对老板有价值的机会
+
+1. **浏览器 Agent 托管自动化：** 选择一个高频后台流程，比如内容发布巡检、CRM 线索清洗、电商后台上架、发票/采购对账。MVP 只做四件事：执行脚本、截图录像、失败原因、人审按钮。验证方式：找 3 个潜在用户，让他们提供一条真实流程，按“每周省几小时/减少几次错误”报价。
+
+2. **Agent-native SaaS 体检服务：** 帮 SaaS/开源项目检查它们是否适合被 Agent 使用：有没有 llms.txt、机器可读 quickstart、稳定 CLI 输出、短 ID、权限最小化、测试凭证、错误码、MCP/API。验证方式：挑 5 个开源工具写公开评测，顺便做成求职作品集和咨询样例。
+
+3. **Agent Engineering Playbook：** 把老板自己的 Hermes/Codex/Claude Code 工作流做成可复用材料：任务拆解模板、repo rules、skills、subagents、review checklist、成本表、失败复盘。变现路径暂时不是课程，而是求职和技术影响力：让别人看到你不是“会用 AI”，而是懂 Agent 工程化。
+
+4. **小模型成本路由实验：** 选 5 类 Agent 子任务：分类、摘要、代码定位、测试失败归因、输出格式化。分别用本地/便宜模型和强模型跑，记录质量、延迟、成本。验证目标不是追求完美，而是找出哪些步骤可以低成本替换。
+
+## 5. 可沉淀/可发布的内容选题
+
+1. **《浏览器 Agent 为什么是企业自动化的脏活入口》** — 用 browser-use、Chrome DevTools MCP、agent-browser、Stagehand 做证据，讲没有 API 的后台才是预算所在。
+
+2. **《Agent 时代，SaaS 要重新设计注册、权限和文档》** — 从 Agent.email、AG2B、dari-docs 切入，讲 agent-native onboarding。
+
+3. **《Coding Agent 的下一层竞争：团队工程习惯，而不是模型更聪明》** — 用 agents-cli、AI-Engineering-Coach、Codex、GitHub Squad 讲组织资产。
+
+4. **《为什么小模型 Agent 还值得研究：成本表会逼你分层》** — 用 smallcode、tokenspeed、LocalLLaMA 讨论模型路由和单位任务成本。
+
+5. **《给项目做一次 Agent 可用性测试：让低智模型只看 README 完成任务》** — 可以变成一个公开 checklist，也能服务求职作品集。
+
+## 6. 明日/本周行动建议
+
+1. **今天就做一张 Agent 成本表。** 选一个真实任务，记录 token、TTFT、总延迟、失败率、人工接管次数、单次成本；没有这张表，后面讨论本地模型和路由都是空的。
+
+2. **本周拆一个浏览器 Agent 项目。** 优先 `ChromeDevTools/chrome-devtools-mcp` 或 `Stagehand`，目标不是完整掌握，而是产出一篇“浏览器 Agent 的工程边界：能做什么、容易死在哪、商用要补什么”。
+
+3. **把自己的项目 README 做 Agent 验收。** 让一个便宜模型按 README 从零跑通安装/测试/一个真实任务，把失败点改掉；这件事同时提高作品集可信度和内容素材密度。
