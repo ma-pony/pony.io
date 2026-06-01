@@ -30,6 +30,10 @@ function wikilinkToMarkdown(slugMap, _match, target, label) {
   return `[${display}](/workspace/${slug}${heading ? `#${heading}` : ''})`
 }
 
+function normalizeBareAngleLinks(line) {
+  return line.replace(/<((?:https?:|mailto:)[^>]+)>/g, '[$1]($1)')
+}
+
 function normalizeTags(line) {
   return line.replace(/(^|\s)#([\p{Script=Han}\p{Letter}\p{Number}_/-]+)/gu, '$1`#$2`')
 }
@@ -74,6 +78,7 @@ function transformBody(raw, sourceName, slugMap, excludedHeadings) {
     .replace(/!\[\[([^\]]+)\]\]/g, (_, target) => `**附件：** ${target}`)
     .replace(/\[\[([^|\]]+)(?:\|([^\]]+))?\]\]/g, (...args) => wikilinkToMarkdown(slugMap, ...args))
     .split('\n')
+    .map(normalizeBareAngleLinks)
     .map(normalizeTags)
     .join('\n')
     .trim()

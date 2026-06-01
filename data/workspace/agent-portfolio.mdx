@@ -1,6 +1,6 @@
 ---
 title: AI Agent 作品集
-date: '2026-05-31T00:54:30.243Z'
+date: '2026-06-01T02:46:47.600Z'
 summary: 把学习与真实自动化系统转化为可展示、可面试、可触达的作品集证据。
 tags:
   - workspace
@@ -19,7 +19,7 @@ noindex: true
 
 创建日期：2026-05-30
 标签：#AI-Agent `#作品集` `#求职` `#项目`
-相关笔记：AI Agent 工作机会推进总计划、持续学习与自动化科研 Survey 学习笔记
+相关笔记：AI Agent 工作机会推进总计划、[持续学习与自动化科研 Survey 学习笔记](/workspace/continual-auto-research-survey-notes)、[Self-Improving Research Agent 作品集实施计划](/workspace/self-improving-research-agent-plan)
 
 ## 作品集目标
 
@@ -73,7 +73,32 @@ MVP 功能：
 - 生成触达话术。
 - 保存到 Obsidian 机会清单。
 
-## 项目 2：企业知识库 + 销售问答 Agent
+## 项目 2：Self-Improving Research Agent
+
+目标：持续监控 AI Agent / LLM / RAG / Eval 方向论文、GitHub 项目和行业信号，生成证据化研究简报与社媒草稿，并根据人工反馈逐步优化筛选和写作策略。
+
+对应岗位：AI Agent 应用工程、RAG 工程、Agent Workflow、AI 自动化、研究工具方向。
+
+MVP 功能：
+
+- 采集 GitHub / 论文 / 博客 / 行业信号。
+- 判断候选内容适合日报、深度拆解、作品集还是社媒草稿。
+- 抽取 README / 论文 / 核心代码证据。
+- 生成日报段落、研究笔记和 X 草稿。
+- 记录人工反馈。
+- 把反馈转成 memory / rubric 更新建议。
+- 用 golden set 做回归评测，避免越改越差。
+
+可展示点：
+
+- 长期记忆：episodic / semantic / procedural / eval memory。
+- 自我改进闭环：feedback -> memory -> eval -> policy update。
+- 评测体系：relevance、evidence quality、actionability、novelty、factuality、format stability。
+- human-in-the-loop：公开发布和策略更新都保留人工审核。
+
+详细计划：[Self-Improving Research Agent 作品集实施计划](/workspace/self-improving-research-agent-plan)。
+
+## 项目 3：企业知识库 + 销售问答 Agent
 
 目标：做一个企业知识库场景的 RAG Agent，用于销售或客服问答。
 
@@ -90,7 +115,7 @@ MVP 功能：
 - 反馈记录。
 - 简单 eval。
 
-## 项目 3：内容运营 Agent
+## 项目 4：内容运营 Agent
 
 目标：把已有日报、博客、社媒流程整理成一个可展示的内容运营 Agent 案例。
 
@@ -108,4 +133,4 @@ MVP 功能：
 
 ## 下一步
 
-优先确定第一个作品是否选择“岗位机会分析 Agent”。
+当前排序：岗位机会分析 Agent 仍是最直接服务求职的 P0；Self-Improving Research Agent 作为第二主线，负责沉淀更强的 memory / eval / 自我改进能力，并反哺日报、X 和博客内容。

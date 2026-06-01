@@ -34,6 +34,24 @@
       "summary": "把学习与真实自动化系统转化为可展示、可面试、可触达的作品集证据。"
     },
     {
+      "source": "持续学习与自动化科研 Survey 学习笔记.md",
+      "slug": "continual-auto-research-survey-notes",
+      "title": "持续学习与自动化科研 Survey 学习笔记",
+      "summary": "把 continual learning 与 autonomous research agent 两篇 survey 转成 AI Agent 学习路线、作品集方向和面试表达。"
+    },
+    {
+      "source": "Self-Improving Research Agent 作品集实施计划.md",
+      "slug": "self-improving-research-agent-plan",
+      "title": "Self-Improving Research Agent 作品集实施计划",
+      "summary": "将科技 / AI 日报、GitHub 项目调研、社媒草稿和反馈闭环沉淀成可展示的长期运行 Agent 项目。"
+    },
+    {
+      "source": "Self-Improving Research Agent Golden Set.md",
+      "slug": "self-improving-research-agent-golden-set",
+      "title": "Self-Improving Research Agent Golden Set",
+      "summary": "用于验证 Self-Improving Research Agent 策略更新质量的 golden set、评分维度和初始样本。"
+    },
+    {
       "source": "AI Agent 面试题库.md",
       "slug": "agent-interview-bank",
       "title": "AI Agent 面试题库",
