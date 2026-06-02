@@ -1,0 +1,80 @@
+---
+title: '科技/AI 日报 — 2026-06-02'
+date: '2026-06-02'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的判断：Agent 机会正在从“做一个更聪明的助手”转向“让 Agent 安全使用浏览器、电脑、工具和企业数据”。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-06-02
+
+## 1. 今日最值得关注
+
+1. **OpenAI 把 Codex 和 frontier models 上到 AWS，是一个很强的企业采购信号。** OpenAI 官方 RSS 显示，6 月 1 日发布了 [OpenAI frontier models and Codex are now available on AWS](https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws)。**为什么重要：** 企业 AI 采购的阻力不只是模型能力，而是云合同、合规、安全、账单和既有基础设施。Codex 进入 AWS 生态，意味着 coding agent 会更快从个人工具进入企业 IT 管理面。**对老板有用：** 做 Agent 产品时，不要只展示“能自动写代码”，要准备好权限、日志、成本、代码审查和部署集成这些企业会问的问题。
+
+2. **Agent 浏览器/电脑使用正在变成基础设施赛道。** GitHub API 今日高活跃项目里，`browserbase/stagehand`、`trycua/cua`、`browseros-ai/BrowserOS`、`CelestoAI/SmolVM` 都在解决同一类问题：让 Agent 稳定、安全、可观测地操作网页、桌面、代码执行环境。**判断：** 未来很多 Agent 创业机会不是“再做一个聊天框”，而是“给 Agent 一台可隔离、可回放、可审计的工作机器”。**可验证：** 选一个真实网页后台流程，比如 CRM 更新、网页线索采集、报表下载，做出自动执行 + 截图回放 + 人审确认的 demo。
+
+3. **Agent 治理开始从概念变成开源组件。** `microsoft/agent-governance-toolkit` README 写得很直接：policy enforcement、identity、sandboxing、SRE，并标注覆盖 OWASP Agentic Top 10；`agentic-community/mcp-gateway-registry` 则把 MCP server 和 AI agent 的注册、OAuth、动态工具发现、统一访问放到一个网关里。**为什么重要：** 企业真正害怕的是 Agent 乱用工具、越权访问、留下不可审计的事故。**可利用：** “Agent 安全网关 / MCP 治理层”比“新 Agent 框架”更接近企业付费点。
+
+4. **Cloudflare 和 Hugging Face 的信号都指向：Agent 需要数据平台和反馈闭环。** Cloudflare 5 月 28 日文章是 [How we built Cloudflare's data platform and an AI agent on top of it](https://blog.cloudflare.com/our-unified-data-platform/)；Hugging Face 6 月 1 日有 IBM Research 的 [Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic](https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption)。**判断：** Agent 规模化不是 prompt 技巧，而是数据、权限、流程、评测、监控和持续改进的系统工程。**对老板有用：** portfolio 项目也要体现系统闭环，不要只放一次性 demo。
+
+5. **研究源今天受限，但产品/开源信号足够清楚：评测和可靠性仍是短板。** arXiv 和 Semantic Scholar 今日 API 均返回 429，不能硬编论文覆盖。结合 GitHub 项目 `future-agi/future-agi`、`langfuse/langfuse`、`modelscope/evalscope` 的持续高活跃，可以确认的趋势是：Agent 上生产前，团队需要 tracing、evals、simulations、datasets、guardrails 和 gateway。**判断：** 这是老板做“自我改进研究 Agent / Agent 评测工作台”的很好切入口。
+
+## 2. GitHub / 开源项目雷达
+
+1. [`browserbase/stagehand`](https://github.com/browserbase/stagehand) — 约 22.9k stars，TypeScript，MIT。README 定位为 The AI Browser Automation Framework。**价值：** 它把浏览器自动化包装成面向 Agent 的 SDK，适合学习“确定性代码 + LLM 自然语言操作”的边界设计。**风险：** 通用浏览器 Agent 容易 demo 好看、生产脆弱，真正商业化要补监控、重试、回放、人审。
+
+2. [`trycua/cua`](https://github.com/trycua/cua) — 约 17.4k stars，HTML，MIT。README 定位为 build, benchmark, and deploy agents that use computers，覆盖 macOS/Windows/Linux 的 computer-use agent 基础设施。**价值：** 电脑使用会比网页抓取更接近真实工作，但也更需要沙箱、权限和评测。**可拆点：** 背景电脑、benchmark、部署路径、跨 OS 抽象。
+
+3. [`browseros-ai/BrowserOS`](https://github.com/browseros-ai/BrowserOS) — 约 11.2k stars，TypeScript，AGPL-3.0。开源 Chromium fork，README 称其为 privacy-first alternative to ChatGPT Atlas、Perplexity Comet、Dia，支持自带 API key 或 Ollama 本地模型。**价值：** 浏览器可能成为个人 Agent 的默认入口。**风险：** AGPL 商用集成要谨慎；浏览器产品还要面对分发、扩展生态、隐私信任和稳定性成本。
+
+4. [`microsoft/agent-governance-toolkit`](https://github.com/microsoft/agent-governance-toolkit) — 约 3.7k stars，Python，MIT。README 主打 policy enforcement、zero-trust identity、execution sandboxing、reliability engineering，并称覆盖 OWASP Agentic Top 10。**价值：** 很适合研究企业 Agent 安全清单。**可复制点：** 把策略、身份、沙箱、审计、可靠性做成独立层，而不是塞进业务 Agent 里。
+
+5. [`future-agi/future-agi`](https://github.com/future-agi/future-agi) — 约 1.1k stars，Python，Apache-2.0。README 定位为 open-source platform for shipping self-improving AI agents，覆盖 evaluations、tracing、simulations、guardrails、gateway、optimization。**价值：** “自我改进”不是口号，落地需要反馈数据、评测集、失败样本和优化循环。**可拆点：** 可以借它反推老板自己的 Self-Improving Research Agent portfolio 应该有哪些模块。
+
+6. [`agentic-community/mcp-gateway-registry`](https://github.com/agentic-community/mcp-gateway-registry) — 约 674 stars，Python，Apache-2.0。README 定位为 MCP Gateway & Registry，强调 OAuth、dynamic tool discovery、unified access、virtual MCP servers。**价值：** MCP 生态一多，治理问题会立刻出现：谁能用哪些工具、怎么授权、怎么审计、怎么发现。**商业启发：** 面向企业内部 MCP 的 registry/gateway 是很实在的基础设施机会。
+
+7. [`CelestoAI/SmolVM`](https://github.com/CelestoAI/SmolVM) — 约 569 stars，Python，Apache-2.0。README 称其为 secure, isolated computers for AI agents，microVM 约 500ms 启动，支持代码、浏览器和状态持久。**价值：** 沙箱是 Agent 从玩具到生产的门槛。**风险：** 真正上生产要看隔离强度、资源成本、并发、文件持久化和观测能力。
+
+8. [`mihaelamj/cupertino`](https://github.com/mihaelamj/cupertino) — 约 806 stars，Swift，MIT。本地 Apple 文档 CLI + MCP server，README 写明 v1.3.0 bundle 包含 351,505 文档和 240,543 symbols。**价值：** 这是垂直知识库 + MCP 的好样板：先把权威资料结构化、本地化，再给 Agent 使用。**可复制点：** 可以把类似模式迁移到招聘、投研、法务、跨境电商、医疗质控等高价值知识域。
+
+## 3. 技术趋势 / 论文 / 产品信号
+
+1. **云市场和模型市场正在把 Agent 纳入企业采购路径。** OpenAI + AWS 的信号说明，企业不会为了 Agent 重建一套采购流程；谁能进入已有云、权限、账单、合规体系，谁更容易被采用。**判断：** 独立 Agent 产品要准备好成为 AWS/Azure/GCP/Cloudflare/Vercel 生态的一部分，而不是孤岛。
+
+2. **浏览器 Agent 的竞争会从“能操作”转向“可控地操作”。** Stagehand、Cua、BrowserOS、SmolVM 对应四层能力：动作抽象、电脑使用、浏览器入口、隔离执行。**判断：** 下一阶段的差异化不在于点击按钮本身，而在任务状态、失败恢复、权限、人审、回放和评测。
+
+3. **MCP 的下一阶段是治理，不是服务器数量。** LinkedIn MCP、Apple Docs MCP、freee MCP 等垂直 MCP server 继续出现；与此同时，MCP gateway/registry 项目也在升温。**判断：** 当工具数量变多，企业需要的是统一注册、授权、审计、版本管理和风险分级。
+
+4. **Agent 评测产品会从开发辅助扩展到运营质检。** Langfuse、Future AGI、EvalScope 的方向都说明一件事：Agent 的错误不是偶发 bug，而是需要持续采样、标注、回归、对比和修复的系统问题。**对老板有用：** 日报、内容运营、求职材料、项目研究这些长期流程，都可以变成“有 golden set、有反馈、有回归测试”的 Agent 案例。
+
+## 4. 对老板有价值的机会
+
+1. **做一个“浏览器后台自动化 + 人审回放”小实验。** 服务对象：运营、销售、招聘、投研助理、跨境电商。验证方式：找一个每天重复 20 次以上的网页后台任务，用 Stagehand 或 Cua 类思路做自动执行，并保存截图、日志和失败原因。潜在变现：先卖服务项目，再沉淀成行业 SOP 模板。
+
+2. **做 MCP 工具治理清单和轻量网关 demo。** 服务对象：已经在用 Claude Code、Codex、Cursor、MCP 的小团队。验证方式：列出 10 个常见 MCP 工具，给每个工具设计权限等级、人审条件、日志字段、禁用条件。潜在变现：企业 Agent 安全审计、内部工具接入咨询、轻量 SaaS。
+
+3. **把“垂直知识库 + MCP”做成 portfolio 项目。** 参考 Cupertino，选一个老板求职/内容最相关的领域，比如 AI Agent 论文、Agent 工程实践、招聘 JD、开源项目 README，做本地索引 + MCP 查询 + 引用来源。验证方式：让 Codex/Hermes 在写日报或求职材料时必须引用这个知识库。
+
+4. **把日报系统升级成 Self-Improving Research Agent 的公开证据。** 不是重建长期服务，而是在现有 Hermes cron 能力上加三件事：每日来源失败记录、选题命中反馈、3-5 条 golden query 回归检查。潜在变现：展示给雇主/客户的是“会自我评估和改进的研究工作流”，比普通自动化脚本更有技术可信度。
+
+## 5. 可沉淀/可发布的内容选题
+
+1. **《Agent 创业的入口变了：浏览器、电脑、沙箱，才是真实工作流的三件套》** — 用 Stagehand、Cua、BrowserOS、SmolVM 做案例。
+
+2. **《MCP 服务器越来越多之后，真正值钱的是治理层》** — 讲 registry、gateway、OAuth、权限、审计和工具风险分级。
+
+3. **《为什么企业不会只买一个聪明 Agent：它们买的是可采购、可管控、可审计的系统》** — 从 OpenAI on AWS 和 Microsoft Agent Governance Toolkit 切入。
+
+4. **《垂直知识库 + MCP 是个人 Agent 的低成本护城河》** — 用 Cupertino 说明“权威资料结构化”比 prompt 更可靠。
+
+5. **《自我改进 Agent 不神秘：tracing、evals、simulations、golden set、feedback loop》** — 适合包装老板的日报/研究自动化项目。
+
+## 6. 明日/本周行动建议
+
+1. **本周优先拆 `browserbase/stagehand` 或 `trycua/cua`，做一个真实网页后台自动化 demo。** 不追求酷，追求完整闭环：执行、失败、截图、日志、人审。
+
+2. **为老板自己的 Agent 项目补一张治理能力表。** 字段包括：工具权限、危险动作、人审规则、日志、回放、成本、失败恢复、禁用开关。
+
+3. **把“垂直知识库 + MCP”列为求职作品集候选项目。** 先用 AI Agent 学习资料或开源项目 README 做小范围索引，证明 Agent 能基于可信资料工作，而不是凭空生成。
