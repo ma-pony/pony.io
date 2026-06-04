@@ -1,0 +1,80 @@
+---
+title: '科技/AI 日报 — 2026-06-04'
+date: '2026-06-04'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的判断：Agent 机会正在从通用聊天壳转向可训练技能、结构化程序接口、上下文文件系统和真实执行环境。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-06-04
+
+## 1. 今日最值得关注
+
+1. **Agent 的“技能层”开始像模型训练一样被系统化。** GitHub API 显示 [`microsoft/SkillOpt`](https://github.com/microsoft/SkillOpt) 是 2026-05 新建项目，约 4.7k stars，README 说它通过 rollout、reflect、aggregate、select、update、evaluate 训练可复用自然语言 skill，并发布了 PyPI 包和 dashboard。**判断：** 这条线很适合老板继续深挖，因为它把“Prompt/技能维护”从手工经验变成带验证门槛的优化循环，和 Hermes Skill、个人 Agent 工作流高度相关。**可利用：** 做一个小实验：把日报生成、代码 review、求职材料优化这三类任务各自做成 skill，再用固定样例集评估迭代前后质量。
+
+2. **“为 Agent 改造开发环境”的方向正在升温。** [`vercel-labs/zerolang`](https://github.com/vercel-labs/zerolang) 约 4.8k stars，README 定位为“programming language for agents”，核心不是让人写新语言，而是让 Agent 通过 compiler-derived ProgramGraph 理解和修改程序。**为什么重要：** 这说明 AI Coding 的瓶颈不只是模型更强，而是源代码文本对 Agent 来说信息密度低、依赖关系不显式、patch 风险高。**可拆点：** 研究它的 ProgramGraph 思路，反过来改造现有项目：给 Agent 提供符号图、依赖图、测试入口、约束说明，而不是只丢一堆文件。
+
+3. **Agent 上下文不再只是 RAG，而是在变成“虚拟文件系统”。** [`strukto-ai/mirage`](https://github.com/strukto-ai/mirage) 约 3.0k stars，Apache-2.0，定位为 Unified Virtual Filesystem for AI Agents，并提供 Python/TypeScript 包。**判断：** 企业 Agent 真正要跑起来，关键是把本地文件、云文档、数据库、工单、权限、版本都变成 Agent 可读写、可审计的上下文接口。**可利用：** 这是“Agent-ready knowledge workspace”的底层机会，老板可以把 Obsidian/blog/Hermes skill 的材料整理成一个可被 Agent 查询和更新的最小 VFS 原型。
+
+4. **Hugging Face 连续出现“Computer Use / MCP / Agent Logic”信号。** HF RSS 显示 6 月初有 Holo3.1 Fast & Local Computer Use Agents、Adding MCP Tools to Reachy Mini、IBM Research 的 Agent Logic 文章。**判断：** Computer-use Agent、机器人/硬件 MCP、企业 Agent 逻辑正在合流，说明工具调用会从软件 API 扩展到本地桌面、浏览器、物理设备。**风险：** demo 容易好看，商业化仍卡在稳定性、权限、失败恢复和责任边界。
+
+5. **OpenAI / GitHub 的官方叙事继续把 Codex/Copilot 推向“工作流产品”。** OpenAI RSS 显示 6 月 3 日发布 Wasmer 使用 Codex 构建 edge Node.js runtime 的案例；GitHub Blog 6 月 2 日发布 Copilot app agent-native desktop experience。**判断：** 编码 Agent 的竞争点正在从 IDE 插件转为“桌面工作台 + 代码库上下文 + git/测试/部署闭环”。对老板有用的是学习它们如何包装工程可信度，而不是只看模型能力。
+
+## 2. GitHub / 开源项目雷达
+
+1. [`microsoft/SkillOpt`](https://github.com/microsoft/SkillOpt) — 约 4.7k stars，Python，MIT。README 说它是 text-space optimizer，用轨迹驱动编辑和 validation gate 训练 reusable natural-language skills。**价值：** 直接适合拆成“自我改进 Research Agent”作品集；**风险：** 要验证 benchmark 是否贴近真实工作流，别只被训练循环术语吸引。
+
+2. [`vercel-labs/zerolang`](https://github.com/vercel-labs/zerolang) — 约 4.8k stars，C，Apache-2.0。实验性 graph-first programming language，让 Agent 通过语义程序图而不是裸文本改代码。**价值：** 可学习“Agent-readable codebase interface”；**风险：** README 明确提示不适合生产和敏感系统，当前更像研究/概念验证。
+
+3. [`strukto-ai/mirage`](https://github.com/strukto-ai/mirage) — 约 3.0k stars，TypeScript，Apache-2.0。Unified Virtual Filesystem for AI Agents，提供 Python/TS 文档和包。**价值：** 适合研究上下文层、文件系统抽象、Agent 数据接入；**可复制点：** 做轻量版知识库 VFS，不需要先做完整平台。
+
+4. [`OpenBMB/PilotDeck`](https://github.com/OpenBMB/PilotDeck) — 约 2.9k stars，TypeScript，AGPL-3.0。任务导向 AI Agent productivity platform，README 强调 workspace、memory evolution、MCP Native。**价值：** 中文/开源 Agent 工作台路线值得看 UI 和任务组织方式；**风险：** AGPL 对商业复用不友好，适合学习产品结构，不适合直接嵌入闭源项目。
+
+5. [`opensquilla/opensquilla`](https://github.com/opensquilla/opensquilla) — 约 2.7k stars，Python，Apache-2.0。README 定位 token-efficient microkernel AI agent，用 local model router、persistent memory、sandbox、web search、on-device embeddings 统一 CLI/Web/chat。**价值：** “同样预算更高能力密度”是很好的商业话术；**可拆点：** 研究路由、记忆、沙箱、日志如何放进同一个 turn loop。
+
+6. [`nexu-io/html-anything`](https://github.com/nexu-io/html-anything) — 约 6.0k stars，HTML，Apache-2.0。Agentic HTML editor，支持 8 个 coding-agent CLI、75 个 skill templates、9 类交付物，并导出到微信/X/知乎/HTML/PNG。**价值：** 它抓住了“Agent 生成的不是 Markdown，而是可发布成品”这个痛点；**可复制点：** 老板的日报和内容系统可以借鉴“模板技能 + 多平台交付物”的分发模型。
+
+7. [`genkit-ai/genkit`](https://github.com/genkit-ai/genkit) — 约 6.1k stars，TypeScript，Apache-2.0。Google/Firebase 背书的全栈 AI app 框架，README 提到 JS/TS、Go 生产可用，Python Beta，支持多模型、结构化输出、tool calling、agentic workflows。**价值：** 如果做面向 Google/Firebase 生态的 AI app，Genkit 是值得掌握的工程入口；**风险：** 框架价值取决于生态绑定，别把它当通用 Agent 银弹。
+
+8. [`containers/ramalama`](https://github.com/containers/ramalama) — 约 2.9k stars，Python，MIT。用容器语言简化本地和生产环境 AI 模型服务。**价值：** 本地/边缘模型服务会继续增长，容器化是企业接受本地 AI 的熟悉路径；**可利用：** 适合做“本地模型 + Agent 工作流”的部署笔记和成本对比。
+
+## 3. 技术趋势 / 论文 / 产品信号
+
+1. **arXiv 与 Semantic Scholar 今天对 Agent 检索出现 429/timeout。** 这不是结论来源，只说明本次论文覆盖受限；正文不强行塞论文。**判断：** 日报流程需要更稳定的论文备份源，比如固定关注 Papers with Code、OpenReview、HF paper tags 或官方 project page RSS。
+
+2. **HN 头条出现 Anthropic 的 Claude containment 工程文章。** HN RSS 显示 6 月 4 日前排是 Anthropic engineering 的 “The ways we contain Claude across products”。**判断：** Agent 安全不再是抽象伦理话题，而是产品隔离、权限、执行边界、审计和部署策略。老板如果做 Agent 工具，安全设计要从第一天写进作品集叙事。
+
+3. **Product Hunt 6 月 3 日 feed 里出现 Carbone Skill for AI。** Product Hunt feed 不含票数排名，只能作为产品信号。**判断：** “Skill for AI”这个命名本身值得注意：越来越多传统工具会把自己包装成 Agent 可调用能力，而不是普通 SaaS 功能。
+
+4. **Cloudflare 最近的 AI agent on data platform 案例值得补读。** Cloudflare RSS 显示 5 月 28 日文章 “How we built Cloudflare's data platform and an AI agent on top of it”。**判断：** 企业 Agent 真正的护城河往往不是前端聊天，而是数据平台、权限、日志、查询质量和组织内流程。
+
+## 4. 对老板有价值的机会
+
+1. **做一个 SkillOpt-style 的“日报 Agent 自我改进”作品集实验。** 输入：过去 10 篇日报、老板偏好、失败样例；输出：一个 `best_skill.md` 或 Hermes skill；评估：信息密度、可行动性、事实错误率、发布成功率。**验证方式：** 每天跑一版旧 skill 和新 skill，对比人工评分。
+
+2. **做 Agent-readable codebase starter kit。** 不是发明新语言，而是给普通 repo 自动生成 `AGENT.md`、依赖图、测试命令、模块职责、变更约束和常见坑。**服务对象：** 独立开发者、小团队、AI coding 重度用户。**潜在变现：** repo 诊断报告、模板包、团队 onboarding 服务。
+
+3. **做个人知识库 VFS 原型。** 把 Obsidian、blog daily radar、Hermes skills、GitHub 项目观察清单统一成 Agent 可查询的索引和可写接口。**验证方式：** 让 Agent 回答“我最近在跟踪哪些 Agent Infra 机会、下一步实验是什么、有哪些可发内容”。如果能稳定答出来，就有产品雏形。
+
+4. **把内容生产从 Markdown 升级为多交付物流水线。** 参考 html-anything 的思路，把同一篇日报派生成 X 长帖、小红书卡片、作品集更新、求职面试素材。**商业化启发：** 内容不是单篇文章，而是“研究资产复用率”。老板当前阶段最该追求的是学习和求职叙事复利。
+
+## 5. 可沉淀/可发布的内容选题
+
+1. **《Agent 技能也能训练？SkillOpt 给 Hermes Skill 的启发》** — 讲清楚从 prompt 手工调参到 validation-gated skill optimization 的变化。
+
+2. **《AI Coding 的下一步不是更会 patch，而是让代码库变得 Agent-readable》** — 用 zerolang 的 ProgramGraph 作为引子，落到普通项目怎么改造。
+
+3. **《Agent 的上下文层会从 RAG 变成虚拟文件系统》** — 对比 Mirage、企业知识库、Obsidian/Hermes 的个人工作流。
+
+4. **《为什么 Agent 产品一定要有安全边界和审计日志》** — 从 Anthropic containment 和企业 Agent 数据平台讲起。
+
+5. **《内容创作者的 Agent 工作台：一篇研究如何变成 5 种交付物》** — 借 html-anything 讲日报、X、小红书、博客、求职材料的复用链路。
+
+## 6. 明日/本周行动建议
+
+1. **今天优先拆 `microsoft/SkillOpt`。** 目标不是读完论文，而是跑通最小 demo，记录它如何定义 trajectory、validation gate、best_skill.md。
+
+2. **给 pony.io 或一个熟悉 repo 生成 Agent-readable 项目说明。** 包括模块图、测试命令、变更约束、常见失败点，作为 AI Agent 求职作品集的一页证据。
+
+3. **把“个人知识库 VFS”收敛成 2 小时 spike。** 只做读取最近日报、skills、GitHub watchlist 三类数据，不做平台化。验证 Agent 能否回答一个具体决策问题。
