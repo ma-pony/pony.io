@@ -1,0 +1,80 @@
+---
+title: '科技/AI 日报 — 2026-06-05'
+date: '2026-06-05'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的信号是 Agent 产品正在从“会做事”进入“可训练、可观察、可审计、可长期运行”的工程化阶段。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-06-05
+
+## 1. 今日最值得关注
+
+1. **Agent 的下一层竞争从模型调用转向“可训练的技能资产”。** GitHub API 显示 [`microsoft/SkillOpt`](https://github.com/microsoft/SkillOpt) 已接近 4.9k stars，项目定位是通过 trajectory-driven edits 和 validation-gated updates，为冻结 LLM agent 训练可复用的自然语言 skill。Anthropic 今日也在 HN 出现了 “Lessons from building Claude Code: How we use skills”。**判断：** 这说明 agent 工程正在从 prompt 包装转向“技能版本管理 + 验证 + 复用”。**对老板有用：** 你的 Hermes skills / 内容日报 / 求职项目可以统一收敛成“自我改进研究 Agent”的证据链，而不是散落的自动化脚本。
+
+2. **Agent 工作区正在补齐文件系统、桌面和浏览器这些“真实世界接口”。** [`strukto-ai/mirage`](https://github.com/strukto-ai/mirage) 做 unified virtual filesystem for AI agents；[`trycua/cua`](https://github.com/trycua/cua) 做 computer-use agent 的沙箱、SDK 和 benchmark；Product Hunt 上 Perplexity Personal Computer for Windows、Boxes.dev 都在卖“让 agent 操作本地/云端环境”。**为什么重要：** 真实业务不是只在聊天框里发生，agent 需要稳定地读文件、开应用、跑代码、进后台。**可利用：** 浏览器/桌面/文件系统的观测、回放、权限和失败恢复，会比“再做一个 agent UI”更接近付费需求。
+
+3. **MCP 生态开始进入调试、评测和治理层。** [`MCPJam/inspector`](https://github.com/MCPJam/inspector) 约 2.0k stars，定位是测试、检查、调试 MCP servers、MCP apps 和 ChatGPT apps；Hugging Face 今日文章也在讲把 hf CLI 设计成 agent-optimized 的 Hub 工作方式。**判断：** 当 MCP 从 demo 走向团队工作流，最缺的不是更多 server，而是 inspector、schema drift 检测、权限审计、调用 replay 和回归测试。**下一步验证：** 选 3 个常用 MCP server，做一个“每日自动 smoke test + diff 报告”的小工具，会很适合作为作品集项目。
+
+4. **AI 安全正在从泛泛红队转向“agent 自动发现漏洞”。** HN 今日高热的 [`anthropics/defending-code-reference-harness`](https://github.com/anthropics/defending-code-reference-harness) 官方描述包含 threat modeling、scanning、triage、patching 和 autonomous scanning harness。Product Hunt 也出现 Astra Autonomous Pentest，主张用 AI agents 查找、验证和修复漏洞。**为什么重要：** 安全场景天然适合 agent：目标明确、反馈可验证、价值高，但风险也高。**可利用：** 不要先做全自动修复，先做“发现证据 + 复现命令 + 风险分级 + 人审 patch”更容易被企业接受。
+
+5. **Cloudflare 收购 VoidZero 是前端/构建工具链继续平台化的信号。** Cloudflare 官方博客发布 [VoidZero is joining Cloudflare](https://blog.cloudflare.com/voidzero-joins-cloudflare/)，HN 讨论热度很高。VoidZero 背后是 Vite / Vitest / Oxc / Rolldown 这些现代前端工具链核心资产。**判断：** Cloudflare 想把开发、构建、运行时、边缘部署和 AI coding workflow 串成一条链。**对老板有用：** 做 Agent/开发者工具时，要关注“谁掌握开发流程入口”，因为入口决定插件、托管、日志、评测和分发空间。
+
+## 2. GitHub / 开源项目雷达
+
+1. [`microsoft/SkillOpt`](https://github.com/microsoft/SkillOpt) — 约 4.9k stars，Python，MIT。面向 frozen LLM agents 的 text-space optimizer，把运行轨迹转成可复用 `best_skill.md`。**价值：** 很适合拆成作品集：技能生成、验证门禁、版本比较、回滚。**风险：** 需要高质量任务集，否则容易把偶然成功固化成错误经验。
+
+2. [`strukto-ai/mirage`](https://github.com/strukto-ai/mirage) — 约 3.0k stars，TypeScript，Apache-2.0。AI agents 的统一虚拟文件系统。**价值：** 文件系统是 agent 的长期记忆、权限边界和执行上下文入口；可学习点在 VFS 抽象、隔离、同步和审计。**商业启发：** 团队级 agent workspace 很可能需要“可回放的文件层”。
+
+3. [`MCPJam/inspector`](https://github.com/MCPJam/inspector) — 约 2.0k stars，TypeScript，许可证未在 GitHub API 中明确。用于调试 MCP servers、MCP apps、ChatGPT apps。**价值：** MCP 工具越多，调试和评测越值钱；适合复制成“企业 MCP 健康检查 + CI 验收”。**风险：** MCP 协议和平台集成变化快，产品要跟着生态迭代。
+
+4. [`eunomia-bpf/agentsight`](https://github.com/eunomia-bpf/agentsight) — 约 382 stars，C，MIT。用 eBPF 做系统级 AI agent tracing。**价值：** 这是很硬核但重要的方向：当 agent 能动系统资源时，应用层日志不够，需要系统调用、网络、进程级观测。**可拆点：** “agent 做了什么”比“agent 说了什么”更接近企业审计需求。
+
+5. [`trycua/cua`](https://github.com/trycua/cua) — 约 17.6k stars，MIT。Computer-use agents 的开源基础设施，覆盖沙箱、SDK 和 benchmark。**价值：** 真实桌面控制是 agent 落地的关键桥；适合研究跨 OS 沙箱、动作空间、评测集和录制回放。**风险：** 权限、安全、稳定性和成本都会成为生产化瓶颈。
+
+6. [`open-metadata/OpenMetadata`](https://github.com/open-metadata/OpenMetadata) — 约 14.1k stars，TypeScript，Apache-2.0。官方描述已经把自己定位成 data and AI 的 open context layer。**价值：** 数据 agent 的关键不是自然语言 SQL，而是可信元数据、业务语义、血缘、权限和指标口径。**商业启发：** “数据上下文层 + Agent”比单独做 BI 聊天机器人更有护城河。
+
+7. [`letta-ai/letta-code`](https://github.com/letta-ai/letta-code) — 约 2.7k stars，TypeScript，Apache-2.0。Memory-first coding agent。**价值：** coding agent 正在从一次性生成代码变成长期项目参与者，memory 会决定它能不能理解历史决策。**风险：** 记忆不是越多越好，必须有压缩、验证、过期和引用机制。
+
+8. [`anthropics/defending-code-reference-harness`](https://github.com/anthropics/defending-code-reference-harness) — 约 1.0k stars，Python，GitHub API 未返回明确许可证。面向漏洞发现/修复的技能和 autonomous scanning harness。**价值：** 安全是 agent 能力最容易形成高价值闭环的场景之一。**可复制点：** threat model、scan、triage、patch、verify 可以拆成标准 agent pipeline。
+
+## 3. 技术趋势 / 论文 / 产品信号
+
+1. **Hugging Face 正在把 CLI 变成 agent 的工作界面。** Hugging Face 博客发布 [Designing the hf CLI as an agent-optimized way to work with the Hub](https://huggingface.co/blog/hf-cli-for-agents)。**判断：** 开发者平台会逐渐给 agent 提供稳定 CLI/API，而不是只优化人类网页。老板做工具时也要优先支持 agent-readable / scriptable / testable 的接口。
+
+2. **EVA-Bench Data 2.0 指向“工具场景评测”继续细分。** Hugging Face feed 显示 ServiceNow-AI 发布 [EVA-Bench Data 2.0](https://huggingface.co/blog/ServiceNow-AI/eva-bench-data)，覆盖 3 domains、121 tools、213 scenarios。**判断：** Agent benchmark 的价值正在从通用问答迁移到“多工具、多场景、可复现任务”。**对老板有用：** 求职/作品集项目可以少做炫技 demo，多做任务集、失败分类和回归评测。
+
+3. **OpenAI 继续把企业软件交付叙事绑定到 AI agents。** OpenAI RSS 显示 Endava 案例、ChatGPT memory dreaming、GPT-Rosalind 等更新。**判断：** 大厂叙事正在同时押三条线：企业交付效率、长期记忆、科学/安全专用能力。对创业者来说，机会不在复刻大模型，而在把这些能力嵌进具体行业流程。
+
+4. **KV cache / 推理后端仍是 Agent 成本底座。** HN 今日讨论 Huawei 的 [`KVarN`](https://github.com/huawei-csl/KVarN)，vLLM Ascend 插件也持续活跃。**判断：** 高频 agent 如果没有推理成本策略，业务量越大越痛；模型路由、缓存、量化、本地/国产硬件适配会直接影响毛利。
+
+## 4. 对老板有价值的机会
+
+1. **做一个“SkillOps for Agents”作品集。** 输入 Hermes/Codex/Claude Code 的任务记录，自动提炼 skill，跑 golden tasks 验证，产出版本 diff 和回滚建议。服务对象是使用 coding agent 的个人开发者、小团队和 AI 工程团队。验证方式：用 10 个真实 bugfix/内容研究任务比较有无 skill 的成功率和耗时。
+
+2. **做 MCP server 的健康检查和回归测试。** 每天自动调用团队常用 MCP server，检查 schema、权限、关键工具返回、错误消息、延迟和变更 diff。潜在变现路径是企业内部 agent 平台的 CI 插件或托管监控。
+
+3. **做 Agent 行为审计最小产品。** 从浏览器/桌面/CLI agent 的动作日志切入，提供“谁授权、做了什么、读写了哪些文件、访问了哪些 URL、失败在哪里”的回放报告。先服务高风险场景：财务后台、投放后台、CRM、代码仓库和安全扫描。
+
+4. **把数据上下文层垂直到一个行业。** 不要泛做企业知识库。可以选投研、跨境电商、招聘、销售运营中的一个场景，沉淀指标定义、数据血缘、常见问题、权限和历史决策，让 agent 回答时能带引用和口径说明。
+
+## 5. 可沉淀/可发布的内容选题
+
+1. **《Agent 的下一波不是 prompt，而是 SkillOps》** — 用 SkillOpt、Claude Code skills、Hermes skills 解释技能如何从经验变成资产。
+
+2. **《MCP 生态真正缺的不是更多 server，而是 inspector 和回归测试》** — 用 MCPJam、hf CLI for agents、企业工具链讲调试/验收机会。
+
+3. **《AI Agent 可观察性：为什么系统调用日志会比聊天记录更重要》** — 用 agentsight、CUA、浏览器 agent 场景讲审计和回放。
+
+4. **《数据 Agent 别先做聊天框，先做上下文层》** — 用 OpenMetadata 解释业务语义、血缘、权限和指标口径。
+
+5. **《Cloudflare 收 VoidZero：开发工具链入口正在被平台重新打包》** — 从 Vite/Vitest/Oxc/Rolldown 到边缘运行时、AI coding workflow。
+
+## 6. 明日/本周行动建议
+
+1. **把日报工作流拆成一个“Self-Improving Research Agent”项目说明。** 明确输入源、筛选规则、写作结构、校验、发布、反馈和 skill 更新机制，这能同时服务求职和内容线。
+
+2. **本周做 MCP 回归测试小 demo。** 选 3 个 MCP server，写 10 个固定测试用例，每天跑一次并生成 diff；这是小而硬的 Agent 工程作品。
+
+3. **给 Hermes skills 建一个质量看板。** 统计哪些 skill 被调用、哪些任务失败、哪些 skill 过期、哪些经验被重复踩坑，把“记忆层”从理念变成可量化资产。
