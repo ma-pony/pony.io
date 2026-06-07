@@ -1,0 +1,80 @@
+---
+title: '科技/AI 日报 — 2026-06-07'
+date: '2026-06-07'
+tags: ['日报', 'AI', '科技', 'GitHub', 'Agent']
+draft: false
+summary: '今天最重要的信号是 Agent 竞争正在从单点能力转向“可治理的工作系统”：技能、记忆、浏览器、预算和真实软件交付都在变成基础层。'
+authors: ['default']
+---
+
+# 科技/AI 日报 2026-06-07
+
+## 1. 今日最值得关注
+
+1. **Agent 生态今天继续从“工具调用”升级成“工作方法论”。** GitHub API 显示 [`obra/superpowers`](https://github.com/obra/superpowers) 约 219k stars，README 把它定位为 coding agents 的 skills framework 和软件开发方法论，流程里强调先澄清目标、写 spec、TDD、再用 subagent-driven-development 执行。**判断：** 这类项目 star 数异常高，不能只按热度信号看，但它抓住了真实变量：Agent 的输出质量越来越取决于 harness、技能、流程约束和复盘，而不只是模型本身。**对老板有用：** 你当前的 Hermes skills、日报、求职叙事，本质上也是在搭自己的 agent workbench；应该重点沉淀“可重复完成高质量任务的方法”。
+
+2. **OpenAI 开始公开讲 “harness engineering”，这个词值得收进你的求职/作品集语言。** HN 抓到 OpenAI 文章 [Harness engineering: Leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)；OpenAI RSS 同期还有 Endava 用 AI agents 改造软件交付、Wasmer 用 Codex 构建 edge Node.js runtime 的案例。网页正文访问被 403 拦住，但标题和 RSS 信号足够说明方向。**为什么重要：** 过去叫 prompt engineering，现在更像 harness engineering：上下文管理、工具边界、测试、权限、回放、CI、人工审批。**可利用：** 求职时不要只说“会用 Codex/Claude Code”，要展示你会设计 agent harness 和工程闭环。
+
+3. **浏览器 Agent 正在分裂成三条路线：DevTools、专用浏览器、网站转 CLI。** GitHub API 显示 [`ChromeDevTools/chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) 约 43k stars，README 明确让 coding agent 控制和检查 live Chrome，支持性能 trace、网络请求、截图、console；[`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser) 约 35k stars，Rust，定位为 AI agents 的浏览器自动化 CLI；[`jackwener/OpenCLI`](https://github.com/jackwener/OpenCLI) 约 23.7k stars，把网站、登录态浏览器、本地工具和 Electron app 转成确定性接口。**判断：** 真正有生产价值的 browser agent 不是“能看网页”，而是把不稳定网页变成可诊断、可回放、可约束的操作面。
+
+4. **Agent 成本控制正在从 FinOps 报表变成运行时治理。** Cloudflare 官方博客 [Your AI bill is out of control. Cloudflare can fix it now.](https://blog.cloudflare.com/ai-gateway-spend-limits/) 提到可给 CI/CD pipelines 和 autonomous agents 分配命名身份，在 AI Gateway 日志里看到某个 code review bot 或 documentation generator 的 token 消耗，并对失控 agent 单独应用预算策略。**判断：** 长期运行 agent 的成本风险和权限风险会一起出现：必须知道是谁、在何时、为什么调用了哪个模型。**对老板有用：** 任何 Agent 作品集都应该显示成本、重试、预算、中止策略，这会立刻比普通 demo 更像真实工程。
+
+5. **记忆层继续升温，但可用方向不是“存更多聊天记录”。** GitHub API 显示 [`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem) 约 81k stars，项目描述是跨 Claude Code、Codex、Gemini、Hermes、OpenCode 等 agent 的持久上下文；OpenAI RSS 也出现 [Dreaming: Better memory for a more helpful ChatGPT](https://openai.com/index/chatgpt-memory-dreaming)。**判断：** Agent memory 的高价值部分是压缩经验、保留决策、带出处地注入上下文；低价值部分是无差别囤历史。**下一步验证：** 先把日报判断做成小型 research memory，比直接追求全自动长期记忆更稳。
+
+## 2. GitHub / 开源项目雷达
+
+1. [`obra/superpowers`](https://github.com/obra/superpowers) — 约 219k stars，Shell，MIT。README 定位为 agentic skills framework 和软件开发方法论，覆盖 Claude Code、Codex、Gemini、OpenCode、Cursor、GitHub Copilot CLI 等。**价值：** 可学习“技能触发 + spec + TDD + subagent 执行”的方法论包装。**风险：** star 数极高，要警惕营销/传播放大；重点看结构，不迷信数据。
+
+2. [`affaan-m/ECC`](https://github.com/affaan-m/ECC) — 约 209k stars，JavaScript，MIT。README 称其为 harness-native operator system，覆盖 skills、instincts、memory optimization、continuous learning、security scanning、MCP configs，支持 Codex、Claude Code、Cursor、OpenCode、Gemini、Zed、Copilot。**价值：** 与老板当前 Hermes 使用路径高度相关，可拆“跨 harness 的技能/记忆/安全层”怎么抽象。**风险：** 功能面很宽，学习时要拆最小核心，不要被大而全带跑。
+
+3. [`anomalyco/opencode`](https://github.com/anomalyco/opencode) — 约 171k stars，TypeScript，MIT。开源 AI coding agent。**价值：** 适合对比 Codex/Claude Code/OpenCode 的产品边界：终端体验、权限、上下文、模型 provider、插件和企业部署。**可拆点：** 看它如何设计 CLI/TUI、session、tool execution 和配置层。**风险：** coding agent 赛道拥挤，直接做通用替代品不划算，垂直 harness 更有机会。
+
+4. [`thedotmack/claude-mem`](https://github.com/thedotmack/claude-mem) — 约 81k stars，TypeScript，Apache-2.0。项目描述是把 agent session 压缩并在未来 session 注入相关上下文，支持多种 coding agent。**价值：** 记忆层从单应用功能变成跨 agent 基础设施。**可复制点：** session capture、摘要压缩、相关性检索、注入策略、冲突/过期管理。**风险：** 隐私和错误记忆会直接污染后续决策。
+
+5. [`bytedance/deer-flow`](https://github.com/bytedance/deer-flow) — 约 70.6k stars，Python，MIT。README 定位为 long-horizon super agent harness，使用 sub-agents、memory、sandboxes、tools、skills 和 message gateway，处理分钟到小时级任务。**价值：** 适合学习长任务 agent 的系统构成。**商业启发：** 研究、代码、内容生成等长任务都需要 sandbox、记忆、工具和消息网关，不是单轮 prompt 能解决。
+
+6. [`ChromeDevTools/chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) — 约 43k stars，TypeScript，Apache-2.0。Chrome DevTools MCP server，让 coding agent 检查 live Chrome，支持性能 trace、网络请求、截图、console 和 Puppeteer 自动等待。**价值：** 这是 browser/debugging agent 的硬基础设施。**风险：** README 明确警告会暴露浏览器内容给 MCP client，敏感登录态和个人数据必须隔离。
+
+7. [`vercel-labs/agent-browser`](https://github.com/vercel-labs/agent-browser) — 约 35.4k stars，Rust，Apache-2.0。AI agents 的浏览器自动化 CLI，native Rust binary。**价值：** Vercel 下场说明“给 Agent 的浏览器”会成为前端/全栈开发工作流一部分。**可拆点：** 安装、Chrome for Testing 管理、命令接口、自动化稳定性。
+
+8. [`jackwener/OpenCLI`](https://github.com/jackwener/OpenCLI) — 约 23.7k stars，JavaScript，Apache-2.0。README 定位为把任意网站转成 CLI，并允许 AI agent 操作登录态浏览器；内置 Bilibili、知乎、小红书、Reddit、HN、X 等适配器，也可桥接本地工具和 Electron app。**价值：** 这是很适合老板学习的方向：把人类 UI 包成 agent 可用的稳定接口。**风险：** 登录态自动化、平台 ToS、反爬和误操作都要谨慎处理。
+
+## 3. 技术趋势 / 论文 / 产品信号
+
+1. **“给 Agent 的 CLI”正在变成产品设计范式。** Hugging Face 官方博客 [Designing the hf CLI as an agent-optimized way to work with the Hub](https://huggingface.co/blog/hf-cli-for-agents) 明确说 hf CLI 正被 Claude Code、Codex、Cursor 等 coding agents 使用，所以重新设计为同时服务人和 agent，并强调 next-command hints、可重试、可发现、可预测。**判断：** 未来工具如果想被 Agent 使用，CLI/API/错误消息要像产品界面一样被设计。
+
+2. **GitHub 的产品叙事也在往 agent-native desktop 走。** GitHub Blog 发布 [GitHub Copilot app: The agent-native desktop experience](https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/)，同周还有 Universe “agentic era” 的活动叙事。**判断：** IDE 插件只是中间形态，下一步是 agent 拥有自己的工作台、任务队列、上下文和审批入口。
+
+3. **arXiv 今日 Agent 论文信号偏“长任务自演化”和“世界模拟”。** arXiv API 返回 [`2606.06473v1`](https://arxiv.org/abs/2606.06473v1) MLEvolve，摘要说 LLM agents 用于科学发现和 ML engineering 时需要 sustained self-evolution；[`2606.06476v1`](https://arxiv.org/abs/2606.06476v1) 讨论用 world simulators 做 agentic visual spatial reasoning。**判断：** 研究端的方向不是“单次回答更好”，而是 agent 如何长期搜索、复用分支经验、在模拟环境里推理和验证。
+
+4. **Product Hunt feed 的商业信号偏垂直连接器和小工具。** Product Hunt feed 今天出现 Manus Shopify Connector、IFTTT gaming services、Fox Issue Tracker 等。Feed 不含投票排名，不能当热度排序。**判断：** Agent 产品更容易先在垂直连接器、自动化模板、具体工作流里落地，而不是一开始做大平台。
+
+## 4. 对老板有价值的机会
+
+1. **把“harness engineering”做成作品集主线。** 做一个公开 repo：展示一个 Agent 从任务入口、上下文收集、工具权限、测试、成本日志、失败复盘到技能沉淀的完整闭环。服务对象是想把 coding agents 用进真实项目的小团队。验证方式：选 3 个真实任务跑通，并记录成功率、耗时、人工接管点。
+
+2. **做 Agent-ready CLI 评测清单。** 参考 Hugging Face hf CLI：检查一个 CLI 是否适合 Agent 使用，包括稳定 JSON 输出、幂等重试、错误可诊断、下一步提示、dry-run、权限边界、机器可读帮助。可以先评测 `gh`、`hf`、`vercel`、`gcloud`、`n8n` CLI。潜在变现路径是咨询、工具改造、CI 检查器。
+
+3. **做浏览器 Agent 的“登录态安全沙箱”。** ChromeDevTools MCP 和 OpenCLI 都触及 logged-in browser。可以做一个小工具：为 Agent 开独立 Chrome profile、限制域名、记录操作、屏蔽敏感输入、自动清理 cookie。服务对象是需要让 Agent 操作 SaaS 后台但担心风险的个人和小团队。
+
+4. **把日报升级成判断回测系统。** 每条日报信号加状态：值得拆、已拆、忽略、转内容、进入求职叙事、下周复查。7 天后自动生成“判断命中/失效/待验证”报告。这个项目同时服务学习、内容、求职，复利很高。
+
+## 5. 可沉淀/可发布的内容选题
+
+1. **《什么是 Harness Engineering：AI Agent 时代真正稀缺的工程能力》** — 用 OpenAI 文章标题、Superpowers/ECC、Hermes skills 讲从 prompt 到 harness 的迁移。
+
+2. **《给 Agent 设计 CLI：为什么错误消息、幂等和 dry-run 会变成产品能力》** — 用 Hugging Face hf CLI 文章做主线。
+
+3. **《Browser Agent 的三条路线：DevTools、Agent Browser、Website-to-CLI》** — 对比 ChromeDevTools MCP、Vercel agent-browser、OpenCLI。
+
+4. **《Agent Memory 的危险：记住越多，错得越稳定》** — 讲 claude-mem、OpenAI memory dreaming，以及为什么需要出处、过期和回测。
+
+5. **《AI Agent 也需要成本刹车：从 Cloudflare AI Gateway Spend Limits 看长期运行风险》** — 把 token 预算、身份、日志、模型路由讲成工程检查表。
+
+## 6. 明日/本周行动建议
+
+1. **优先写一页 “Harness Engineering 求职叙事”。** 结构：我解决什么问题、我如何设计 agent harness、有哪些验证指标、和普通 prompt 使用者的差异。
+
+2. **拆 Hugging Face hf CLI 文章。** 输出一张 Agent-ready CLI checklist，用它反过来检查 Hermes / 你的项目工具链。
+
+3. **做 Research Memory 最小表。** 字段只要：日期、信号、判断、行动、状态、复查日期、结果。先手工维护，不急着自动化。
