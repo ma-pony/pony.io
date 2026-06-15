@@ -2,9 +2,9 @@
 import React from 'react'
 import type { MDXComponents as MDXComponentsType } from 'mdx/types'
 import { useMDXComponent } from 'next-contentlayer2/hooks'
-import TOCInline from 'pliny/ui/TOCInline'
-import Pre from 'pliny/ui/Pre'
-import BlogNewsletterForm from 'pliny/ui/BlogNewsletterForm'
+import TOCInline from 'pliny/ui/TOCInline.js'
+import Pre from 'pliny/ui/Pre.js'
+import BlogNewsletterForm from 'pliny/ui/BlogNewsletterForm.js'
 
 import Image from './Image'
 import CustomLink from './Link'

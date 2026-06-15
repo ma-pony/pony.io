@@ -1,6 +1,6 @@
 import PageTitle from '@/components/PageTitle'
 import { MDXLayoutRenderer, MDXComponents } from '@/components/MDXComponents'
-import { sortedBlogPost, coreContent } from 'pliny/utils/contentlayer'
+import { sortedBlogPost, coreContent } from 'pliny/utils/contentlayer.js'
 import { InferGetStaticPropsType } from 'next'
 import { allWorkspaces, allAuthors } from 'contentlayer/generated'
 import type { Workspace } from 'contentlayer/generated'

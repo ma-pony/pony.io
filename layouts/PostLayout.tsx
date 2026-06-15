@@ -1,6 +1,6 @@
 import { useState, ReactNode } from 'react'
 import { Comments } from 'pliny/comments/index.js'
-import { CoreContent } from 'pliny/utils/contentlayer'
+import { CoreContent } from 'pliny/utils/contentlayer.js'
 import type { Blog, Authors } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'

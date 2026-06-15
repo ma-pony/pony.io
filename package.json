@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "start": "next dev",
-    "dev": "cross-env INIT_CWD=$PWD next dev",
+    "dev": "cross-env INIT_CWD=$PWD next dev --webpack",
     "workspace:sync": "node ./scripts/sync-workspace.mjs",
     "workspace:build": "npm run workspace:sync && npm run build",
     "content:check": "node ./scripts/check-content.mjs",
-    "build": "npm run content:check && cross-env INIT_CWD=$PWD next build && sed -i'' -e 's/assert { type:/with { type:/g' .contentlayer/generated/index.mjs && cross-env NODE_OPTIONS='--experimental-json-modules' node -r esbuild-register ./scripts/postbuild.mjs",
+    "build": "npm run content:check && cross-env INIT_CWD=$PWD next build --webpack && sed -i'' -e 's/assert { type:/with { type:/g' .contentlayer/generated/index.mjs && cross-env NODE_OPTIONS='--experimental-json-modules' node -r esbuild-register ./scripts/postbuild.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts"
@@ -26,7 +26,7 @@
     "gray-matter": "^4.0.2",
     "image-size": "1.0.0",
     "mdx-bundler": "^9.0.0",
-    "next": "^14.2.35",
+    "next": "^16.2.9",
     "next-contentlayer2": "^0.5.8",
     "next-themes": "^0.2.0",
     "pliny": "^0.2.1",
