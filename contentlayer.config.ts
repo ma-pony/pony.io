@@ -1,4 +1,4 @@
-import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer/source-files'
+import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer2/source-files'
 import readingTime from 'reading-time'
 import path from 'path'
 // Remark packages
@@ -9,7 +9,7 @@ import {
   remarkCodeTitles,
   remarkImgToJsx,
   extractTocHeadings,
-} from 'pliny/mdx-plugins.js'
+} from 'pliny/mdx-plugins/index.js'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -112,13 +112,15 @@ export default makeSource({
   documentTypes: [Blog, Workspace, Authors],
   mdx: {
     cwd: process.cwd(),
+    // `as any`: contentlayer2 nests its own vfile, so the unified Pluggable types
+    // clash nominally with the top-level vfile. Runtime is fine; this is type-only.
     remarkPlugins: [
       remarkExtractFrontmatter,
       remarkGfm,
       remarkCodeTitles,
       [remarkMath, { singleDollarTextMath: false }],
       remarkImgToJsx,
-    ],
+    ] as any,
     rehypePlugins: [
       rehypeSlug,
       rehypeAutolinkHeadings,
@@ -126,6 +128,6 @@ export default makeSource({
       [rehypeCitation, { path: path.join(root, 'data') }],
       [rehypePrismPlus, { ignoreMissing: true }],
       rehypePresetMinify,
-    ],
+    ] as any,
   },
 })

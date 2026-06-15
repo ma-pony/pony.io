@@ -18,14 +18,11 @@ const siteMetadata = {
   bilibili: 'https://space.bilibili.com/322178647/dynamic',
   locale: 'zh-CN',
   analytics: {
-    // If you want to use an analytics provider you have to add it to the
-    // content security policy in the `next.config.js` file.
-    // supports plausible, simpleAnalytics, umami or googleAnalytics
-    plausibleDataDomain: 'ponyma.io', // e.g. tailwind-nextjs-starter-blog.vercel.app
-    simpleAnalytics: false, // true or false
-    umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    posthogProjectApiKey: '', // e.g. AhnJK8392ndPOav87as450xd
-    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
+    // pliny 0.2+ nests each provider as its own object; omit the ones you don't use.
+    // Add any provider you enable to the CSP in `next.config.js`.
+    plausibleAnalytics: {
+      plausibleDataDomain: 'ponyma.io',
+    },
   },
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus

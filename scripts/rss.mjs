@@ -1,4 +1,4 @@
-import { generateRSS } from 'pliny/utils/generate-rss.js'
+import { generateRSS } from '../lib/generate-rss.mjs'
 import siteMetadata from '../data/siteMetadata.js'
 import { allBlogs } from '../.contentlayer/generated/index.mjs'
 

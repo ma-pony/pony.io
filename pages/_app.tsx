@@ -10,8 +10,10 @@ import Head from 'next/head'
 
 import siteMetadata from '@/data/siteMetadata'
 import { Analytics } from '@vercel/analytics/react'
-import { SearchProvider } from 'pliny/search'
 import LayoutWrapper from '@/components/LayoutWrapper'
+// Search is disabled (siteMetadata.search is commented out). pliny/search pulls
+// @docsearch/react (CJS) which breaks ESM page-data collection, so SearchProvider
+// is omitted. To re-enable: set siteMetadata.search and re-add SearchProvider.
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -26,9 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Analytics />
       <LayoutWrapper>
-        <SearchProvider searchConfig={siteMetadata.search}>
-          <Component {...pageProps} />
-        </SearchProvider>
+        <Component {...pageProps} />
       </LayoutWrapper>
     </ThemeProvider>
   )

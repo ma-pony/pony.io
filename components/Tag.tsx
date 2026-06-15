@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { kebabCase } from 'pliny/utils/kebabCase'
+import { kebabCase } from '@/lib/kebabCase'
 
 interface Props {
   text: string

@@ -1,6 +1,5 @@
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import PageTitle from '@/components/PageTitle'
-import { MDXComponents } from '@/components/MDXComponents'
+import { MDXLayoutRenderer, MDXComponents } from '@/components/MDXComponents'
 import { sortedBlogPost, coreContent } from 'pliny/utils/contentlayer'
 import { InferGetStaticPropsType } from 'next'
 import { allBlogs, allAuthors } from 'contentlayer/generated'
@@ -59,9 +58,10 @@ export default function BlogPostPage({
         </div>
       ) : (
         <MDXLayoutRenderer
+          code={post.body.code}
+          components={MDXComponents}
           layout={post.layout || DEFAULT_LAYOUT}
           content={post}
-          MDXComponents={MDXComponents}
           toc={post.toc}
           authorDetails={authorDetails}
           prev={prev}

@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react'
-import { Comments } from 'pliny/comments'
+import { Comments } from 'pliny/comments/index.js'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
