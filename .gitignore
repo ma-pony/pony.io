@@ -28,6 +28,9 @@ public/sitemap.xml
 # search
 /public/search.json
 
+# llms.txt (regenerated at build from posts)
+/public/llms.txt
+
 # misc
 .DS_Store
 
