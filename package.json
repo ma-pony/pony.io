@@ -8,7 +8,7 @@
     "workspace:sync": "node ./scripts/sync-workspace.mjs",
     "workspace:build": "npm run workspace:sync && npm run build",
     "content:check": "node ./scripts/check-content.mjs",
-    "build": "npm run content:check && cross-env INIT_CWD=$PWD next build --webpack && sed -i'' -e 's/assert { type:/with { type:/g' .contentlayer/generated/index.mjs && cross-env NODE_OPTIONS='--experimental-json-modules' node -r esbuild-register ./scripts/postbuild.mjs",
+    "build": "npm run content:check && contentlayer2 build && cross-env INIT_CWD=$PWD next build --webpack && sed -i'' -e 's/assert { type:/with { type:/g' .contentlayer/generated/index.mjs && cross-env NODE_OPTIONS='--experimental-json-modules' node -r esbuild-register ./scripts/postbuild.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts"
