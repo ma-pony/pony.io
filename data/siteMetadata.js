@@ -6,6 +6,10 @@ const siteMetadata = {
   author: 'Pony Ma',
   headerTitle: "Pony's Blog",
   description: '在螺旋中上升',
+  // 信息型描述:用于首页/全站的 <meta description>、WebSite 结构化数据与 llms.txt。
+  // 展示用的诗意 tagline 仍在 `description`,这条负责让搜索/AI 知道博客「写什么」。
+  seoDescription:
+    'Pony Ma 的技术博客,聚焦 AI Agent、Claude Code、Skill 工程、Web 爬虫与后端开发实践,记录工程化思考与开源踩坑。',
   language: 'zh-cn',
   theme: 'system', // system, dark or light
   siteUrl: 'https://ponyma.io',

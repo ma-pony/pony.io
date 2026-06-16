@@ -114,10 +114,11 @@ export const BlogSEO = ({
   date,
   lastmod,
   url,
+  tags,
   images = [],
   canonicalUrl,
   noindex,
-}: BlogSeoProps) => {
+}: BlogSeoProps & { tags?: string[] }) => {
   const publishedAt = new Date(date).toISOString()
   const modifiedAt = new Date(lastmod || date).toISOString()
   const imagesArr =
@@ -134,42 +135,67 @@ export const BlogSEO = ({
     }
   })
 
+  // With explicit authors, emit full Person objects (name + off-site profiles for
+  // E-E-A-T). Otherwise reference the site-wide Person declared in _document, so the
+  // graph stays consistent and the author entity is described in exactly one place.
   let authorList
   if (authorDetails) {
     authorList = authorDetails.map((author) => {
+      const sameAs = [author.github, author.twitter, author.linkedin].filter(Boolean)
       return {
         '@type': 'Person',
         name: author.name,
+        ...(author.github ? { url: author.github } : {}),
+        ...(sameAs.length ? { sameAs } : {}),
       }
     })
   } else {
-    authorList = {
-      '@type': 'Person',
-      name: siteMetadata.author,
-    }
+    authorList = { '@id': `${siteMetadata.siteUrl}/#person` }
   }
 
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': url,
-    },
-    headline: title,
-    image: featuredImages,
-    datePublished: publishedAt,
-    dateModified: modifiedAt,
-    author: authorList,
-    publisher: {
-      '@type': 'Organization',
-      name: siteMetadata.author,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${url}#article`,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+        url,
+        headline: title,
+        name: title,
+        description: summary,
+        image: featuredImages,
+        datePublished: publishedAt,
+        dateModified: modifiedAt,
+        inLanguage: 'zh-CN',
+        ...(tags && tags.length
+          ? { keywords: tags.join(', '), articleSection: tags }
+          : {}),
+        author: authorList,
+        publisher: {
+          '@type': 'Organization',
+          name: siteMetadata.title,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+          },
+        },
+        isPartOf: { '@id': `${siteMetadata.siteUrl}/#website` },
       },
-    },
-    description: summary,
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '首页', item: siteMetadata.siteUrl },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: '博客',
+            item: `${siteMetadata.siteUrl}/blog`,
+          },
+          { '@type': 'ListItem', position: 3, name: title, item: url },
+        ],
+      },
+    ],
   }
 
   const twImageUrl = featuredImages[0].url
