@@ -76,6 +76,16 @@ module.exports = () => {
           source: '/(.*)',
           headers: securityHeaders,
         },
+        {
+          // Content routes are content-negotiated (HTML vs text/markdown) by the
+          // middleware, so caches must key on Accept to avoid serving the wrong one.
+          source: '/',
+          headers: [{ key: 'Vary', value: 'Accept' }],
+        },
+        {
+          source: '/blog/:path*',
+          headers: [{ key: 'Vary', value: 'Accept' }],
+        },
       ]
     },
     webpack: (config, options) => {
