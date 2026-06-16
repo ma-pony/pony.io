@@ -5,6 +5,9 @@
 
 User-agent: *
 Allow: /
+# Content Signals(contentsignals.org)声明 AI 内容使用偏好。本站立场:开放,
+# 希望被搜索与 AI 答案引用,也允许训练。要「可引用但不可训练」就把 ai-train 改 no。
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 
 # —— AI 训练 / 检索 / 答案引擎(显式放行,作为策略信号) ——
 User-agent: GPTBot

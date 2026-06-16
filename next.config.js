@@ -52,6 +52,14 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
+  // RFC 8288 Link header for agent/crawler discovery. Only honest, IANA-registered
+  // relation types: the RSS feed (alternate) and the author page (author). This is
+  // a blog with no API, so we deliberately do NOT advertise api-catalog/service-doc.
+  {
+    key: 'Link',
+    value:
+      '</feed.xml>; rel="alternate"; type="application/rss+xml"; title="RSS", </about>; rel="author"',
+  },
 ]
 
 /**
